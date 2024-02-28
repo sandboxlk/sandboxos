@@ -5,7 +5,7 @@ if ((isset($_SESSION['username']) != ''))
 	header('Location: user/index.php');
 }
 ?>
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -32,7 +32,7 @@ if ((isset($_SESSION['username']) != ''))
           <div class="col-lg-5 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-2">
               <div class="text-center">
-                <img src="user/images/logo.PNG" alt="logo" width="20%">
+                <img src="user/images/LOG.png" alt="LOG" width="20%">
               </div>
               <br>
               <br>

@@ -1,13 +1,19 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 include '../connection.php';
 include '../check.php';
 if (($AccountLevel == 2) || ($AccountLevel== 3)){
     echo "You do not have permission to access this page.";
     exit;
 }
+
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+
+$result = mysqli_query($conn, "SELECT * FROM clients WHERE clientName LIKE '%$search%'");
 ?>
- 
-	<meta charset="utf-8">
+ <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>User Data</title>
@@ -15,10 +21,120 @@ if (($AccountLevel == 2) || ($AccountLevel== 3)){
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="css/customcss.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="pages/insertandmanage/client_list_ajax.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="pages/insertandmanage/client_list_ajax.js"></script> 
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+	<script>
+		$(document).on('click','#addEmployeeModal #btn-add',function() {
+		
+		var data = $("#user_form").serialize();
+		$.ajax({
+			data: data,     
+			type: "POST",
+			url: "pages/insertandmanage/backend/client_list_backend.php",
+			success: function(dataResult){
+				
+				alert(dataResult);
+				var dataResult = JSON.parse(dataResult);
+				if(dataResult.statusCode==200){
+					$('#addEmployeeModal').modal('hide');
+					alert('Company added!'); 
+					location.reload();						
+				}
+				if(dataResult.statusCode==400){
+					//alert(dataResult.message);
+					//alert('Please Select No Series.');
+				}
+			}, 
+			error: function (xhr, status,error) {
+				console.error(xhr.responseText);
+			}
+		});
+	});
+
+	$(document).ready(function () {
+        // Event handler for clicking the "Add Contact" link
+        $('.btn-primary[data-toggle="modal"]').on('click', function () {
+            // Retrieve clientID from the link's data attribute
+            var clientId = $(this).data('clientid');
+
+            // Set the value in the input field
+            $('#company_id').val(clientId);
+        });
+    });
+
+	$(document).on('submit', '#contact_form', function (e) {
+        e.preventDefault();
+
+        var data = $(this).serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: 'pages/insertandmanage/backend/client_list_backend.php', // Replace with the actual path to your PHP file
+            data: data,
+            success: function (response) {
+                // alert(response);
+				$('#addContactModal').modal('hide');
+				location.reload();
+
+
+                // You can add additional handling here, such as refreshing the page or updating the UI
+            },
+            error: function (error) {
+                console.log('Error: ' + error);
+            }
+        });
+    });
+
+	$(document).on('click', '.view-contacts', function () {
+    var clientId = $(this).data('clientid');
+    var clientName = $(this).data('clientname');
+
+    // Set the client name in the modal title
+    $('#client-name-display').text(clientName);
+
+    // Fetch contacts for the selected client using AJAX
+    $.ajax({
+        type: 'GET',
+        url: 'pages/insertandmanage/backend/client_list_backend.php', // Replace with the actual path to your PHP file to fetch contacts
+        data: { clientId: clientId },
+        success: function (response) {
+            // Parse the JSON response
+            var contacts = JSON.parse(response);
+
+            // Clear the existing table rows
+            $('#contacts-table tbody').empty();
+
+            // Append the new contacts to the table
+            for (var i = 0; i < contacts.length; i++) {
+                var contact = contacts[i];
+                var newRow = '<tr>' +
+                    '<td>' + contact.contact_name + '</td>' +
+                    '<td>' + contact.contact_designation + '</td>' +
+                    '<td>' + contact.contact_number + '</td>' +
+                    '<td>' + contact.contact_email + '</td>' +
+                    '</tr>';
+
+                $('#contacts-table tbody').append(newRow);
+            }
+
+            // Show the modal
+            $('#viewContactsModal').modal('show');
+        },
+        error: function (error) {
+            console.log('Error fetching contacts: ' + error);
+        }
+    });
+});
+
+
+
+	</script>
+
 	<style>
 
 body {
@@ -189,23 +305,24 @@ table .delete-btn:hover {
 			<tbody>
 		  
 			<?php
-			$result = mysqli_query($conn,"SELECT * FROM clients ORDER BY clientName ASC");
+			$result = mysqli_query($conn,"SELECT * FROM clients ORDER BY clientID ASC");
+			//$displayIndex = 1;
 				$i=1;
 				while($row = mysqli_fetch_array($result)) {
 				//AMC
 				$today = date('Y-m-d');
 				$clientid = $row["clientID"];	
 			?>
-			<tr class="border-bottom" id="<?php echo $row["clientID"]; ?>">
+			<tr class="border-bottom" id="<?php echo $row["clientID"]; ?>"> 
 			<td>
-    					<a href="#editEmployeeModal" class="edit" data-toggle="modal">
+    				<a href="#editClientModal" class="edit" data-toggle="modal">
 						<i class="material-icons update" data-toggle="tooltip" 
 						data-id="<?php echo $row["clientID"]; ?>"
 						data-code="<?php echo $row["companyCode"]; ?>"
-						data-name="<?php echo $row["clientName"]; ?>"
+						data-name="<?php echo $row["clientName"]; ?>" 
 						data-address="<?php echo $row["address"]; ?>"
-						data-Contactsname="<?php echo $row["contactsName"]; ?>"
-						data-Designation="<?php echo $row["contactsDesignation"]; ?>" 
+						data-contactsname="<?php echo $row["contactsName"]; ?>"
+						data-designation="<?php echo $row["contactsDesignation"]; ?>" 
 						data-email="<?php echo $row["email"]; ?>"
 						data-contact1="<?php echo $row["contact1"]; ?>"
             			data-contact2="<?php echo $row["contact2"]; ?>"
@@ -235,6 +352,7 @@ table .delete-btn:hover {
 </td>	
 			</tr>
 			<?php
+			//$displayIndex++;
 			$i++;
 			}
 			?>
@@ -248,31 +366,30 @@ table .delete-btn:hover {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Add Contacts for <span id="companyName"></span></h4>
+                <h4 class="modal-title">Add Contacts  <span id="companyName"></span></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
                 <form id="contact_form">
-                    <input type="hidden" id="company_id" name="company_id">
+                    <input type="text" id="company_id" name="company_id">
                     <div class="form-group">
                         <label>Contact Name</label>
                         <input type="text" class="form-control" name="contact_name" required>
                     </div>
 					<div class="form-group">
-    <label>Contact Designation</label>
-    <input type="text" class="form-control" name="contact_designation" required>
-</div>
-<div class="form-group">
-    <label>Contact Number</label>
-    <input type="text" class="form-control" name="contact_number" required>
-</div>
-
+						<label>Contact Designation</label>
+						<input type="text" class="form-control" name="contact_designation" required>
+					</div>
+					<div class="form-group">
+						<label>Contact Number</label>
+						<input type="text" class="form-control" name="contact_number" required>
+					</div>
                     <div class="form-group">
                         <label>Contact Email</label>
                         <input type="email" class="form-control" name="contact_email" required>
-                    </div>
-                
+                    </div>             
                     <div class="modal-footer">
+						<input type="hidden" value="5" name="type">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                         <button type="submit" class="btn btn-success">Add Contact</button>
                     </div>
@@ -368,6 +485,7 @@ table .delete-btn:hover {
 					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
 					<button type="button" class="btn btn-success" id="btn-add">Insert</button>
 				</div>
+		</div>
 			</form>
 		</div>
 	</div>
@@ -375,7 +493,7 @@ table .delete-btn:hover {
 
 
 <!-- Edit Modal HTML -->
-<div id="editEmployeeModal" class="modal fade">
+<div id="editClientModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form id="update_form">
@@ -416,9 +534,6 @@ table .delete-btn:hover {
           			<div class="form-group">
 						<label>Land No</label>
 						<input type="text" id="contact2_u" name="contact2" class="form-control" autocomplete="off" required>
-					
-					
-
 				</div>
 				<div class="modal-footer">
 				<input type="hidden" value="2" name="type">

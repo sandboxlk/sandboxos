@@ -1,58 +1,31 @@
-// $(document).on('click','#addEmployeeModal #btn-add',function() {
-// 	alert('1');
-// 	var data = $("#user_form").serialize();
-// 	$.ajax({
-// 		data: data,
-// 		type: "POST",
-// 		url: "pages\insertandmanage\backend\leads_list_backend.php",
-// 		success: function(dataResult){
-// 			alert('2');
-// 			alert(dataResult);
-// 			var dataResult = JSON.parse(dataResult);
-// 			if(dataResult.statusCode==200){
-// 				$('#addEmployeeModal').modal('hide');
-// 				alert('Company added!'); 
-// 				location.reload();						
-// 			}
-// 			if(dataResult.statusCode==400){
-// 				alert(dataResult.message);
-// 			    //alert('Please Select No Series.');
-// 			}
-// 		}, 
-		
-// 	});
-// });
+$(document).on('click', '.update', function (e) {
+	var cid = $(this).attr("data-id");
+	var cc = $(this).attr("data-client");
+	var date = $(this).attr("data-date");
+	var lead = $(this).attr("data-lead");
+	var leadtype = $(this).attr("data-leadtype");
+	var requirement = $(this).attr("data-requirement");
+	var sales = $(this).attr("data-estimatesv");
+	var lost = $(this).attr("data-lostlead");
+	var perliminary = $(this).attr("data-perliminary");
+	var email = $(this).attr("data-email");
+	var shedulechem = $(this).attr("data-shedule");
+	var chemmeeting = $(this).attr("data-chemistry");
+	var proposal = $(this).attr("data-proposal");
+	var estimate = $(this).attr("data-estimate");
+	var confirmation = $(this).attr("data-confirmation");
+	var cof = $(this).attr("data-cof");
+	var po = $(this).attr("data-po");
+	var invoice = $(this).attr("data-invoice");
+	var payment = $(this).attr("data-payment");
+	var program = $(this).attr("data-programs");
+	var followup = $(this).attr("data-post");
+	var protofolio = $(this).attr("data-protofolio");
+	var business = $(this).attr("data-meeting");
+	//var completion=$(this).attr("data-completion");
+	var notes = $(this).attr("data-notes");
+	var followupactions = $(this).attr("data-followup");
 
-
- 
-$(document).on('click','.update',function(e) {
-	var cid=$(this).attr("data-id_u");
-	var cc=$(this).attr("data-client_u");
-	var date=$(this).attr("data-date_u");
-	var lead=$(this).attr("data-lead_u");
-	var leadtype=$(this).attr("data-leadtype_u");
-	var requirement=$(this).attr("data-requirement_u");
-	var sales=$(this).attr("data-sales_u");
-	var lost=$(this).attr("data-lost_u");
-	var perliminary=$(this).attr("data-perliminary_u");
-	var email=$(this).attr("data-email_u");
-	var shedulechem=$(this).attr("data-shedulecm_u");
-	var chemmeeting=$(this).attr("data-chemmeeting_u");
-	var proposal=$(this).attr("data-proposal_u");
-	var estimate=$(this).attr("data-estimate_u");
-	var confirmation=$(this).attr("data-confirmation_u");
-	var cof=$(this).attr("data-cof_u");
-	var po=$(this).attr("data-po_u");
-	var invoice=$(this).attr("data-invoice_u");
-	var payment=$(this).attr("data-payment_u");
-	var program=$(this).attr("data-program_u");
-	var followup=$(this).attr("data-followup_u");
-	var protofolio=$(this).attr("data-protofolio_u");
-	var business=$(this).attr("data-business_u");
-	var completion=$(this).attr("data-completion_u");
-	var notes=$(this).attr("data-notes_u");
-	var followupactions=$(this).attr("data-action_u");
-	
 
 	$('#id_u').val(cid);
 	$('#client_u').val(cc);
@@ -77,80 +50,77 @@ $(document).on('click','.update',function(e) {
 	$('#followup_u').val(followup);
 	$('#protofolio_u').val(protofolio);
 	$('#business_u').val(business);
-	$('#completion_u').val(completion);
+	// $('#completion_u').val(completion);
 	$('#notes_u').val(notes);
-	$('#completion_u').val(followupactions);
+	$('#action_u').val(followupactions);
 });
 
-$(document).on('click','#update',function(e) {
+$(document).on('click', '#update', function (e) {
 	var data = $("#update_form").serialize();
 	$.ajax({
 		data: data,
 		type: "post",
 		url: "pages/insertandmanage/backend/leads_list_backend.php",
-		success: function(dataResult){
-				var dataResult = JSON.parse(dataResult);
-				if(dataResult.statusCode==200){
-					$('#editEmployeeModal').modal('hide');
-					alert('Data updated successfully !'); 
-					location.reload();						
-				}
-				if(dataResult.statusCode==400){
-				   alert(dataResult.message);
-				}
+		success: function (dataResult) {
+			console.log(dataResult)
+
+			$('#editEmployeeModal').modal('hide');
+			alert('Data updated successfully !');
+			location.reload();
+
 		}
 	});
 });
-$(document).on("click", ".delete", function() { 
-	var id=$(this).attr("data-id_u");
+$(document).on("click", ".delete", function () {
+	var id = $(this).attr("data-id_u");
 	$('#id_u').val(id);
-	
+
 });
-$(document).on("click", "#delete", function() { 
+$(document).on("click", "#delete", function () {
 	$.ajax({
 		url: "pages/insertandmanage/backend/leads_list_backend.php",
 		type: "POST",
 		cache: false,
-		data:{
-			type:3,
+		data: {
+			type: 3,
 			id: $("#id_u").val()
 		},
-		success: function(dataResult){
-				$('#deleteEmployeeModal').modal('hide');
-				location.reload();
-		
+		success: function (dataResult) {
+			$('#deleteEmployeeModal').modal('hide');
+			location.reload();
+
 		}
 	});
 });
-$(document).on("click", "#delete_multiple", function() {
+$(document).on("click", "#delete_multiple", function () {
 	var user = [];
-	$(".user_checkbox:checked").each(function() {
+	$(".user_checkbox:checked").each(function () {
 		user.push($(this).data('user-id'));
 	});
-	if(user.length <=0) {
-		alert("Please select records."); 
-	} 
-	else { 
-		WRN_PROFILE_DELETE = "Are you sure you want to delete "+(user.length>1?"these":"this")+" row?";
+	if (user.length <= 0) {
+		alert("Please select records.");
+	}
+	else {
+		WRN_PROFILE_DELETE = "Are you sure you want to delete " + (user.length > 1 ? "these" : "this") + " row?";
 		var checked = confirm(WRN_PROFILE_DELETE);
-		if(checked == true) {
+		if (checked == true) {
 			var selected_values = user.join(",");
 			console.log(selected_values);
 			$.ajax({
 				type: "POST",
 				url: "pages/insertandmanage/backend/leads_list_backend.php",
-				cache:false,
-				data:{
-					type: 4,						
-					id : selected_values
+				cache: false,
+				data: {
+					type: 4,
+					id: selected_values
 				},
-				success: function(response) {
+				success: function (response) {
 					var ids = response.split(",");
-					for (var i=0; i < ids.length; i++ ) {	
-						$("#"+ids[i]).remove(); 
-					}	
-				} 
-			}); 
-		}  
-	} 
+					for (var i = 0; i < ids.length; i++) {
+						$("#" + ids[i]).remove();
+					}
+				}
+			});
+		}
+	}
 });

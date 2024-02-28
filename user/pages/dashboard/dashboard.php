@@ -125,8 +125,18 @@
               }
           }
           ?>
+<style>
+        #user-report iframe {
+            width: 100%; /* Set iframe width to 100% of its container */
+            height: calc(100vh - 100px); /* Set iframe height to 100% of viewport height minus 100px for padding/margins */
+            border: none; /* Remove iframe border */
+        }
+    </style>
+</head>
+<body>
+    <div id='user-report'>
+        <iframe title="user" src="https://app.powerbi.com/reportEmbed?reportId=c5acaa45-9dc8-49aa-acb2-9bd5478d91e5&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4" frameborder="0" allowFullScreen="true"></iframe>
 
-<iframe title="user" width="1100" height="600" src="https://app.powerbi.com/reportEmbed?reportId=c5acaa45-9dc8-49aa-acb2-9bd5478d91e5&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4" frameborder="0" allowFullScreen="true"></iframe>
     <!--<iframe title="UMS" width="1548" height="899.25" src="https://app.powerbi.com/reportEmbed?reportId=c6723e0f-0a4f-41ce-a87e-1e8137a20a73&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4" frameborder="0" allowFullScreen="true"></iframe>-->
           
  <!--

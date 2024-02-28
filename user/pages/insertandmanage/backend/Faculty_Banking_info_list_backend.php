@@ -3,15 +3,13 @@ include '../../../../connection.php';
 include '../../../../check.php';
 if(count($_POST)>0){
 	if($_POST['type']==1){
-		$accont_name_=$_POST['accountName'];
-		$account_number_=$_POST['accountNumber'];
-		$bank_=$_POST['bank'];
-		$branch_=$_POST['branch'];
-		$swift_code_=$_POST['swiftCode'];
-		$bank_code_=$_POST['bankCode'];
-		$branch_code_=$_POST['branchCode']; 
+		$accont_name_=$_POST['Account_Name'];
+		$bank_=$_POST['Bank'];
+		$branch_=$_POST['Branch'];
+		$swift_code_=$_POST['Swift_Code'];
+		$bank_code_=$_POST['Bank_code'];
+		$branch_code_=$_POST['branch_code'];
 		
- 
 		// Validate if Client already exists
 		$sql_check_client = "SELECT COUNT(*) AS count FROM `banking` WHERE `accountName` = '$accont_name_'";
 		$result_check_client = mysqli_query($conn, $sql_check_client);
@@ -20,10 +18,10 @@ if(count($_POST)>0){
 			echo json_encode(array("statusCode" => 400, "message" => "Account Name already exists."));
 			return;
 		}
-		if (strlen($client_name_)>0){ 
+		if (strlen($accont_name_)>0){ 
 	
 				$sql = "INSERT INTO `banking`( `accountName`, `accountNumber`, `bank`, `branch`, `swiftCode`, `bankCode`, `branchCode`) 
-				VALUES ('$accont_name_','$account_number_','$bank_','$branch_','$swift_code_','$bank_code_','$branch_code_')";
+				VALUES ('$accont_name_','$bank_','$bank_','$branch_','$swift_code_','$bank_code_','$branch_code_')";
 				if (mysqli_query($conn, $sql)) {
 					echo json_encode(array("statusCode"=>200));
 				} 
@@ -33,7 +31,7 @@ if(count($_POST)>0){
 			
 			mysqli_close($conn);
 		}else{
-			echo json_encode(array("statusCode" => 400, "message" => "Company name is required"));
+			echo json_encode(array("statusCode" => 400, "message" => "Account name is required"));
 			return;
 		}
 	}

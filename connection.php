@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL ^ E_DEPRECATED);
-$head_hostname = "localhost";
+$head_hostname = "localhost:3306";
 $head_user = "root";//change
 $head_password = "";//change
 $head_database = "usermanagementsystem";//change

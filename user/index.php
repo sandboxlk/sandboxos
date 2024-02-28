@@ -39,8 +39,14 @@ if ((isset($_SESSION['username']) == ''))
         header('Location: ../index.php');
     }
 }
+
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+
+$result = mysqli_query($conn, "SELECT * FROM leads WHERE company LIKE '%$search%'");
+$result = mysqli_query($conn, "SELECT * FROM clients WHERE clientName LIKE '%$search%'");
+
 ?>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <!-- Required meta tags -->
@@ -85,8 +91,16 @@ if ((isset($_SESSION['username']) == ''))
                   <i class="icon-search"></i>
                 </span>
               </div>
-              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
-            </div>
+              <form method="get" action="index.php">
+              <input type="hidden" name="sub" value="Leads">
+
+	<div class="input-group">
+		<input type="text" class="form-control" name="search" placeholder="Search..." value="<?= $search ?>">
+		<div class="input-group-append">
+			<button type="submit" class="btn btn-outline-secondary">Search</button>
+		</div>
+	</div>
+</form>            </div>
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">

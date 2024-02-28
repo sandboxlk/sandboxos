@@ -15,27 +15,26 @@ if(session_status() !== PHP_SESSION_ACTIVE) session_start();
           }
           ?>
 
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Calendar</title>
-    <!-- FullCalendar styles -->
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css' rel='stylesheet' />
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css' rel='stylesheet' />
-
-    <!-- jQuery -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-
-    <!-- FullCalendar scripts -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.js'></script>
+    
 </head>
+<style>
+        #calendar iframe {
+            width: 100%; /* Set iframe width to 100% of its container */
+            height: calc(100vh - 100px); /* Set iframe height to 100% of viewport height minus 100px for padding/margins */
+            border: none; /* Remove iframe border */
+        }
+    </style>
+
 <body>
     <div id='calendar'>
-    <iframe src="https://outlook.office365.com/owa/calendar/17674a37e69b48588eb0c08a2f6bc009@sandbox.lk/6fb6ce580d1a42f7b2bc2bf281d427215676426119354039776/calendar.html" width="1100" height="600" frameborder="0" scrolling="no"></iframe>
-      
+    <!--<iframe src="https://outlook.office365.com/owa/calendar/17674a37e69b48588eb0c08a2f6bc009@sandbox.lk/6fb6ce580d1a42f7b2bc2bf281d427215676426119354039776/calendar.html" width="1100" height="600" frameborder="0" scrolling="no"></iframe>-->
+      <iframe src="https://outlook.office365.com/owa/calendar/7a0080e71ae0441db325a08cc106afab@sandbox.lk/7b6ee9ed21bc4c8288c6087257ccdfef16037572280109137382/calendar.html" frameborder="0" scrolling="no"></iframe>
     </div>
 
     <!-- <script>
@@ -56,21 +55,7 @@ if(session_status() !== PHP_SESSION_ACTIVE) session_start();
         });
     </script> -->
 </body>
-</html>
-<?php
-          include '../connection.php';
-          if(session_status() !== PHP_SESSION_ACTIVE) session_start();
-          $user_check=$_SESSION['username'];
-          $sql_get_user_full = "SELECT UserID,FirstName,LastName,AccountLevel FROM sys_users WHERE Username='$user_check'";
-          $resultuser_full = mysqli_query($conn, $sql_get_user_full);
-          if (mysqli_num_rows($resultuser_full) > 0) {
-              while($rowuser_full = mysqli_fetch_assoc($resultuser_full)) {
-                  $currentuser =$rowuser_full["UserID"];
-                  $UserFullName =$rowuser_full["FirstName"] ." ". $rowuser_full["LastName"];
-                  $AccountLevel =$rowuser_full["AccountLevel"];
-              }
-          }
-          ?>
+
 
 <!--
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">

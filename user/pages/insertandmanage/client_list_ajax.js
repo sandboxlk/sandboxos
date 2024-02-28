@@ -1,33 +1,10 @@
-$(document).on('click','#btn-add',function(e) {
-	var data = $("#user_form").serialize();
-	$.ajax({
-		data: data,
-		type: "POST",
-		url: "pages/insertandmanage/backend/client_list_backend.php",
-		success: function(dataResult){
-			var dataResult = JSON.parse(dataResult);
-			if(dataResult.statusCode==200){
-				$('#addEmployeeModal').modal('hide');
-				alert('Company added!'); 
-				location.reload();						 
-			}
-			if(dataResult.statusCode==400){
-				alert(dataResult.message);
-			    //alert('Please Select No Series.');
-			}
-		}, 
-		
-	});
-});
-
-
 $(document).on('click','.update',function(e) {
 	var id=$(this).attr("data-id");
 	var code=$(this).attr("data-code");
 	var name=$(this).attr("data-name");
 	var address=$(this).attr("data-address");
-	var Contactsname=$(this).attr("data-Contactsname");
-	var Designation=$(this).attr("data-Designation");
+	var Contactsname=$(this).attr("data-contactsname");
+	var Designation=$(this).attr("data-designation");
 	var email=$(this).attr("data-email");
 	var contact1=$(this).attr("data-contact1");
 	var contact2=$(this).attr("data-contact2");
@@ -41,9 +18,7 @@ $(document).on('click','.update',function(e) {
 	$('#email_u').val(email);
 	$('#contact1_u').val(contact1);
 	$('#contact2_u').val(contact2);
-
-	// Manually trigger the modal
-	$('#editEmployeeModal').modal('show');
+	$('#editClientModal').modal('toggle');
 });
 
 $(document).on('click','#update',function(e) {
@@ -53,18 +28,17 @@ $(document).on('click','#update',function(e) {
 		type: "post",
 		url: "pages/insertandmanage/backend/client_list_backend.php",
 		success: function(dataResult){
-				var dataResult = JSON.parse(dataResult);
-				if(dataResult.statusCode==200){
-					$('#editEmployeeModal').modal('hide');
-					alert('Company updated !'); 
-					location.reload();						
-				} 
-				if(dataResult.statusCode==400){
-				   alert(dataResult.message);
-				}
+			console.log(dataResult)
+			$('#editEmployeeModal').modal('hide');
+			alert('Data updated successfully !');
+			location.reload();
 		}
 	});
 });
+
+
+
+
 $(document).on("click", ".delete", function() { 
 	var id=$(this).attr("data-id");
 	$('#id_d').val(id);
