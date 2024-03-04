@@ -1,9 +1,13 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 error_reporting(E_ALL ^ E_DEPRECATED);
-$head_hostname = "localhost:3306";
-$head_user = "root";//change
-$head_password = "";//change
-$head_database = "usermanagementsystem";//change
+$head_hostname = "usermanagementsystem.cvayquw8s8jm.us-east-1.rds.amazonaws.com";
+$head_user = "admin";//change
+$head_password = "Sandbox2024";//change
+$head_database = "ums";//change
 
 $dbConnection= $db = $conn = $con = mysqli_connect($head_hostname,$head_user,$head_password,$head_database);   //create connection
 
