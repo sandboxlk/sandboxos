@@ -17,7 +17,7 @@ if(count($_POST)>0){
 		$result_check_client = mysqli_query($conn, $sql_check_client);
 		$row_check_client = mysqli_fetch_assoc($result_check_client);
 		// Set the next AUTO_INCREMENT value for your table
-		$sql_reset_auto_increment = "ALTER TABLE `clients` AUTO_INCREMENT = number";
+		$sql_reset_auto_increment = "ALTER TABLE `clients` AUTO_INCREMENT = 1";
 		$conn->query($sql_reset_auto_increment);
 		if ($row_check_client['count'] > 0) {
 			echo json_encode(array("statusCode" => 400, "message" => "Company already exists."));
