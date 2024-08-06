@@ -2,7 +2,7 @@
 error_reporting(E_ALL ^ E_DEPRECATED);
 $head_hostname = "localhost:3306";
 $head_user = "root";//change
-$head_password = "";//change
+$head_password = "Sandbox@2024";//change
 $head_database = "usermanagementsystem";//change
 
 $dbConnection= $db = $conn = $con = mysqli_connect($head_hostname,$head_user,$head_password,$head_database);   //create connection
