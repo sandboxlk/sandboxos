@@ -7,6 +7,8 @@ if(count($_POST)>0){
 		$client_name_=$_POST['name'];
 		$email_=$_POST['email'];
 		$address_=$_POST['address'];
+		$Industry_=$_POST['industry'];
+		$Country_=$_POST['country'];
 		$Contactsname_=$_POST['Contactsname']; 
 		$Designation_=$_POST['Designation']; 
 		$contact1_=$_POST['contact1'];   
@@ -23,10 +25,10 @@ if(count($_POST)>0){
 			echo json_encode(array("statusCode" => 400, "message" => "Company already exists."));
 			return;
 		}
-		if (strlen($client_name_)>0){ 
+		if (strlen($client_name_)>0){  
 	
-				$sql = "INSERT INTO `clients`( `companyCode`,`clientName`, `email`,`address`,`contactsName`,`contactsDesignation`,`contact1`,`contact2`) 
-				VALUES ('$client_code_','$client_name_','$email_','$address_','$Contactsname_','$Designation_','$contact1_','$contact2_')";
+				$sql = "INSERT INTO `clients`( `companyCode`,`clientName`, `email`,`address`,`Industry`,`Country`,`contactsName`,`contactsDesignation`,`contact1`,`contact2`) 
+				VALUES ('$client_code_','$client_name_','$email_','$address_','$Industry_','$Country_','$Contactsname_','$Designation_','$contact1_','$contact2_')";
 				if (mysqli_query($conn, $sql)) {
 					echo json_encode(array("statusCode"=>200));
 				} 
@@ -159,9 +161,7 @@ if (isset($_GET['clientId'])) {
 
     // Close the connection
     mysqli_close($conn);
-} else {
-    echo "Invalid request. Client ID is not provided.";
-}
+} 
 
 ?>
 

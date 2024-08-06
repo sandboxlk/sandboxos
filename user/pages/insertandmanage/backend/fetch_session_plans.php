@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $moduleID = $_GET["moduleID"];
 
         // Query your database to fetch session plans for the specified ModuleID
-        $sql = "SELECT `file` FROM `module` WHERE `ModuleID` = ?";
+        $sql = "SELECT `FilePath` FROM `module_files` WHERE `ModuleID` = ?";
 
         // Log SQL query
         error_log("SQL Query: " . $sql);

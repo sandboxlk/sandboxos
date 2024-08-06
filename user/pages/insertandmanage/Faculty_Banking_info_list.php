@@ -182,7 +182,7 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 							<thead>
 								<tr>
 									<th></th>
-									<th>Bank ID</th>
+									<th style="display: none;">Bank ID</th>
 									<th>Account Name</th>
 									<th>Account Number</th>
 									<th>Bank</th>
@@ -190,7 +190,6 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 									<th>Swift Code</th>
 									<th>Bank Code</th>
 									<th>Branch Code</th>
-
 								</tr>
 							</thead>
 							<tbody>
@@ -204,13 +203,20 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 									<tr class="border-bottom" id="<?php echo $row["bankID"]; ?>">
 										<td>
 											<a href="#editEmployeeModal" class="edit" data-toggle="modal">
-												<i class="material-icons update" data-bank_id_u="<?php echo $row["bankID"]; ?>" data-accountname_u="<?php echo $row["accountName"]; ?>" data-accountnumber_u="<?php echo $row["accountNumber"]; ?>" data-bank_u="<?php echo $row["bank"]; ?>" data-branch_u="<?php echo $row["branch"]; ?>" data-swiftcode_u="<?php echo $row["swiftCode"]; ?>" data-bankcode_u="<?php echo $row["bankCode"]; ?>" data-branchcode_u="<?php echo $row["branchCode"]; ?>" title="Edit"></i>
+												<i class="material-icons update" 
+												data-bank_id_u="<?php echo $row["bankID"]; ?>" 
+												data-accountname_u="<?php echo $row["accountName"]; ?>" 
+												data-accountnumber_u="<?php echo $row["accountNumber"]; ?>" 
+												data-bank_u="<?php echo $row["bank"]; ?>" 
+												data-branch_u="<?php echo $row["branch"]; ?>" 
+												data-swiftcode_u="<?php echo $row["swiftCode"]; ?>" 
+												data-bankcode_u="<?php echo $row["bankCode"]; ?>" 
+												data-branchcode_u="<?php echo $row["branchCode"]; ?>" title="Edit"></i>
 											</a>
 											<a href="#deleteEmployeeModal" class="delete" data-bank_id_u="<?php echo $row["bankID"]; ?>" data-toggle="modal"><i class="material-icons" title="Delete"></i></a>
 
 										</td>
-										<?php $Recordid = str_pad($row["bankID"], 5, '0', STR_PAD_LEFT); ?>
-										<td><?php echo 'C' . $Recordid; ?></td>
+										<td style="display: none;"> <?php $Recordid = str_pad($row["bankID"], 5, '0', STR_PAD_LEFT); ?>
 										<td><?php echo $row["accountName"]; ?></td>
 										<td><?php echo $row["accountNumber"]; ?></td>
 										<td><?php echo $row["bank"]; ?></td>

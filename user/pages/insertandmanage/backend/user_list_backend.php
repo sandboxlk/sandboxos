@@ -234,6 +234,8 @@ if (count($_POST) > 0) {
 	}
 }
 
+
+
 if (count($_POST) > 0) {
 	if ($_POST['type'] == 3) {
 		$id = $_POST['id'];

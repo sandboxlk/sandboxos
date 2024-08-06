@@ -22,6 +22,9 @@ $result = mysqli_query($conn, "SELECT * FROM clients WHERE clientName LIKE '%$se
 	<link rel="stylesheet" href="css/customcss.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -129,11 +132,12 @@ $result = mysqli_query($conn, "SELECT * FROM clients WHERE clientName LIKE '%$se
             console.log('Error fetching contacts: ' + error);
         }
     });
+
+	
 });
 
-
-
 	</script>
+
 
 	<style>
 
@@ -249,11 +253,11 @@ table button {
 
 /* The download button has a green color */
 table .download-btn {
-    background-color: #4CAF50;
+    background-color: #2b77f0;
 }
 
 table .download-btn:hover {
-    background-color: #45a049;
+    background-color: #000000;
 }
 
 /* The delete button has a red color */
@@ -264,6 +268,54 @@ table .delete-btn {
 table .delete-btn:hover {
     background-color: #da190b;
 }
+
+/* Ensure all columns in the client table have the same width, enable word wrapping, specify font size, and adjust header font size and row height */
+.table-fixed {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.table-fixed th,
+.table-fixed td {
+    width: 200px; /* Adjust the width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Allow text to wrap in table cells */
+    word-wrap: break-word; /* Ensure long words break and wrap to the next line */
+    font-size: 11px; /* Specify font size for table content */
+}
+
+.table-fixed th {
+    font-size: 8px; /* Specify header font size */
+    background-color: #f8f8f8;
+    white-space: nowrap; /* Prevent text wrapping in the header */
+    height: 20px; /* Adjust header row height */
+    font-weight: normal; /* Remove bold from header */
+}
+
+/* Make the first column (edit/delete) smaller */
+.table-fixed th:first-child,
+.table-fixed td:first-child {
+    width: 75px; /* Adjust the width for the first column */
+}
+
+.table-fixed td {
+    padding: 8px;
+    text-align: center;
+    height: 20px; /* Adjust row height */
+}
+
+.btn-blue {
+    background-color: #1560bd !important; /* Custom blue color */
+    color: #ffffff !important; /* White text */
+    border-color: #1560bd !important; /* Custom blue border */
+}
+
+.btn-blue:hover {
+    background-color: #104a8e !important; /* Darker blue on hover */
+    border-color: #104a8e !important; /* Darker blue border on hover */
+}
+
 
 </style>
 <div class="col-12 grid-margin">
@@ -286,26 +338,72 @@ table .delete-btn:hover {
 			</div>
 		</div>
     <div class="table-responsive">
-		<table class="table table-hover">
+		<table class="table table-hover client-table table-fixed">
 			<thead>
 				<tr>
 					<th></th>
-					<th>CompanyID</th>
-					<th>Company Code</th>
+					<th style="display: none;">CompanyID</th>
 					<th>Company Name</th>
+					<th>Company Code</th>
 					<th>Address</th>
+					<th>Industry</th>
+					<th>Country</th>
 					<th>Contacts Name </th>
 					<th>Contacts Designation</th>
           			<th>Contacts Email</th>
 					<th>Mobile No</th>
-          			<th>Land No</th>		
-					<th></th>	
-				</tr>
+          			<th>Land No</th>
+					  <th></th> 	
+						
+				</tr> 
 			</thead> 
 			<tbody>
 		  
+			<tfoot>
+            <tr>
+                <td colspan="11">
+                    <button id="downloadTable" class="download-btn">Download</button>
+                </td>
+            </tr>
+        </tfoot>
+
+		<script>
+    document.getElementById('downloadTable').addEventListener('click', function() {
+        // Get the table
+        var table = document.getElementById('dataTable');
+        // Create an empty array to store the CSV data
+        var rows = [];
+        // Loop through each row in the table
+        for (var i = 0; i < table.rows.length; i++) {
+            var row = [];
+            // Loop through each cell in the row
+            for (var j = 0; j < table.rows[i].cells.length; j++) {
+                // Push the cell's text content to the row array
+                row.push(table.rows[i].cells[j].innerText);
+            }
+            // Join the row array into a CSV formatted string and push it to the rows array
+            rows.push(row.join(','));
+        }
+        // Join the rows array into a CSV formatted string
+        var csv = rows.join('\n');
+        // Create a blob with the CSV data
+        var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        // Create a temporary link element
+        var link = document.createElement('a');
+        // Set the link's href attribute to a URL created with the blob
+        link.href = window.URL.createObjectURL(blob);
+        // Set the link's download attribute to the desired file name
+        link.download = 'table_data.csv';
+        // Append the link to the document
+        document.body.appendChild(link);
+        // Programmatically click the link to trigger the download
+        link.click();
+        // Remove the link from the document
+        document.body.removeChild(link);
+    });
+</script>
 			<?php
-			$result = mysqli_query($conn,"SELECT * FROM clients ORDER BY clientID ASC");
+			$result = mysqli_query($conn,"SELECT * FROM clients ORDER BY clientName ASC");
 			//$displayIndex = 1;
 				$i=1;
 				while($row = mysqli_fetch_array($result)) {
@@ -318,9 +416,11 @@ table .delete-btn:hover {
     				<a href="#editClientModal" class="edit" data-toggle="modal">
 						<i class="material-icons update" data-toggle="tooltip" 
 						data-id="<?php echo $row["clientID"]; ?>"
-						data-code="<?php echo $row["companyCode"]; ?>"
 						data-name="<?php echo $row["clientName"]; ?>" 
+						data-code="<?php echo $row["companyCode"]; ?>"
 						data-address="<?php echo $row["address"]; ?>"
+						data-Industry="<?php echo $row["Industry"]; ?>"
+						data-Country="<?php echo $row["Country"]; ?>"
 						data-contactsname="<?php echo $row["contactsName"]; ?>"
 						data-designation="<?php echo $row["contactsDesignation"]; ?>" 
 						data-email="<?php echo $row["email"]; ?>"
@@ -328,14 +428,22 @@ table .delete-btn:hover {
             			data-contact2="<?php echo $row["contact2"]; ?>"
 						title="Edit"></i>
 					</a>
-					<a href="#deleteEmployeeModal" class="delete" data-id="<?php echo $row["clientID"]; ?>" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" 
-						title="Delete"></i></a>
+					<!--<a href="#deleteEmployeeModal" class="delete" data-id="<?php echo $row["clientID"]; ?>" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" 
+						title="Delete"></i></a>-->
 				</td>
-        		<?php $Recordid = str_pad($row["clientID"], 5, '0', STR_PAD_LEFT); ?>
-				<td><?php echo "C";?><?php echo $Recordid; ?></td>
-				<td><?php echo $row["companyCode"]; ?></td>
+				<td style="display: none;"><?php echo "C" . str_pad($row["clientID"], 5, '0', STR_PAD_LEFT); ?></td>
+        		<?php 
+				
+				// Generate company code from the first five letters of company name
+   					 $companyName = $row["clientName"];
+					 $companyCode = strtoupper(substr($companyName, 0, 5));
+    					?>
+				
 				<td><?php echo $row["clientName"]; ?></td>
+				<td><?php echo $row["companyCode"]; ?></td>
 				<td><?php echo $row["address"]; ?></td> 
+				<td><?php echo $row["Industry"]; ?></td> 
+				<td><?php echo $row["Country"]; ?></td> 
 				<td><?php echo $row["contactsName"]; ?></td>
 				<td><?php echo $row["contactsDesignation"]; ?></td>
 				<td><?php echo $row["email"]; ?></td>
@@ -344,9 +452,11 @@ table .delete-btn:hover {
 				
 	<td>
     <a href="#addContactModal" class="btn btn-primary btn-sm" data-toggle="modal" data-clientid="<?php echo $row["clientID"]; ?>" data-clientname="<?php echo $row["clientName"]; ?>">Add Contact</a>
-    <a href="#viewContactsModal" class="btn btn-secondary btn-sm view-contacts" data-toggle="modal" data-clientid="<?php echo $row["clientID"]; ?>" data-clientname="<?php echo $row["clientName"]; ?>">View Contacts</a>
-	<!-- Add the new button for redirecting to modules page -->
-	<a href="index.php?sub=createBatches&clientname=<?php echo urlencode($row["clientName"]); ?>" class="btn btn-warning btn-sm">View Batches</a>
+   <br>
+   <br>
+	<a href="#viewContactsModal" class="btn btn-secondary btn-sm view-contacts" data-toggle="modal" data-clientid="<?php echo $row["clientID"]; ?>" data-clientname="<?php echo $row["clientName"]; ?>">View Contacts</a>
+	<!-- Add the new button for redirecting to modules page 
+	<a href="index.php?sub=createBatches&clientname=<?php echo urlencode($row["clientName"]); ?>" class="btn btn-warning btn-sm">View Batches</a>-->
 </td>
 </td>
 </td>	
@@ -444,20 +554,100 @@ table .delete-btn:hover {
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				</div>
 				<div class="modal-body">					
+				<div class="form-group">
+						<label>Company Name</label>
+						<input type="text" id="name" name="name" class="form-control" onchange="generateCompanyCode()" required>
+					</div>
+					
 					<div class="form-group">
 						<label>Company Code</label>
-						<input type="text" id="code" name="code" class="form-control" autocomplete="off" required oninput="this.value = this.value.toUpperCase()">
+						<input type="text" id="code" name="code" class="form-control" readonly>
 					</div>
-									
-					<div class="form-group">
-						<label>Company Name</label>
-						<input type="text" id="name" name="name" class="form-control" autocomplete="off" required>
-						
-					</div>
+					<script>
+                        // Function to generate company code from company name
+                        function generateCompanyCode() {
+                            // Get the value of the company name input field
+                            var companyName = document.getElementById("name").value;
+                            
+                            // Extract the first five letters of the company name and convert to uppercase
+                            var companyCode = companyName.substring(0, 5).toUpperCase();
+                            
+                            // Prepend "SB-" to the company code
+                            companyCode = "SBCL-" + companyCode;
+                            
+                            // Set the value of the company code input field
+                            document.getElementById("code").value = companyCode;
+                        }
+                    </script>
+
 					<div class="form-group">
 						<label>Address</label>
 						<input type="text" id="address" name="address" class="form-control" autocomplete="off" required>
 					</div>
+					<div class="form-group">
+						<label>Industry</label>
+						<select id="industry" name="industry" class="form-control" required>
+						<option value="Manufacturing">Manufacturing</option>
+						<option value="Finance">Finance</option>
+						<option value="Production">Production</option>
+						<option value="Technology">Technology</option>
+						<option value="Health care">Health care</option>
+						<option value="Construction">Construction</option>
+						<option value="Human Resources">Human Resources</option>
+						<option value="Foodservice">Food Service</option>
+						<option value="Software">Software</option>
+						<option value="Transport">Transport</option>
+						<option value="Education">Education</option>
+						<option value="Distribution">Distribution</option>
+						<option value="Rubber">Rubber</option>
+						<option value="IT Consulting">IT Consulting</option>
+						<option value="Textile">Textile</option>
+						<option value="Banking">Banking</option>
+						<option value="Apparel">Apparel</option>
+						<option value="Logistics">Logistics</option>
+						<option value="Energy Development">Energy Development</option>
+						<option value="Rvenue Cycle">Rvenue Cycle</option>
+						<option value="Architecture">Architecture</option>
+						<option value="Pharmeceutical">Pharmeceutical</option>
+						<option value="Other">Other</option>
+        
+		</select>
+	</div>
+					
+					<div class="form-group">
+    <label for="country">Country</label>
+    <select id="country" name="country" class="form-control" required>
+		<option value="Sri Lanka">Sri Lanka</option>
+		<option value="India">India</option>
+        <option value="USA">United States</option>
+        <option value="UK">United Kingdom</option>
+        <option value="Canada">Canada</option>
+        <option value="Australia">Australia</option>
+		<option value="Dubai">Dubai</option>
+		<option value="China">China</option>
+		<option value="Finland">Finlad</option>
+        <option value="France">France</option>
+        <option value="Japan">Japan</option>
+        <option value="Nepal">Nepal</option>
+        <option value="Amerika">Amerika</option>
+		<option value="Moldives">Moldives</option>
+		<option value="Ireland">Ireland</option>
+		<option value="Qatar">Qatar</option>
+		<option value="Brazil">Brazil</option>
+		<option value="Russia">Russia</option>
+		<option value="Denmark">Denmark</option>
+		<option value="Singapore">Singapore</option>
+		<option value="Sweden">Sweden</option>
+		<option value="Spain">Spain</option>
+		<option value="Mexico">Mexico</option>
+		<option value="Germany">Germany</option>
+		<option value="New Zealand">New Zealand</option>
+		<option value="Bangladesh">Bangladesh</option>
+		<option value="Italy">Italy</option>
+		<option value="Indonisia">Indonisia</option>
+        
+    </select>
+</div>
 					<div class="form-group">
 						<label>Contacts Name</label>
 						<input type="text" id="Contactsname" name="Contactsname" class="form-control" autocomplete="off" required>
@@ -567,5 +757,29 @@ table .delete-btn:hover {
 	</div>
 </div>
 
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+    // Place the downloadTable function here
+    document.getElementById('downloadTable').addEventListener('click', function() {
+        var table = document.querySelector('.table');
+        var rows = [];
+        for (var i = 0; i < table.rows.length; i++) {
+            var row = [];
+            for (var j = 1; j < table.rows[i].cells.length; j++) {
+                row.push(table.rows[i].cells[j].innerText);
+            }
+            rows.push(row.join(','));
+        }
+        var csv = rows.join('\n');
+        var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        var link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = 'table_data.csv';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
+});
 
+</script>
 

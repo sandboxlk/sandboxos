@@ -4,38 +4,21 @@ include '../../../../check.php';
 if(count($_POST)>0){
 	if($_POST['type']==1){
 		$calling_name_=$_POST['name'];
-		$nic_=$_POST['nic'];
-		$address_=$_POST['address'];
-		$mobile1_=$_POST['contact1'];
-		$mobile2_=$_POST['contact2']; 
-		$emergency_contact_=$_POST['contact3'];   
-		$designation_=$_POST['Designation'];
-		$current_employee_=$_POST['Employee']; 
-		$faculty_level_=$_POST['facultylevel']; 
-		$career_start_year_=$_POST['Careerssy'];   
-		$experience_=$_POST['Experience'];
-		$qualification_=$_POST['Qualification']; 
-		$expertise_area_1_=$_POST['ExpertiseArea1'];   
-		$expertise_area_2_=$_POST['Expertise'];
-		$expertise_area_3_=$_POST['Expert']; 
-		$expertise_area_4_=$_POST['faculty'];
-		
- 
-		// Validate if Client already exists
-		$sql_check_faculty = "SELECT COUNT(*) AS count FROM `faculty` WHERE `callingName` = '$calling_name_'";
-		$result_check_faculty = mysqli_query($conn, $sql_check_faculty);
-		$row_check_faculty = mysqli_fetch_assoc($result_check_faculty);
-		// Set the next AUTO_INCREMENT value for your table
-		$sql_reset_auto_increment = "ALTER TABLE `faculty` AUTO_INCREMENT = 1";
-		$conn->query($sql_reset_auto_increment);
-		if ($row_check_faculty['count'] > 0) {
-			echo json_encode(array("statusCode" => 400, "message" => "Faculty already exists."));
-			return;
-		}
-		if (strlen($calling_name_)>0){ 
+		$type1_=$_POST['Type1'];    
+		$daysPerMonth_=$_POST['daysPerMonth'];
+		$Monday_=$_POST['Monday'];
+		$Tuesday_=$_POST['Tuesday'];
+		$Wednesday_=$_POST['Wednesday'];
+		$Thursday_=$_POST['Thursday'];
+		$Friday_=$_POST['Friday'];
+		$Saturday_=$_POST['Saturday'];
+		$Sunday_=$_POST['Sunday'];
+		$Year_=$_POST['year'];
+		$total_=$_POST['total']; 
+		$capacity_=$_POST['Capacity'];
 	
-				$sql = "INSERT INTO `faculty`(`callingName`,`nic`,`address`,`mobileNo1`,`mobileNo2`,`emergencyContact`,`designation`,`currentEmployee`,`facultyLevel`,`careersStartY`,`yoe`,`formalQualification`,`expertiseArea1`,`expertiseArea2`,`expertiseArea3`,`expertiseArea4`) 
-				VALUES ('$calling_name_','$nic_','$address_','$mobile1_','$mobile2_','$emergency_contact_','$designation_','$current_employee_','$faculty_level_','$career_start_year_','$experience_','$qualification_','$expertise_area_1_','$expertise_area_2_','$expertise_area_3_','$expertise_area_4_')";
+				$sql = "INSERT INTO `faculty_capacity`(`callingName`,`type`,`daysPerMonth`,`monday`,`tuesday`,`wednesday`,`thursday`,`friday`,`saturday`,`sunday`,`year`,`TotalDaysPerYear`,`capacity`) 
+				VALUES ('$calling_name_','$type1_','$daysPerMonth_','$Monday_','$Tuesday_','$Wednesday_','$Thursday_','$Friday_','$Saturday_','$Sunday_','$Year_','$total_','$capacity_')";
 				
 				if (mysqli_query($conn, $sql)) {
 					echo json_encode(array("statusCode" => 200));
@@ -48,7 +31,7 @@ if(count($_POST)>0){
 				echo json_encode(array("statusCode" => 400, "message" => "Faculty Name is required."));
 			}
 		}
-	}
+	
 
 	if(count($_POST)>0){
 		if($_POST['type']==2){

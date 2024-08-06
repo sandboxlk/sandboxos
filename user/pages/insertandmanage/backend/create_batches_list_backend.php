@@ -4,25 +4,20 @@ include '../../../../check.php';
 
 if (count($_POST) > 0) {
     if ($_POST['type'] == 1) {
-        $CompanyName_ = $_POST['company'];
+        $Company_ = $_POST['company'];
+		$CompanyName_ = $_POST['company'];
         $course_ = $_POST['course'];
         $year_ = $_POST['year'];
         $batch_ = $_POST['batch'];
+		$modulefaculty_ = $_POST['modulefac'];
         $budget_ = $_POST['budget']; 
         $StartDate_ = $_POST['StartDate'];
         $EndDate_ = $_POST['EndDate'];
 
-        // Validate if Client already exists 
-        //$sql_check_create_batches = "SELECT COUNT(*) AS count FROM `create_batches` WHERE `client` = '$CompanyName_'";
-        //$result_check_create_batches = mysqli_query($conn, $sql_check_create_batches);
-        //$row_check_create_batches = mysqli_fetch_assoc($result_check_create_batches);
-        //if ($row_check_create_batches['count'] > 0) {
-           // echo json_encode(array("statusCode" => 400, "message" => "Student name already exists."));
-           // return;
-       // }
-        if (strlen($CompanyName_) > 0) {
-            $sql = "INSERT INTO `create_batches`(`client`, `batchName`, `budgetParticipant`, `year`,  `course` , `StartDate` , `EndDate`) 
-            VALUES ('$CompanyName_', '$batch_', '$budget_', '$year_', '$course_', '$StartDate_', '$EndDate_')";
+       
+        if (strlen($CompanyName_) > 0) 
+            $sql = "INSERT INTO `create_batches`(`client`,`clientName`, `batchName`, `budgetParticipant`,`moduleFaculty`, `year` , `course` , `StartDate` , `EndDate`) 
+            VALUES ('$Company_','$CompanyName_', '$batch_', '$budget_', '$modulefaculty_', '$year_', '$course_', '$StartDate_', '$EndDate_')";
 
             if (mysqli_query($conn, $sql)) {
                 echo json_encode(array("statusCode" => 200));
@@ -38,8 +33,24 @@ if (count($_POST) > 0) {
 			
         }
     }
-}
 
+	
+	
+	if (isset($_GET['batch_id'])) {
+		$batchId = mysqli_real_escape_string($conn, $_GET['batch_id']);
+		$query = "SELECT company, lead FROM leads WHERE batchName = '$batchId' LIMIT 1";
+		$result = mysqli_query($conn, $query);
+	
+		if ($result && mysqli_num_rows($result) > 0) {
+			$row = mysqli_fetch_assoc($result);
+			echo json_encode($row);
+		} else {
+			echo json_encode(['company' => 'Not Found', 'lead' => 'Not Found']);
+		}
+	}
+	
+
+	
 
 if(count($_POST)>0){
 	if($_POST['type']==2){

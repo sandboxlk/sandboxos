@@ -15,17 +15,29 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/customcss.css">
 <link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="pages/insertandmanage/course_list_ajax.js"></script>
-
 <style>
+	/* <uniquifier>: Use a unique and descriptive class name
+<weight>: Use a value from 100 to 900*/
+
+.inter-uniquifier> {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+}
 	body {
 		font-family: Arial, sans-serif;
 		background-color: #fffdfc;
 		position: relative;
 	}
-
 	.container {
 		width: 100%;
 		max-width: 8000px;
@@ -35,7 +47,6 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 		border-radius: 8px;
 	}
-
 	h1 {
 		text-align: center;
 		color: #333;
@@ -44,7 +55,6 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 	input[type="file"] {
 		margin-bottom: 20px;
 	}
-
 	button {
 		padding: 10px 20px;
 		background-color: #050505;
@@ -53,7 +63,6 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 		border-radius: 5px;
 		cursor: pointer;
 	}
-
 	/* Existing CSS code */
 
 	table {
@@ -157,11 +166,17 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 						<thead>
 							<tr>
 								<th></th>
-								<th>Course ID</th>
-								<th>Course Code</th>
+								<th style="display: none;">Course ID</th>
 								<th>Course Name</th>
-								<th>Course Type</th>
-								<th>Module No</th>
+								<th>Course Code</th>
+								<th>Course Category</th>
+								<th>No of Full Day Modules</th>
+								<th>Duration(h)</th>
+								<th>Duration(Days)</th>
+								<th>No of Half Day Modules</th>
+								<th>Duration(h)</th>
+								<th>Duration(Days)</th>
+								<th>No of 2h Modules</th>
 								<th>Duration(h)</th>
 								<th>Duration(Days)</th>
 
@@ -178,18 +193,36 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 								<tr class="border-bottom" id="<?php echo $row["courseID"]; ?>">
 									<td>
 										<a href="#editEmployeeModal" class="edit" data-toggle="modal">
-											<i class="material-icons update" data-courseID_u="<?php echo $row["courseID"]; ?>" data-coursecode_u="<?php echo $row["courseCode"]; ?>" data-coursename_u="<?php echo $row["CourseName"]; ?>" data-coursename_u="<?php echo $row["CourseName"]; ?>" data-moduleno_u="<?php echo $row["moduleNo"]; ?>" data-courseduration_u="<?php echo $row["duration(h)"]; ?>" data-durationdays_u="<?php echo $row["duration(days)"]; ?>" title="Edit"></i>
+											<i class="material-icons update" 
+											data-courseID_u="<?php echo $row["courseID"]; ?>" 
+											data-coursename_u="<?php echo $row["CourseName"]; ?>"
+											data-coursecode_u="<?php echo $row["courseCode"]; ?>"  
+											data-coursetype_u="<?php echo $row["fmoduleNo"]; ?>" 
+											data-moduleno_u="<?php echo $row["courseType"]; ?>" 
+											data-courseduration_u="<?php echo $row["fduration(h)"]; ?>" 
+											data-durationdays_u="<?php echo $row["fduration(days)"]; ?>" 
+											data-moduleno_u="<?php echo $row["hModuleNo"]; ?>" 
+											data-courseduration_u="<?php echo $row["hDuration(h)"]; ?>" 
+											data-durationdays_u="<?php echo $row["hDuration(days)"]; ?>"
+											data-moduleno_u="<?php echo $row["tModuleNo"]; ?>" 
+											data-courseduration_u="<?php echo $row["tDuration(h)"]; ?>" 
+											data-durationdays_u="<?php echo $row["tDuration(days)"]; ?>"title="Edit"></i>
 										</a>
 										<a href="#deleteEmployeeModal" class="delete" data-course_id_d="<?php echo $row["courseID"]; ?>" data-toggle="modal"><i class="material-icons" title="Delete"></i></a>
 									</td>
-									<?php $Recordid = str_pad($row["courseID"], 5, '0', STR_PAD_LEFT); ?>
-									<td><?php echo 'C' . $Recordid; ?></td>
+									<td style="display: none;"><?php $Recordid = str_pad($row["courseID"], 5, '0', STR_PAD_LEFT); ?>
+									<td><?php echo $row["CourseName"]; ?></td>
 									<td><?php echo $row["courseCode"]; ?></td>
-									<td><?php echo $row["CourseName"]; ?></td>
-									<td><?php echo $row["CourseName"]; ?></td>
-									<td><?php echo $row["moduleNo"]; ?></td>
-									<td><?php echo $row["duration(h)"]; ?></td>
-									<td><?php echo $row["duration(days)"]; ?></td>
+									<td><?php echo $row["fmoduleNo"]; ?></td>
+									<td><?php echo $row["courseType"]; ?></td>
+									<td><?php echo $row["fduration(h)"]; ?></td>
+									<td><?php echo $row["fduration(days)"]; ?></td>
+									<td><?php echo $row["hModuleNo"]; ?></td>
+									<td><?php echo $row["hDuration(h)"]; ?></td>
+									<td><?php echo $row["hDuration(days)"]; ?></td>
+									<td><?php echo $row["tModuleNo"]; ?></td>
+									<td><?php echo $row["tDuration(h)"]; ?></td>
+									<td><?php echo $row["tDuration(days)"]; ?></td>
 								</tr>
 							<?php
 								$i++;
@@ -215,65 +248,219 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-						<label>Course Code</label>
-						<input type="text" id="coursecode" name="coursecode" class="form-control" autocomplete="off" required>
-					</div>
-					<div class="form-group">
 						<label>Course Name</label>
 						<input type="text" id="coursename" name="coursename" class="form-control" autocomplete="off" required>
 					</div>
 					<div class="form-group">
-						<label for="coursetype">Course Type</label>
+						<label>Course Code</label>
+						<input type="text" id="coursecode" name="coursecode" class="form-control" autocomplete="off" required >
+					</div>
+					<div class="form-group">
+                                           <label>Year</label>
+                                           <select id="year" name="year" class="form-control" autocomplete="off" required>
+                                               <?php
+                                               for ($i = 2023; $i <= 2050; $i++) {
+                                                   echo "<option value=\"$i\">$i</option>";
+                                               }
+                                               ?>
+                                           </select>
+                                       </div>
+					
+					<div class="form-group">
+						<label for="coursetype">Course Category</label>
 						<select id="coursetype" name="coursetype" class="form-control" autocomplete="off" required>
 							<option value="PLDP">PLDP</option>
-							<option value="Capacity Building">Capacity Building</option>
-							<option value="EDP">EDP</option>
 							<option value="CSP">CSP</option>
-							<option value="OAR">OAR</option>
-							<option value="Team Experiences">Team Experiences</option>
+							<option value="Strategy">Strategy</option>
+							<option value="Assessments">Assessments</option>
+							<option value="Custom">Custom</option>
+							<option value="Cap Building">Cap Building</option>
 						</select>
 					</div>
+					<script>
+    function generateCourseCode() {
+        const courseName = document.getElementById('coursename').value;
+        const year = document.getElementById('year').value;
+        const courseType = document.getElementById('coursetype').value;
 
-					<div class="form-group">
-						<label>Module No</label>
-						<select id="moduleNo" name="moduleNo" class="form-control" autocomplete="off" onchange="calculateDurationDays()" required>
-							<?php
-							// Loop to generate options from 1 to 24
-							for ($i = 1; $i <= 24; $i++) {
-								echo "<option value=\"$i\">$i</option>";
-							}
-							?>
-						</select>
-					</div>
+        if (courseName && year && courseType) {
+            const shortCourseName = courseName.substring(0, 3).toUpperCase();
+            const shortYear = year.slice(-2);
+            const shortCourseType = courseType.substring(0, 3).toUpperCase();
+            const courseCode = `SBCC-FY${shortYear}-${shortCourseType}-501`;
+            document.getElementById('coursecode').value = courseCode;
+        }
+    }
 
-					<div class="form-group">
-						<label>Duration(h)</label>
-						<input type="text" id="duration" name="duration" class="form-control" autocomplete="off" oninput="calculateDurationDays()" required>
-					</div>
-
-					<div class="form-group">
-						<label>Duration(days)</label>
-						<input type="text" id="durdays" name="durdays" class="form-control" autocomplete="off" readonly>
-						<span id="calculatedDurationDays"></span>
-					</div>
-
-					<!-- Add this JavaScript code at the bottom of your HTML, before the closing </script> tag -->
+    document.getElementById('coursename').addEventListener('input', generateCourseCode);
+    document.getElementById('year').addEventListener('change', generateCourseCode);
+    document.getElementById('coursetype').addEventListener('change', generateCourseCode);
+</script>
 
 					<script>
-						function calculateDurationDays() {
-							// Get the values from the "Module No" and "Duration(h)" fields
-							var moduleNo = document.getElementById("moduleNo").value;
-							var durationHours = document.getElementById("duration").value;
+        document.getElementById('year').addEventListener('input', generateCourseCode);
+        document.getElementById('coursetype').addEventListener('change', generateCourseCode);
 
-							// Perform the calculation
-							var durationDays = (moduleNo * 8) + parseFloat(durationHours); // assuming durationHours is a decimal value
+        function generateCourseCode() {
+            const year = document.getElementById('year').value.trim();
+            const courseType = document.getElementById('coursetype').value;
 
-							// Update the "Duration(days)" field and the <span> element
-							document.getElementById("durdays").value = durationDays;
-							document.getElementById("calculatedDurationDays").innerText = "Calculated Duration in Days: " + durationDays;
-						}
-					</script>
+            if (year === "" || courseType === "") {
+                return;  // Do nothing if either field is empty
+            }
 
+            const shortYear = year.slice(2);  // Get the last two digits of the year
+            const shortCourseType = courseType.substring(0, 3).toUpperCase();
+
+            fetch(`getNextCourseNumber.php?year=${year}&courseType=${shortCourseType}`)
+                .then(response => response.json())
+                .then(data => {
+                    const nextNumber = data.nextNumber;
+                    const courseCode = `SBCC-FY${shortYear}-${shortCourseType}-${nextNumber}`;
+                    document.getElementById('coursecode').value = courseCode;
+                })
+                .catch(error => console.error('Error fetching next course number:', error));
+        }
+
+        function calculateDurationFullDay() {
+            const moduleNo = document.getElementById('moduleNo').value;
+            const duration = document.getElementById('duration').value;
+            if (moduleNo && duration) {
+                document.getElementById('durdays').value = (parseInt(moduleNo) * parseInt(duration)) / 24;
+            }
+        }
+
+        function calculateDurationHalfDay() {
+            const moduleNoH = document.getElementById('moduleNoH').value;
+            const durationh = document.getElementById('durationh').value;
+            if (moduleNoH && durationh) {
+                document.getElementById('durdaysh').value = (parseInt(moduleNoH) * parseInt(durationh)) / 12;
+            }
+        }
+
+        function calculateDuration2hour() {
+            const moduleNo2 = document.getElementById('moduleNo2').value;
+            const duration2 = document.getElementById('duration2').value;
+            if (moduleNo2 && duration2) {
+                document.getElementById('durdays2').value = (parseInt(moduleNo2) * parseInt(duration2)) / 2;
+            }
+        }
+    </script>
+					<div class="form-group">
+    <label>Full day Modules</label>
+    <select id="moduleNo" name="moduleNo" class="form-control" autocomplete="off" onchange="calculateDurationFullDay()" required>
+        <?php
+        // Loop to generate options from 1 to 24 for full day modules
+        for ($i = 0; $i <= 24; $i++) {
+            echo "<option value=\"$i\">$i</option>";
+        }
+        ?>
+    </select>
+</div>
+
+<div class="form-group">
+    <label>Duration (h)</label>
+    <input type="text" id="duration" name="duration" class="form-control" autocomplete="off" oninput="calculateDurationFullDay()" required>
+</div>
+
+<div class="form-group">
+    <label>Duration (days)</label>
+    <input type="text" id="durdays" name="durdays" class="form-control" autocomplete="off" readonly>
+</div>
+
+<div class="form-group">
+    <label>Half day Modules</label>
+    <select id="moduleNoH" name="moduleNoH" class="form-control" autocomplete="off" onchange="calculateDurationHalfDay()" required>
+        <?php
+        // Loop to generate options from 1 to 24 for half day modules
+        for ($i = 0; $i <= 24; $i++) {
+            echo "<option value=\"$i\">$i</option>";
+        }
+        ?>
+    </select>
+</div>
+
+<div class="form-group">
+    <label>Duration (h)</label>
+    <input type="text" id="durationh" name="durationh" class="form-control" autocomplete="off" oninput="calculateDurationHalfDay()" required>
+</div>
+
+<div class="form-group">
+    <label>Duration (days)</label>
+    <input type="text" id="durdaysh" name="durdaysh" class="form-control" autocomplete="off" readonly>
+</div>
+<!--2h module-->
+<div class="form-group">
+    <label> 2h Programmes </label>
+    <select id="moduleNo2" name="moduleNo2" class="form-control" autocomplete="off" onchange="calculateDuration2hour()" required>
+        <?php
+        // Loop to generate options from 1 to 24 for half day modules
+        for ($i = 0; $i <= 24; $i++) {
+            echo "<option value=\"$i\">$i</option>";
+        }
+        ?>
+    </select>
+</div>
+
+<div class="form-group">
+    <label>Duration (h)</label>
+    <input type="text" id="duration2" name="duration2" class="form-control" autocomplete="off" oninput="calculateDurationHalfDay()" required>
+</div>
+
+<div class="form-group">
+    <label>Duration (days)</label>
+    <input type="text" id="durdays2" name="durdays2" class="form-control" autocomplete="off" readonly>
+</div>
+
+<script>
+    
+//full days
+    function calculateDurationFullDay() {
+
+        // Retrieve the selected number of full day modules
+        var moduleNo = parseInt(document.getElementById('moduleNo').value);
+        
+        // Calculate duration in hours for full day modules
+        var durationHours = moduleNo * 8;
+        document.getElementById('duration').value = isNaN(durationHours) ? '' : durationHours;
+
+        // Retrieve the entered duration in hours for full day modules
+        var enteredHours = parseInt(document.getElementById('duration').value);
+
+        // Calculate duration in days for full day modules
+        var durationDays = isNaN(enteredHours) ? '' : enteredHours / 8;
+        document.getElementById('durdays').value = isNaN(durationDays) ? '' : durationDays;
+    }
+//half days
+    function calculateDurationHalfDay() {
+        // Retrieve the selected number of half day modules
+        var moduleNoH = parseInt(document.getElementById('moduleNoH').value);
+        
+        // Calculate duration in hours for half day modules (assuming 4 hours per module)
+        var durationHoursH = moduleNoH * 4;
+        document.getElementById('durationh').value = isNaN(durationHoursH) ? '' : durationHoursH;
+
+        // Retrieve the entered duration in hours for half day modules
+        var enteredHoursH = parseInt(document.getElementById('durationh').value);
+
+        // Calculate duration in days for half day modules
+        var durationDaysH = isNaN(enteredHoursH) ? '' : enteredHoursH / 4;
+        document.getElementById('durdaysh').value = isNaN(durationDaysH) ? '' : durationDaysH;
+    }
+//2h days 
+	function calculateDuration2hour() {
+		// Retrieve the selected number of half day modules
+        var moduleNo2 = parseInt(document.getElementById('moduleNo2').value);
+		 // Calculate duration in hours for half day modules (assuming 4 hours per module)
+        var durationHours2 = moduleNo2 * 2; // Each 2h programme is 2 hours
+        document.getElementById('duration2').value = isNaN(durationHours2) ? '' : durationHours2;
+		// Retrieve the entered duration in hours for half day modules
+        var enteredHours2 = parseInt(document.getElementById('duration2').value);
+		// Calculate duration in days for half day modules
+        var durationDays2 = isNaN(enteredHours2) ? '' : enteredHours2 / 2;
+        document.getElementById('durdays2').value = isNaN(durationDays2) ? '' : durationDays2;
+    }
+</script>
 
 
 					<div class="modal-footer">
@@ -350,7 +537,6 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 							<label>Duration(days)</label>
 							<input type="text" id="durationdays_u" name="durationdays_u" class="form-control" autocomplete="off" required>
 						</div>-->
-
 					</div>
 
 				</div>

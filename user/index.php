@@ -52,7 +52,7 @@ $result = mysqli_query($conn, "SELECT * FROM clients WHERE clientName LIKE '%$se
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Welcome to User Management System | Home</title>
+  <title>SANDBOXOS | Home</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
@@ -76,8 +76,7 @@ $result = mysqli_query($conn, "SELECT * FROM clients WHERE clientName LIKE '%$se
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-1" href="index.html"><img src="images/topl_Genaral/logo.png" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/topl_Genaral/toplmini.png" alt="logo"/></a>
+      <a class="navbar-brand brand-logo mr-1" href="index.html"><img src="images\sandboxlogo.png" class="mr-2" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -343,6 +342,18 @@ $result = mysqli_query($conn, "SELECT * FROM clients WHERE clientName LIKE '%$se
             $pagemngt->leads_list();
           }
 
+          if ($sub_get=="post sales") {
+            $pagemngt->Post_sales_list();
+          }
+
+          if ($sub_get=="pre sales") {
+            $pagemngt->pre_sales_list();
+          }
+
+          if ($sub_get=="lost leads") {
+            $pagemngt->lost_leads_list();
+          }
+
           if ($sub_get=="consultant review") {
             $pagemngt->consultant_review_list();
           }
@@ -358,17 +369,23 @@ $result = mysqli_query($conn, "SELECT * FROM clients WHERE clientName LIKE '%$se
           if ($sub_get=="Banking Information") {
             $pagemngt->Faculty_Banking_info_list();
           }
-          if ($sub_get=="Declarations") {
-            $pagemngt->decl_commit_list();
+          if ($sub_get=="Capacity") {
+            $pagemngt->faculty_capacity_list();
           }
           if ($sub_get=="studentRegistration") {
             $pagemngt->student_reg();
+          }
+          if ($sub_get=="deployment") {
+            $pagemngt->deployment_list();
           }
           if (($sub_get=="home") || (!isset($_GET['sub'])) && (!isset($_GET['ticket']))) {
             $pagemngt->dashboard();
           }
           if (($sub_get=="calender") || (!isset($_GET['sub'])) && (!isset($_GET['ticket']))) {
             $pagemngt->calender();
+          }
+          if (($sub_get=="my_calender") || (!isset($_GET['sub'])) && (!isset($_GET['ticket']))) {
+            $pagemngt->my_calender();
           }
           if ($sub_get=="one to one page") {
             $pagemngt->one_to_one_ass_list();
@@ -381,6 +398,9 @@ $result = mysqli_query($conn, "SELECT * FROM clients WHERE clientName LIKE '%$se
           }
           if ($sub_get=="createBatches") {
             $pagemngt->create_batches_list();
+          }
+          if ($sub_get=="deployment") {
+            $pagemngt->deployment_list();
           }
           if ($sub_get=="manualRegistration") {
             $pagemngt->manual_registration_list();

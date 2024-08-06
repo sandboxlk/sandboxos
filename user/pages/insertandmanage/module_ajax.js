@@ -165,6 +165,7 @@ $(document).ready(function () {
 				// Handle success [showing a success message, etc.]
 				console.log(data);
 				$('#addSessionPlansModal').modal('hide');
+				location.reload();
 			},
 			error: function (err) {
 				// Handle the error appropriately

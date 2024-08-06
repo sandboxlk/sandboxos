@@ -5,10 +5,16 @@ if(count($_POST)>0){
 	if($_POST['type']==1){
 		$coursecode_=$_POST['coursecode'];
 		$coursename_=$_POST['coursename'];
-		$modno_=$_POST['coursetype'];
-		$mod_=$_POST['moduleNo'];
-		$dur_=$_POST['duration'];
+		$coursetype_=$_POST['coursetype'];
+		$moduleNo_=$_POST['moduleNo'];
+		$duration_=$_POST['duration'];
 		$durdays_=$_POST['durdays'];
+		$halfmoduleNo_=$_POST['moduleNoH'];
+		$durationh_=$_POST['durationh'];
+		$durdaysh_=$_POST['durdaysh'];
+		$twohmodule_=$_POST['moduleNo2'];
+		$duration2_=$_POST['duration2'];
+		$durdays2_=$_POST['durdays2'];
  
 		$sql_check_projects = "SELECT COUNT(*) AS count FROM `courses` WHERE `courseCode` = '$coursecode_'";
 		$result_check_projects = mysqli_query($conn, $sql_check_projects);
@@ -19,8 +25,8 @@ if(count($_POST)>0){
 		}
 				if (strlen($coursecode_)>0){ 
 
-					$sql = "INSERT INTO `courses`(`courseCode`,`CourseName`,`moduleNo`,`moduleName`,`duration(h)`,`duration(days)`) 
-					VALUES ('$coursecode_','$coursename_','$modno_','$mod_','$dur_','$durdays_')";
+					$sql = "INSERT INTO `courses`(`courseCode`,`CourseName`,`fmoduleNo`,`courseType`,`fduration(h)`,`fduration(days)`,`hModuleNo`,`hDuration(h)`,`hDuration(days)`,`tModuleNo`,`tDuration(h)`,`tDuration(days)`) 
+					VALUES ('$coursecode_','$coursename_','$coursetype_','$moduleNo_','$duration_','$durdays_','$halfmoduleNo_','$durationh_','$durdaysh_','$twohmodule_','$duration2_','$durdays2_')";
 					if (mysqli_query($conn, $sql)) { 
 						echo json_encode(array("statusCode"=>200));
 					} 

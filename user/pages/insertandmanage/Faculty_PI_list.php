@@ -190,7 +190,7 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 						<thead>
 							<tr>
 								<th></th>
-								<th>Faculty ID</th>
+								<th style="display: none;">Faculty ID</th>
 								<th>Calling Name</th>
 								<th>NIC</th>
 								<th>Address</th>
@@ -207,16 +207,6 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 								<th>Your Expertise Area 2</th>
 								<th>Your Expertise Area 3</th>
 								<th>Your Expertise Area 4</th>
-								<th>Type 1</th>
-								<th>Weekends</th>
-								<th>Days per month</th>
-								<th>Total days per year</th>
-								<th>Type 2</th>
-								<th>Weekends</th>
-								<th>Days per month</th>
-								<th>Total days per year</th>
-								<th>Capacity</th>
-								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -250,22 +240,13 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 											 data-expertiseArea1="<?php echo $row["expertiseArea1"]; ?>" 
 											 data-expertiseArea2="<?php echo $row["expertiseArea2"]; ?>" 
 											 data-expertiseArea3="<?php echo $row["expertiseArea3"]; ?>" 
-											 data-expertiseArea4="<?php echo $row["expertiseArea4"]; ?>" 
-											 data-type1="<?php echo $row["type"]; ?>" d
-											 ata-weekends="<?php echo $row["weekends"]; ?>" 
-											 data-dayspermonth="<?php echo $row["daysPerMonth"]; ?>" 
-											 data-total_avalability="<?php echo $row["totalAvailability"]; ?>" 
-											 data-type2="<?php echo $row["type2"]; ?>" 
-											 data-weekends2="<?php echo $row["weekends2"]; ?>" 
-											 data-daysPerMonth2="<?php echo $row["daysPerMonth2"]; ?>" 
-											 data-TotalDaysPerYear="<?php echo $row["TotalDaysPerYear"]; ?>" 
-											 data-capacity="<?php echo $row["capacity"]; ?>" title="Edit"></i>
+											 data-expertiseArea4="<?php echo $row["expertiseArea4"]; ?>" title="Edit"></i>
 										</a>
 										<a href="#deleteEmployeeModal" class="delete" data-id="<?php echo $row["facultyid"]; ?>" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete"></i></a>
 									</td>
 
-									<?php $Recordid = str_pad($row["facultyid"], 5, '0', STR_PAD_LEFT); ?>
-									<td><?php echo "C"; ?><?php echo $Recordid; ?></td>
+									<td style="display: none;"><?php $Recordid = str_pad($row["facultyid"], 5, '0', STR_PAD_LEFT); ?>
+									
 									<td><?php echo $row["callingName"]; ?></td>
 									<td><?php echo $row["nic"]; ?></td>
 									<td><?php echo $row["address"]; ?></td>
@@ -282,15 +263,7 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 									<td><?php echo $row["expertiseArea2"]; ?></td>
 									<td><?php echo $row["expertiseArea3"]; ?></td>
 									<td><?php echo $row["expertiseArea4"]; ?></td>
-									<td><?php echo $row["type"]; ?></td>
-									<td><?php echo $row["weekends"]; ?></td>
-									<td><?php echo $row["daysPerMonth"]; ?></td>
-									<td><?php echo $row["totalAvailability"]; ?></td>
-									<td><?php echo $row["type2"]; ?></td>
-									<td><?php echo $row["weekends2"]; ?></td>
-									<td><?php echo $row["daysPerMonth2"]; ?></td>
-									<td><?php echo $row["TotalDaysPerYear"]; ?></td>
-									<td><?php echo $row["capacity"]; ?></td>
+									
 									<td>
 									</td>
 									</td>
@@ -371,33 +344,33 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 									<div class="form-group">
 										<label>Your Expertise Area 1</label>
 										<select id="ExpertiseArea1" name="ExpertiseArea1" class="form-control" required>
-											<option value="accounting">Accounting</option>
+											<option value="Accounting">Accounting</option>
 											<option value="Business Coaching">Business Coaching</option>
-											<option value="bu">Business English</option>
-											<option value="Vi">Business strategy</option>
-											<option value="Ju">Corporate Communication</option>
-											<option value="Ser">Creative Thinking</option>
-											<option value="Vis">Customer Service</option>
-											<option value="Jun">Design Thinking</option>
-											<option value="Senio">Entrepreneurial Thinking</option>
-											<option value="Visiti">Finance</option>
-											<option value="J">Inspirational Speaking</option>
-											<option value="Senior Lecturer">Leadership Development</option>
-											<option value="Visiting Lecturer">Life Coaching</option>
-											<option value="Junior Lecturer">Management Consulting</option>
-											<option value="Senior Lecturer">Management Finance</option>
-											<option value="Visiting Lecturer">Marketing & Sales</option>
-											<option value="Junior Lecturer">Motivational Leadership</option>
-											<option value="Senior Lecturer">Negotiation</option>
-											<option value="Visiting Lecturer">Organisational Design</option>
-											<option value="Junior Lecturer">Organizational Psychology</option>
-											<option value="Senior Lecturer">Presence & Confidence</option>
-											<option value="Visiting Lecturer">Professional Coaching</option>
-											<option value="Junior Lecturer">Project Management</option>
-											<option value="Senior Lecturer">Supply Chain</option>
-											<option value="Visiting Lecturer">Technical Skills</option>
-											<option value="Junior Lecturer">Women Empowerment</option>
-											<option value="Senior Lecturer">Voice Training</option>
+											<option value="Business English">Business English</option>
+											<option value="Business strategy">Business strategy</option>
+											<option value="Corporate Communication">Corporate Communication</option>
+											<option value="Creative Thinking">Creative Thinking</option>
+											<option value="Customer Service">Customer Service</option>
+											<option value="Design Thinking">Design Thinking</option>
+											<option value="Entrepreneurial Thinking">Entrepreneurial Thinking</option>
+											<option value="Finance">Finance</option>
+											<option value="Inspirational Speaking">Inspirational Speaking</option>
+											<option value="Leadership Development">Leadership Development</option>
+											<option value="Life Coaching">Life Coaching</option>
+											<option value="Management Consulting">Management Consulting</option>
+											<option value="Management Finance">Management Finance</option>
+											<option value="Marketing & Sales">Marketing & Sales</option>
+											<option value="Motivational Leadership">Motivational Leadership</option>
+											<option value="Negotiation">Negotiation</option>
+											<option value="Organisational Design">Organisational Design</option>
+											<option value="Organizational Psychology">Organizational Psychology</option>
+											<option value="Presence & Confidence">Presence & Confidence</option>
+											<option value="Professional Coaching">Professional Coaching</option>
+											<option value="Project Management">Project Management</option>
+											<option value="Supply Chain">Supply Chain</option>
+											<option value="Technical Skills">Technical Skills</option>
+											<option value="Women Empowerment">Women Empowerment</option>
+											<option value="Voice Training">Voice Training</option>
 											<option value="Visiting Lecturer">Other</option>
 										</select>
 									</div>
@@ -405,104 +378,104 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 									<div class="form-group">
 										<label>Your Expertise Area 2</label>
 										<select id="Expertise" name="Expertise" class="form-control" required>
-											<option value="Visiting Lecturer">Accounting</option>
-											<option value="Junior Lecturer">Business Coaching</option>
-											<option value="Senior Lecturer">Business English</option>
-											<option value="Visiting Lecturer">Business strategy</option>
-											<option value="Junior Lecturer">Corporate Communication</option>
-											<option value="Senior Lecturer">Creative Thinking</option>
-											<option value="Visiting Lecturer">Customer Service</option>
-											<option value="Junior Lecturer">Design Thinking</option>
-											<option value="Senior Lecturer">Entrepreneurial Thinking</option>
-											<option value="Visiting Lecturer">Finance</option>
-											<option value="Junior Lecturer">Inspirational Speaking</option>
-											<option value="Senior Lecturer">Leadership Development</option>
-											<option value="Visiting Lecturer">Life Coaching</option>
-											<option value="Junior Lecturer">Management Consulting</option>
-											<option value="Senior Lecturer">Management Finance</option>
-											<option value="Visiting Lecturer">Marketing & Sales</option>
-											<option value="Junior Lecturer">Motivational Leadership</option>
-											<option value="Senior Lecturer">Negotiation</option>
-											<option value="Visiting Lecturer">Organisational Design</option>
-											<option value="Junior Lecturer">Organizational Psychology</option>
-											<option value="Senior Lecturer">Presence & Confidence</option>
-											<option value="Visiting Lecturer">Professional Coaching</option>
-											<option value="Junior Lecturer">Project Management</option>
-											<option value="Senior Lecturer">Supply Chain</option>
-											<option value="Visiting Lecturer">Technical Skills</option>
-											<option value="Junior Lecturer">Women Empowerment</option>
-											<option value="Senior Lecturer">Voice Training</option>
-											<option value="Visiting Lecturer">Other</option>
+											<option value="Accounting">Accounting</option>
+											<option value="Business Coaching">Business Coaching</option>
+											<option value="Business English">Business English</option>
+											<option value="Business strategy">Business strategy</option>
+											<option value="Corporate Communication">Corporate Communication</option>
+											<option value="Creative Thinking">Creative Thinking</option>
+											<option value="Customer Service">Customer Service</option>
+											<option value="Design Thinking">Design Thinking</option>
+											<option value="Entrepreneurial Thinking">Entrepreneurial Thinking</option>
+											<option value="Finance">Finance</option>
+											<option value="Inspirational Speaking">Inspirational Speaking</option>
+											<option value="Leadership Development">Leadership Development</option>
+											<option value="Life Coaching">Life Coaching</option>
+											<option value="Management Consulting">Management Consulting</option>
+											<option value="Management Finance">Management Finance</option>
+											<option value="Marketing & Sales">Marketing & Sales</option>
+											<option value="Motivational Leadership">Motivational Leadership</option>
+											<option value="Negotiation">Negotiation</option>
+											<option value="Organisational Design">Organisational Design</option>
+											<option value="Organizational Psychology">Organizational Psychology</option>
+											<option value="Presence & Confidence">Presence & Confidence</option>
+											<option value="Professional Coaching">Professional Coaching</option>
+											<option value="Project Management">Project Management</option>
+											<option value="Supply Chain">Supply Chain</option>
+											<option value="Technical Skills">Technical Skills</option>
+											<option value="Women Empowerment">Women Empowerment</option>
+											<option value="Voice Training">Voice Training</option>
+											<option value="Other">Other</option>
 										</select>
 									</div>
 
 									<div class="form-group">
 										<label>Your Expertise Area 3</label>
 										<select id="Expert" name="Expert" class="form-control" required>
-											<option value="Visiting Lecturer">Accounting</option>
-											<option value="Junior Lecturer">Business Coaching</option>
-											<option value="Senior Lecturer">Business English</option>
-											<option value="Visiting Lecturer">Business strategy</option>
-											<option value="Junior Lecturer">Corporate Communication</option>
-											<option value="Senior Lecturer">Creative Thinking</option>
-											<option value="Visiting Lecturer">Customer Service</option>
-											<option value="Junior Lecturer">Design Thinking</option>
-											<option value="Senior Lecturer">Entrepreneurial Thinking</option>
-											<option value="Visiting Lecturer">Finance</option>
-											<option value="Junior Lecturer">Inspirational Speaking</option>
-											<option value="Senior Lecturer">Leadership Development</option>
-											<option value="Visiting Lecturer">Life Coaching</option>
-											<option value="Junior Lecturer">Management Consulting</option>
-											<option value="Senior Lecturer">Management Finance</option>
-											<option value="Visiting Lecturer">Marketing & Sales</option>
-											<option value="Junior Lecturer">Motivational Leadership</option>
-											<option value="Senior Lecturer">Negotiation</option>
-											<option value="Visiting Lecturer">Organisational Design</option>
-											<option value="Junior Lecturer">Organizational Psychology</option>
-											<option value="Senior Lecturer">Presence & Confidence</option>
-											<option value="Visiting Lecturer">Professional Coaching</option>
-											<option value="Junior Lecturer">Project Management</option>
-											<option value="Senior Lecturer">Supply Chain</option>
-											<option value="Visiting Lecturer">Technical Skills</option>
-											<option value="Junior Lecturer">Women Empowerment</option>
-											<option value="Senior Lecturer">Voice Training</option>
-											<option value="Visiting Lecturer">Other</option>
+											<option value="Accounting">Accounting</option>
+											<option value="Business Coaching">Business Coaching</option>
+											<option value="Business English">Business English</option>
+											<option value="Business strategy">Business strategy</option>
+											<option value="Corporate Communication">Corporate Communication</option>
+											<option value="Creative Thinking">Creative Thinking</option>
+											<option value="Customer Service">Customer Service</option>
+											<option value="Design Thinking">Design Thinking</option>
+											<option value="Entrepreneurial Thinking">Entrepreneurial Thinking</option>
+											<option value="Finance">Finance</option>
+											<option value="Inspirational Speaking">Inspirational Speaking</option>
+											<option value="Leadership Development">Leadership Development</option>
+											<option value="Life Coaching">Life Coaching</option>
+											<option value="Management Consulting">Management Consulting</option>
+											<option value="Management Finance">Management Finance</option>
+											<option value="Marketing & Sales">Marketing & Sales</option>
+											<option value="Motivational Leadership">Motivational Leadership</option>
+											<option value="Negotiation">Negotiation</option>
+											<option value="Organisational Design">Organisational Design</option>
+											<option value="Organizational Psychology">Organizational Psychology</option>
+											<option value="Presence & Confidence">Presence & Confidence</option>
+											<option value="Professional Coaching">Professional Coaching</option>
+											<option value="Project Management">Project Management</option>
+											<option value="Supply Chain">Supply Chain</option>
+											<option value="Technical Skills">Technical Skills</option>
+											<option value="Women Empowerment">Women Empowerment</option>
+											<option value="Voice Training">Voice Training</option>
+											<option value="Other">Other</option>
 										</select>
 									</div>
 									<div class="form-group">
 										<label>Your Expertise Area 4</label>
 										<select id="faculty" name="faculty" class="form-control" required>
-											<option value="Visiting Lecturer">Accounting</option>
-											<option value="Junior Lecturer">Business Coaching</option>
-											<option value="Senior Lecturer">Business English</option>
-											<option value="Visiting Lecturer">Business strategy</option>
-											<option value="Junior Lecturer">Corporate Communication</option>
-											<option value="Senior Lecturer">Creative Thinking</option>
-											<option value="Visiting Lecturer">Customer Service</option>
-											<option value="Junior Lecturer">Design Thinking</option>
-											<option value="Senior Lecturer">Entrepreneurial Thinking</option>
-											<option value="Visiting Lecturer">Finance</option>
-											<option value="Junior Lecturer">Inspirational Speaking</option>
-											<option value="Senior Lecturer">Leadership Development</option>
-											<option value="Visiting Lecturer">Life Coaching</option>
-											<option value="Junior Lecturer">Management Consulting</option>
-											<option value="Senior Lecturer">Management Finance</option>
-											<option value="Visiting Lecturer">Marketing & Sales</option>
-											<option value="Junior Lecturer">Motivational Leadership</option>
-											<option value="Senior Lecturer">Negotiation</option>
-											<option value="Visiting Lecturer">Organisational Design</option>
-											<option value="Junior Lecturer">Organizational Psychology</option>
-											<option value="Senior Lecturer">Presence & Confidence</option>
-											<option value="Visiting Lecturer">Professional Coaching</option>
-											<option value="Junior Lecturer">Project Management</option>
-											<option value="Senior Lecturer">Supply Chain</option>
-											<option value="Visiting Lecturer">Technical Skills</option>
-											<option value="Junior Lecturer">Women Empowerment</option>
-											<option value="Senior Lecturer">Voice Training</option>
-											<option value="Visiting Lecturer">Other</option>
+											<option value="Accounting">Accounting</option>
+											<option value="Business Coaching">Business Coaching</option>
+											<option value="Business English">Business English</option>
+											<option value="Business strategy">Business strategy</option>
+											<option value="Corporate Communication">Corporate Communication</option>
+											<option value="Creative Thinking">Creative Thinking</option>
+											<option value="Customer Service">Customer Service</option>
+											<option value="Design Thinking">Design Thinking</option>
+											<option value="Entrepreneurial Thinking">Entrepreneurial Thinking</option>
+											<option value="Finance">Finance</option>
+											<option value="Inspirational Speaking">Inspirational Speaking</option>
+											<option value="Leadership Development">Leadership Development</option>
+											<option value="Life Coaching">Life Coaching</option>
+											<option value="Management Consulting">Management Consulting</option>
+											<option value="Management Finance">Management Finance</option>
+											<option value="Marketing & Sales">Marketing & Sales</option>
+											<option value="Motivational Leadership">Motivational Leadership</option>
+											<option value="Negotiation">Negotiation</option>
+											<option value="Organisational Design">Organisational Design</option>
+											<option value="Organizational Psychology">Organizational Psychology</option>
+											<option value="Presence & Confidence">Presence & Confidence</option>
+											<option value="Professional Coaching">Professional Coaching</option>
+											<option value="Project Management">Project Management</option>
+											<option value="Supply Chain">Supply Chain</option>
+											<option value="Technical Skills">Technical Skills</option>
+											<option value="Women Empowerment">Women Empowerment</option>
+											<option value="Voice Training">Voice Training</option>
+											<option value="Other">Other</option>
 										</select>
 									</div>
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label>Type 1</label>
 										<select id="type1" name="Type1" class="form-control" required>
 											<option value="Consulting">Consulting</option>
@@ -521,7 +494,7 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 									<div class="form-group">
 										<label>Days per month</label>
 										<select id="daysPerMonth" name="daysPerMonth" class="form-control" required onchange="calculateTotal('total', 'daysPerMonth', 'Capacity')">
-											<!-- Loop to generate options from 1 to 30 -->
+											<!-- Loop to generate options from 1 to 30 
 											<?php for ($i = 1; $i <= 30; $i++) : ?>
 												<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
 											<?php endfor; ?>
@@ -554,7 +527,7 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 									<div class="form-group">
 										<label>Days per month</label>
 										<select id="daysPerMonth2" name="daysPerMonth2" class="form-control" required onchange="calculateTotal('total2', 'daysPerMonth2', 'Capacity')">
-											<!-- Loop to generate options from 1 to 30 -->
+											Loop to generate options from 1 to 30 
 											<?php for ($i = 1; $i <= 30; $i++) : ?>
 												<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
 											<?php endfor; ?>
@@ -586,7 +559,7 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 											// Set the calculated sum as the value of the capacity input field
 											document.getElementById(capacityId).value = totalDaysSum;
 										}
-									</script>
+									</script>-->
 
 									<div class="modal-footer">
 										<input type="hidden" value="1" name="type">

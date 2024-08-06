@@ -21,33 +21,32 @@
 //	}); 
 //}); 
 
-$(document).on('click', '#btn-add', function (e) {
-	e.preventDefault();
+
+
+$(document).on('click', '#addEmployeeModal #btn-add', function() {
+
 	var data = $("#user_form").serialize();
 	$.ajax({
 		data: data,
 		type: "POST",
 		url: "pages/insertandmanage/backend/create_batches_list_backend.php",
-		success: function (dataResult) {
+		success: function(dataResult) {
+
+			alert(dataResult);
 			var dataResult = JSON.parse(dataResult);
 			if (dataResult.statusCode == 200) {
 				$('#addEmployeeModal').modal('hide');
-				alert('Batch created successfully!');
-				console.log(dataResult.message); // Log success message to console
+				alert('Company added!');
 				location.reload();
 			}
 			if (dataResult.statusCode == 400) {
 				alert(dataResult.message);
-				console.error(dataResult.message); // Log error message to console
+				//alert('Please Select No Series.');
 			}
 		},
-		error: function (xhr, status, error) {
-			console.error("AJAX Error:", status, error);
-		},
+
 	});
 });
-
-// ... Your other JavaScript code for updating...
 
 $(document).ready(function () {
 	var input = document.createElement('input');

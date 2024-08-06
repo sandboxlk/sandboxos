@@ -7,8 +7,6 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 	echo json_encode(['success' => true]);
 }
 
-
-
 ?>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -211,14 +209,12 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 							<thead>
 								<tr>
 									<th></th>
-									<th>Module ID</th>
+									<th style="display: none;">Module ID</th>
 									<th>Module Name</th>
 									<th>Module Type</th>
 									<th>Duration</th>
 									<th>Description</th>
 									<th>Primary Faculty</th>
-									<th>Secondary Faculty</th>
-									<th>Tertiary Faculty</th>
 									<th>Assessments</th>
 									<th></th>
 
@@ -235,20 +231,25 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 									<tr class="border-bottom" id="<?php echo $row["ModuleID"]; ?>">
 										<td>
 											<a href="#editEmployeeModal" class="edit" data-toggle="modal">
-												<i class="material-icons update" data-ModuleID_u="<?php echo $row["ModuleID"]; ?>" data-ModuleName_u="<?php echo $row["ModuleName"]; ?>" data-moduletype_u="<?php echo $row["moduleType"]; ?>" data-duration_u="<?php echo $row["duration"]; ?>" data-description_u="<?php echo $row["description"]; ?>" data-primaryFaculty_u="<?php echo $row["primaryFaculty"]; ?>" data-secondaryFaculty_u="<?php echo $row["secondaryFaculty"]; ?>" data-tertiaryFaculty_u="<?php echo $row["tertiaryFaculty"]; ?>" data-assessmentcb_u="<?php echo $row["Assessment"]; ?>" title="Edit"></i>
+												<i class="material-icons update" data-ModuleID_u="<?php echo $row["ModuleID"]; ?>" 
+												data-ModuleName_u="<?php echo $row["ModuleName"]; ?>" 
+												data-moduletype_u="<?php echo $row["moduleType"]; ?>" 
+												data-duration_u="<?php echo $row["duration"]; ?>" 
+												data-description_u="<?php echo $row["description"]; ?>" 
+												data-primaryFaculty_u="<?php echo $row["primaryFaculty"]; ?>"  
+												data-assessmentcb_u="<?php echo $row["Assessment"]; ?>" title="Edit"></i>
 											</a>
 											<a href="#deleteEmployeeModal" class="delete" data-module_id_d="<?php echo $row["ModuleID"]; ?>" data-toggle="modal"><i class="material-icons" title="Delete"></i></a>
 
 										</td>
-										<?php $Recordid = str_pad($row["ModuleID"], 5, '0', STR_PAD_LEFT); ?>
-										<td><?php echo 'C' . $Recordid; ?></td>
+										<td style="display: none;"> <?php $Recordid = str_pad($row["ModuleID"], 5, '0', STR_PAD_LEFT); ?>
+										
 										<td><?php echo $row["ModuleName"]; ?></td>
 										<td><?php echo $row["moduleType"]; ?></td>
 										<td><?php echo $row["duration"]; ?></td>
 										<td><?php echo $row["description"]; ?></td>
 										<td><?php echo $row["primaryFaculty"]; ?></td>
-										<td><?php echo $row["secondaryFaculty"]; ?></td>
-										<td><?php echo $row["tertiaryFaculty"]; ?></td>
+										
 										<!-- Inside your form -->
 										
 
@@ -308,38 +309,6 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 					</div>
 
 
-
-					<!-- Add Session Plans Modal HTML 
-<div id="addSessionPlansModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="session_plans_form" enctype="multipart/form-data">
-                <div class="modal-header">						
-                    <h4 class="modal-title">Add Session Plans</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" id="course_id_s" name="course_id_s" class="form-control" required>
-                    <div class="form-group">
-                        <label>Upload Session Plans (Max: 150MB)</label>
-                        <input type="file" name="session_plans[]" accept=".pdf, .xlsx, .xls" multiple required>
-                    </div>
-                    <!-- Here you can display the uploaded files, and have options to download or delete them 
-                    <div class="uploaded-files">
-                        <!-- Files will be displayed here with JavaScript after uploading 
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <button type="submit" class="btn btn-success">Upload</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<div-->
-
-
 					<!-- Add Session Plans Modal HTML -->
 
 
@@ -395,15 +364,22 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 											<select id="Module_Type" name="Module_Type" class="form-control" autocomplete="off" required>
 												<option value="Trainning">Training</option>
 												<option value="Consulting">Consulting</option>
+												<option value="1:1">1:1</option>
+												<option value="CheckPoints">CheckPoints</option>
+												<option value="Assessments">Assessments</option>
+												<option value="Meetings">Meetings</option>
+
 
 											</select>
 										</div>
 										<div class="form-group">
 											<label for="duration">Duration</label>
 											<select id="duration" name="duration" class="form-control" autocomplete="off" required>
-												<option value="2h">2 hours</option>
+											<option value="1h">1 hours</option>
+											<option value="2h">2 hours</option>
 												<option value="4h">4 hours</option>
 												<option value="8h">8 hours</option>
+												<option value="1 week">1 week</option>
 											</select>
 										</div>
 										<div class="form-group">
@@ -412,40 +388,40 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 										</div>
 
 										<div class="form-group">
+										<label>Primary Faculty</label>
+										<select class="form-control" id="primary" name="faculty">
+											<?php
+											$sql = "SELECT callingName , callingName FROM faculty";
+											$result = mysqli_query($conn, $sql);
+
+											if (mysqli_num_rows($result) > 0) {
+												while ($row = mysqli_fetch_assoc($result)) {
+													echo "<option value=" . $row["callingName"] . ">" . $row["callingName"] . "</option>";
+												}
+											} else {
+												echo '<option value="0">No Clients</option>';
+											}
+											?>
+										</select>
+									</div>
+
+										<!--<div class="form-group">
 											<label for="facultyType">Primary Faculty</label>
 											<select id="primary" name="faculty" class="form-control" autocomplete="off" required>
 												<option value="Angelo de Silva">Angelo de Silva</option>
-												<option value="tilak">Tilak Rahulan</option>
+												<option value="Tilak Rahulan">Tilak Rahulan</option>
 												<option value="Chandana Pathirage">Chandana Pathirage</option>
 												<option value="Angelo de Silva">Rukshan De Silva</option>
-												<option value="Mendaka">Mendaka Hettithantri</option>
+												<option value="Mendaka Hettithantri">Mendaka Hettithantri</option>
 												<option value="Chandana Pathirage">Thilani Ariyaratne</option>
+												<option value="Additional Guest Resource">Additional Guest Resource	</option>
+												<option value="Shazil Ismail">Shazil Ismail</option>
+												<option value="Sarah Nasry">Sarah Nasry</option>
+												<option value="Ravi De Coonghe">Ravi De Coonghe</option>
+												<option value="Ranjo Gunasekera">Ranjo Gunasekera</option>
+												<option value="support Team">support Team</option>
 											</select>
-										</div>
-
-										<div class="form-group">
-											<label for="facultyType">Secondary Faculty</label>
-											<select id="secondary" name="Sfaculty" class="form-control" autocomplete="off" required>
-												<option value="Angelo de Silva">Angelo de Silva</option>
-												<option value="tilak">Tilak Rahulan</option>
-												<option value="Chandana Pathirage">Chandana Pathirage</option>
-												<option value="Angelo de Silva">Rukshan De Silva</option>
-												<option value="Mendaka">Mendaka Hettithantri</option>
-												<option value="Chandana Pathirage">Thilani Ariyaratne</option>
-											</select>
-										</div>
-
-										<div class="form-group">
-											<label for="facultyType">Tertiary Faculty</label>
-											<select id="Tertiary" name="Tfaculty" class="form-control" autocomplete="off" required>
-												<option value="Angelo de Silva">Angelo de Silva</option>
-												<option value="tilak">Tilak Rahulan</option>
-												<option value="Chandana Pathirage">Chandana Pathirage</option>
-												<option value="Angelo de Silva">Rukshan De Silva</option>
-												<option value="Mendaka">Mendaka Hettithantri</option>
-												<option value="Chandana Pathirage">Thilani Ariyaratne</option>
-											</select>
-										</div>
+										</div>-->
 
 										<div class="form-group">
 											<label for="assessmentSelect">Assessment</label>
@@ -489,9 +465,11 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 											<div class="form-group">
 												<label for="moduleduration_u">Duration</label>
 												<select id="moduleduration_u" name="moduleduration" class="form-control" autocomplete="off" required>
-													<option value="2h">2 hours</option>
+												<option value="1h">1 hours</option>
+												<option value="2h">2 hours</option>
 													<option value="4h">4 hours</option>
 													<option value="8h">8 hours</option>
+													<option value="1 week">1 week</option>
 												</select>
 											</div>
 
@@ -503,14 +481,7 @@ if (($AccountLevel == 2) || ($AccountLevel == 3)) {
 												<label>Primary Faculty</label>
 												<input type="text" id="primaryFaculty_u" name="primaryFaculty" class="form-control" autocomplete="off" required>
 											</div>
-											<div class="form-group">
-												<label>Secondary Faculty</label>
-												<input type="text" id="secondaryFaculty_u" name="secondaryFaculty" class="form-control" autocomplete="off" required>
-											</div>
-											<div class="form-group">
-												<label>Tertiary Faculty </label>
-												<input type="text" id="tertiaryFaculty_u" name="tertiaryFaculty" class="form-control" autocomplete="off" required>
-											</div>
+											
 											<div class="form-group">
 												<label for="assessmentSelect">Assessment</label>
 												<select id="assessmentSelect" name="assessmentSelect">

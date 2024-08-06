@@ -45,7 +45,7 @@ if (($AccountLevel == 2) || ($AccountLevel== 3)){
 			<thead>
 				<tr>
 					<th></th>
-					<th>Registration ID</th>
+					<th style="display: none;">Registration ID</th>
 					<th>Student Name</th>
 					<th>Email</th>
           			<th>Company</th>
@@ -78,8 +78,8 @@ if (($AccountLevel == 2) || ($AccountLevel== 3)){
 					<a href="#deleteEmployeeModal" class="delete" data-id="<?php echo $row["reg_id"]; ?>" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" 
 						title="Delete"></i></a>
 				</td>
-        		<?php $Recordid = str_pad($row["reg_id"], 5, '0', STR_PAD_LEFT); ?>
-				<td><?php echo "Reg";?><?php echo $Recordid; ?></td>
+        		<td style="display: none;"><?php $Recordid = str_pad($row["reg_id"], 5, '0', STR_PAD_LEFT); ?>
+				
 				<td><?php echo $row["StudentName"]; ?></td>
 				<td><?php echo $row["Email"]; ?></td>
 				<td><?php echo $row["clientID"]; ?></td>

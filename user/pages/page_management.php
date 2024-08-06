@@ -10,6 +10,11 @@ class PageManagement{
 		$subpage = include 'dashboard/calender.php';
 		return $subpage;
 	}
+
+	function my_calender() {
+		$subpage = include 'dashboard/my_calender.php';
+		return $subpage;
+	}
 	function number_series() {
 		$subpage = include 'pages/insertandmanage/number_series_list.php';
 		return $subpage;
@@ -31,6 +36,21 @@ class PageManagement{
 		return $subpage;
 	}
 
+	function pre_sales_list() {
+		$subpage = include 'pages/insertandmanage/pre_sales_list.php';
+		return $subpage;
+	}
+
+	function Post_sales_list() {
+		$subpage = include 'pages/insertandmanage/Post_sales_list.php';
+		return $subpage;
+	}
+
+	function lost_leads_list() {
+		$subpage = include 'pages/insertandmanage/lost_leads_list.php';
+		return $subpage;
+	}
+
 	function Faculty_PI_list() {
 		$subpage = include 'pages/insertandmanage/Faculty_PI_list.php';
 		return $subpage;
@@ -41,8 +61,8 @@ class PageManagement{
 		return $subpage;
 	}
 
-	function decl_commit_list() {
-		$subpage = include 'pages/insertandmanage/decl_commit_list.php';
+	function faculty_capacity_list() {
+		$subpage = include 'pages/insertandmanage/faculty_capacity_list.php';
 		return $subpage;
 	}
 
@@ -106,6 +126,12 @@ class PageManagement{
 		$subpage = include 'pages/insertandmanage/student_reg_list.php';
 		return $subpage;
 	}
+
+	function deployment_list() { 
+		$subpage = include 'pages/insertandmanage/deployment_list.php';
+		return $subpage;
+	}
+
 	function create_batches_list() {
 		$subpage = include 'pages/insertandmanage/create_batches_list.php';
 		return $subpage;

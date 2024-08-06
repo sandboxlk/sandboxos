@@ -12,7 +12,7 @@ if ((isset($_SESSION['username']) != ''))
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>User Management System</title>
+  <title>SANDBOX OS</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="user/vendors/feather/feather.css">
   <link rel="stylesheet" href="user/vendors/ti-icons/css/themify-icons.css">
@@ -32,11 +32,11 @@ if ((isset($_SESSION['username']) != ''))
           <div class="col-lg-5 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-2">
               <div class="text-center">
-                <img src="user/images/LOG.png" alt="LOG" width="20%">
+              <img src="user/images/LOG.png" alt="LOG" width="20%">
               </div>
               <br>
               <br>
-              <h4 class="text-center">User Management System</h4>
+              <h4 class="text-center"></h4>
               <br>
               <form class="pt-3" method="post" action="">
                 <div class="form-group">

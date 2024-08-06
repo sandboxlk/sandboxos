@@ -10,26 +10,24 @@ if(count($_POST)>0){
 		//$ModuleType_=$_POST['Module_Type'];
 		$duration_=$_POST['duration'];
 		$primaryFaculty_=$_POST['faculty'];
-		$secondaryFaculty_=$_POST['Sfaculty']; 
-		$tertiaryFaculty_=$_POST['Tfaculty'];
 		$description_=$_POST['description'];
 		//$description_=$_POST['assessmentcb'];
 		$Assessment_ = isset($_POST['assessmentSelect']) && $_POST['assessmentSelect'] == 'on' ? 'Yes' : 'No';  // Check if checkbox is checked
 	
 		// Validate if Client already exists
-		$sql_check_module_list = "SELECT COUNT(*) AS count FROM `module` WHERE `ModuleName` = '$ModuleName_'";
-		$result_check_module_list = mysqli_query($conn, $sql_check_module_list);
-		$row_check_module_list = mysqli_fetch_assoc($result_check_module_list);
-		if ($row_check_module_list['count'] > 0) {
-			echo json_encode(array("statusCode" => 400, "message" => "Module already exists."));
-			return;
-		}
-		if (strlen($ModuleName_)>0){ 
+		//$sql_check_module_list = "SELECT COUNT(*) AS count FROM `module` WHERE `ModuleName` = '$ModuleName_'";
+		//$result_check_module_list = mysqli_query($conn, $sql_check_module_list);
+		//$row_check_module_list = mysqli_fetch_assoc($result_check_module_list);
+		//if ($row_check_module_list['count'] > 0) {
+			//echo json_encode(array("statusCode" => 400, "message" => "Module already exists."));
+			//return;
+		//}
+		//if (strlen($ModuleName_)>0){ 
 	
-				$sql = "INSERT INTO `module`( `ModuleName`, `moduleType`, `duration`,`primaryFaculty`,`secondaryFaculty`,`tertiaryFaculty`,`description`,`Assessment`) 
-				VALUES ('$ModuleName_','$ModuleType_','$duration_','$primaryFaculty_','$secondaryFaculty_','$tertiaryFaculty_','$description_','$Assessment_')";
+				$sql = "INSERT INTO `module`( `ModuleName`, `moduleType`, `duration`,`primaryFaculty`,`description`,`Assessment`) 
+				VALUES ('$ModuleName_','$ModuleType_','$duration_','$primaryFaculty_','$description_','$Assessment_')";
 				if (mysqli_query($conn, $sql)) {
-					echo json_encode(array("statusCode"=>200, "message" => "Module already exists."));
+					echo json_encode(array("statusCode"=>200, "message" => "Module name is required"));
 				} 
 				else {
 					echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -41,7 +39,7 @@ if(count($_POST)>0){
 			return;
 		}
 	} 
-}
+
 
 if(count($_POST)>0){
 	if($_POST['type']==2){
@@ -112,23 +110,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $targetFilePath = $uploadDirectory . basename($fileName);
                 if (move_uploaded_file($_FILES["session_plans"]["tmp_name"][$index], $targetFilePath)) {
                     $uploadedFiles[] = $targetFilePath;
+                    
+                    // Insert file path into the database
+                    $sql = "INSERT INTO `module_files` (`ModuleID`, `FilePath`) VALUES (?, ?)";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("is", $moduleID, $targetFilePath);
+                    if ($stmt->execute()) {
+                        echo "File path inserted successfully";
+						echo '<script>window.location.href = window.location.href;</script>';
+                    } else {
+                        echo "Error inserting file path: " . $stmt->error;
+                    }
+                    $stmt->close();
                 } else {
                     echo "Error uploading file: " . $_FILES["session_plans"]["error"][$index];
                 }
             }
-
-            // Update the file field in the database for the specified ModuleID
-            $sql = "UPDATE `module` SET `file` = ? WHERE `ModuleID` = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("si", $targetFilePath, $moduleID);
-
-            if ($stmt->execute()) {
-                echo "File field updated successfully";
-            } else {
-                echo "Error updating file field: " . $stmt->error;
-            }
-
-            $stmt->close();
         } else {
             echo "No files selected for upload";
         }
@@ -138,83 +135,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-
-
-
-
-
-// $response = array();
-// $type = $_POST['type'];
-
-// switch($type) {
-//     case 1: // Insert a new module
-// 		$ModuleName = $_POST['ModuleName'];
-// 		$duration = $_POST['duration'];
-// 		$description = $_POST['description'];
-// 		$lecturer = $_POST['lecturer'];
-	
-// 		$stmt = $conn->prepare("INSERT INTO module (ModuleName, duration, description, lecturer) VALUES (?, ?, ?, ?)");
-// 		$stmt->bind_param("ssss", $ModuleName, $duration, $description, $lecturer); // "ssss" means 4 strings. Adjust as necessary.
-	
-// 		if($stmt->execute()) {
-// 			$response['statusCode'] = 200;
-// 			$response['message'] = "Module added successfully!";
-// 		} else {
-// 			$response['statusCode'] = 400;
-// 			$response['message'] = "Error: " . $stmt->error;
-// 		}
-// 		$stmt->close();
-// 		break;
-	
-
-//     case 2: // Update a module
-       
-//         $coursename = $_POST['ModuleName'];
-//         $duration = $_POST['duration'];
-//         $description = $_POST['description'];
-//         $lecturer = $_POST['lecturer'];
-        
-//         $update = "UPDATE module SET ModuleName='$ModuleName', duration='$duration', description='$description', lecturer='$lecturer' WHERE ModuleID='$moduleId'";
-        
-//         if(mysqli_query($conn, $update)) {
-//             $response['statusCode'] = 200;
-//             $response['message'] = "Module updated successfully!";
-//         } else {
-//             $response['statusCode'] = 400;
-//             $response['message'] = "Error: " . mysqli_error($conn);
-//         }
-//         break;
-
-//     case 3: // Delete a module
-//         $moduleId = $_POST['id'];
-        
-//         $delete = "DELETE FROM module WHERE ModuleID='$moduleId'";
-        
-//         if(mysqli_query($conn, $delete)) {
-//             $response['statusCode'] = 200;
-//             $response['message'] = "Module deleted successfully!";
-//         } else {
-//             $response['statusCode'] = 400;
-//             $response['message'] = "Error: " . mysqli_error($conn);
-//         }
-//         break;
-
-//     case 4: // Delete multiple modules
-//         $ids = $_POST['id'];
-//         $delete = "DELETE FROM module WHERE ModuleID IN ($ids)";
-        
-//         if(mysqli_query($conn, $delete)) {
-//             $response['statusCode'] = 200;
-//             $response['message'] = "Modules deleted successfully!";
-//         } else {
-//             $response['statusCode'] = 400;
-//             $response['message'] = "Error: " . mysqli_error($conn);
-//         }
-//         break;
-
-//     // You can add more cases if needed
-// }
-
-// // Sending JSON encoded data as a response
-// echo json_encode($response);
 ?>
