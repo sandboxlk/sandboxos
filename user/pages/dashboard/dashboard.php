@@ -112,19 +112,20 @@
  End of the CSS -->
 
          <?php
-          include '../connection.php';
-          if(session_status() !== PHP_SESSION_ACTIVE) session_start();
-          $user_check=$_SESSION['username'];
-          $sql_get_user_full = "SELECT UserID,FirstName,LastName,AccountLevel FROM sys_users WHERE Username='$user_check'";
-          $resultuser_full = mysqli_query($conn, $sql_get_user_full);
-          if (mysqli_num_rows($resultuser_full) > 0) {
-              while($rowuser_full = mysqli_fetch_assoc($resultuser_full)) {
-                  $currentuser =$rowuser_full["UserID"];
-                  $UserFullName =$rowuser_full["FirstName"] ." ". $rowuser_full["LastName"];
-                  $AccountLevel =$rowuser_full["AccountLevel"];
-              }
-          }
-          ?>
+         include '../connection.php';
+         if (session_status() !== PHP_SESSION_ACTIVE)
+             session_start();
+         $user_check = $_SESSION['username'];
+         $sql_get_user_full = "SELECT UserID,FirstName,LastName,AccountLevel FROM sys_users WHERE Username='$user_check'";
+         $resultuser_full = mysqli_query($conn, $sql_get_user_full);
+         if (mysqli_num_rows($resultuser_full) > 0) {
+             while ($rowuser_full = mysqli_fetch_assoc($resultuser_full)) {
+                 $currentuser = $rowuser_full["UserID"];
+                 $UserFullName = $rowuser_full["FirstName"] . " " . $rowuser_full["LastName"];
+                 $AccountLevel = $rowuser_full["AccountLevel"];
+             }
+         }
+         ?>
 <style>
         #user-report iframe {
             width: 100%; /* Set iframe width to 100% of its container */
@@ -138,6 +139,7 @@
         <!--<iframe title="user" src="https://app.powerbi.com/reportEmbed?reportId=c5acaa45-9dc8-49aa-acb2-9bd5478d91e5&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4" frameborder="0" allowFullScreen="true"></iframe>
             <iframe title="SANDBOXOS new" src="https://app.powerbi.com/reportEmbed?reportId=ac3b9a39-9c55-4551-8faa-4950c51312e3&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4" frameborder="0" allowFullScreen="true"></iframe>
                 <iframe title="localums" src="https://app.powerbi.com/view?r=eyJrIjoiOGQxMzkwOGItZDhjNS00ZTJmLWE2NzktNzEyMDA3ZWMxZTg3IiwidCI6IjA2Yzg0MGMwLWFiNTctNGRlMC1iOTNlLTVhNjVhN2MzYzhjNCJ9" frameborder="0" allowFullScreen="true"></iframe>-->
+                    <iframe title="newestos" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=2f1a85e3-c40d-4300-9fc9-1f4c44d4159e&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4" frameborder="0" allowFullScreen="true"></iframe>
                     <a href="https://app.powerbi.com/reportEmbed?reportId=a798f594-9420-468f-8022-0a2ab858c8cb&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4">Link Text</a>
                     
                    <br>
