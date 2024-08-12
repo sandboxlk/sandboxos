@@ -139,12 +139,10 @@
         <!--<iframe title="user" src="https://app.powerbi.com/reportEmbed?reportId=c5acaa45-9dc8-49aa-acb2-9bd5478d91e5&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4" frameborder="0" allowFullScreen="true"></iframe>
             <iframe title="SANDBOXOS new" src="https://app.powerbi.com/reportEmbed?reportId=ac3b9a39-9c55-4551-8faa-4950c51312e3&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4" frameborder="0" allowFullScreen="true"></iframe>
                 <iframe title="localums" src="https://app.powerbi.com/view?r=eyJrIjoiOGQxMzkwOGItZDhjNS00ZTJmLWE2NzktNzEyMDA3ZWMxZTg3IiwidCI6IjA2Yzg0MGMwLWFiNTctNGRlMC1iOTNlLTVhNjVhN2MzYzhjNCJ9" frameborder="0" allowFullScreen="true"></iframe>-->
-                    <iframe title="newestos" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZTYzOWRlZDMtNmY5NS00MGEwLWI2NTctOTNmZjE5ZjY5MTlmIiwidCI6IjA2Yzg0MGMwLWFiNTctNGRlMC1iOTNlLTVhNjVhN2MzYzhjNCIsImMiOjEwfQ%3D%3D&pageName=dd9d87fd1260ea232fc3" frameborder="0" allowFullScreen="true"></iframe>                    <a href="https://app.powerbi.com/reportEmbed?reportId=a798f594-9420-468f-8022-0a2ab858c8cb&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4">Link Text</a>
-                    
-                   <br>
-                    <a href=https://app.powerbi.com/reportEmbed?reportId=8bc5382e-c81a-4939-8b54-74aef3f86354&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4>Link Text</a>
+                    <iframe title="newestos" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZTYzOWRlZDMtNmY5NS00MGEwLWI2NTctOTNmZjE5ZjY5MTlmIiwidCI6IjA2Yzg0MGMwLWFiNTctNGRlMC1iOTNlLTVhNjVhN2MzYzhjNCIsImMiOjEwfQ%3D%3D&pageName=dd9d87fd1260ea232fc3" frameborder="0" allowFullScreen="true"></iframe>
 
   <!--                  
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
