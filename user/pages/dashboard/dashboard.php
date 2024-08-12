@@ -139,7 +139,7 @@
         <!--<iframe title="user" src="https://app.powerbi.com/reportEmbed?reportId=c5acaa45-9dc8-49aa-acb2-9bd5478d91e5&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4" frameborder="0" allowFullScreen="true"></iframe>
             <iframe title="SANDBOXOS new" src="https://app.powerbi.com/reportEmbed?reportId=ac3b9a39-9c55-4551-8faa-4950c51312e3&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4" frameborder="0" allowFullScreen="true"></iframe>
                 <iframe title="localums" src="https://app.powerbi.com/view?r=eyJrIjoiOGQxMzkwOGItZDhjNS00ZTJmLWE2NzktNzEyMDA3ZWMxZTg3IiwidCI6IjA2Yzg0MGMwLWFiNTctNGRlMC1iOTNlLTVhNjVhN2MzYzhjNCJ9" frameborder="0" allowFullScreen="true"></iframe>-->
-                    <iframe title="OS Update" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZGViMTY0NWMtMjJiYS00NGY2LWE0ZmQtMGI5NzBhNmI0NmFmIiwidCI6IjA2Yzg0MGMwLWFiNTctNGRlMC1iOTNlLTVhNjVhN2MzYzhjNCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                    <iframe title="OS Update" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=9d802674-a932-4497-aec9-0a31dda1d273&autoAuth=true&ctid=06c840c0-ab57-4de0-b93e-5a65a7c3c8c4" frameborder="0" allowFullScreen="true"></iframe>
 
   <!--                  
 
