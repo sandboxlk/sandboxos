@@ -16,7 +16,7 @@ if (count($_POST) > 0) {
         $estimatesv_ = $_POST['estimatesv'];
         $followup_ = $_POST['followup'];
 
-
+        
 
         // Determine sales stage
         if (!empty($lost_)) {
@@ -49,8 +49,10 @@ if (count($_POST) > 0) {
     if (isset($_POST['type']) && $_POST['type'] == 2) {
         $lid_ = $_POST['id'];
         $Lead_ = $_POST['lead'];
-        $SalesStage_ = 'Pre Sales'; // Default sales stage
+        $SalesStage_ = 'salesStage'; // Default sales stage
         $Status_ = $_POST['Status'];
+        $categoryType_ = $_POST['leadtype'];
+        $leadtype_ = $_POST['ltype'];
         $requirement_ = $_POST['requirement'];
         $sales_ = $_POST['sales'];
         $lost_ = $_POST['lost'];
@@ -70,7 +72,7 @@ if (count($_POST) > 0) {
         } elseif (isset($_POST['email']) && $_POST['email'] == 'Completed') {
             $Status_ = 'Active Lead';
         }
-
+        
         // Determine sales stage
         if (!empty($lost_)) {
             $SalesStage_ = 'Lost Lead';
@@ -86,12 +88,12 @@ if (count($_POST) > 0) {
             $Status_ = 'Active Lead';
         }
 
-
+        
         // Determine Confidence Level
         $confidencelevel_ = 'confindeceLevelRating'; // Default confidence level
+        
 
-
-        $sql = "UPDATE `leads` SET `lead`='$Lead_', `salesStage`='$SalesStage_', `status`='$Status_', `requirement`='$requirement_', 
+        $sql = "UPDATE `leads` SET `lead`='$Lead_', `salesStage`='$SalesStage_', `status`='$Status_', `requirement`='$requirement_',`leadType`=' $categoryType_', `categoryType`='$leadtype_',
                 `estimateSalesValue`='$sales_', `lostLeadDate`='$lost_', `followUp`='$action_', `confindeceLevelRating`='$confidencelevel_' 
                 WHERE `clientID`=$lid_";
 
@@ -135,11 +137,11 @@ if (count($_POST) > 0) {
             'newBusinessMeeting' => 'newBusinessMeeting',
             'followUp' => 'followUp',
             'lostLeadDate' => 'lostLeadDate',
-            'programC' => 'programC',
-            'strategicPriority' => 'strategicPriority',
-            'confidenceLevelRating' => 'confindeceLevelRating',
-            'name' => 'name'// Ensure all fields are present
-
+            'programC' => 'programC', 
+            'strategicPriority' => 'strategicPriority', 
+        'confidenceLevelRating' => 'confindeceLevelRating',
+        'name' => 'name'// Ensure all fields are present
+            
         ];
 
         // Check if the field is allowed to be updated
@@ -162,6 +164,74 @@ if (count($_POST) > 0) {
         }
 
         $conn->close();
+    }
+} else {
+    echo json_encode(array("statusCode" => 400, "error" => "No data provided"));
+}
+
+//get to refresh button 
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // Handle fetching all leads data
+    $sql = "SELECT * FROM leads";
+    $result = mysqli_query($conn, $sql);
+
+    $data = [];
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = [
+                'clientID' => $row['clientID'],
+                'name' => $row['name'],
+                'strategicPriority' => $row['strategicPriority'],
+                'confindeceLevelRating' => $row['confindeceLevelRating'],
+                'preliminaryBrochures' => $row['preliminaryBrochures'],
+                'emailClient' => $row['emailClient'],
+                'sheduleCM' => $row['sheduleCM'],
+                'chemMeeting' => $row['chemMeeting'],
+                'proposal' => $row['proposal'],
+                'estimate' => $row['estimate'],
+                'confirmation' => $row['confirmation'],
+                'cof' => $row['cof'],
+                'po' => $row['po'],
+                'invoice' => $row['invoice'],
+                'invoiceDT' => $row['invoiceDT'],
+                'payment' => $row['payment'],
+                'program' => $row['program'],
+                'SurveyData' => $row['SurveyData'],
+                'courseFacillitation' => $row['courseFacillitation'],
+                'projectsAssessments' => $row['projectsAssessments'],
+                'projects' => $row['projects'],
+                'dataCertification' => $row['dataCertification'],
+                'graduation' => $row['graduation'],
+                'programCompleted' => $row['programCompleted'],
+                'postSalesFollowUp' => $row['postSalesFollowUp'],
+                'protofolioEmail' => $row['protofolioEmail'],
+                'newBusinessMeeting' => $row['newBusinessMeeting']
+            ];
+        }
+    } else {
+        echo json_encode(array("statusCode" => 400, "error" => "Error fetching data: " . mysqli_error($conn)));
+        exit;
+    }
+
+    echo json_encode($data);
+    mysqli_close($conn);
+    exit;
+}
+
+if (count($_POST) > 0) {
+    // Handle the insert type (type == 1)
+    if (isset($_POST['type']) && $_POST['type'] == 1) {
+        // Your existing insert code...
+    }
+
+    // Handle the update type (type == 2)
+    if (isset($_POST['type']) && $_POST['type'] == 2) {
+        // Your existing update code...
+    }
+
+    // Handle the dynamic update for fields
+    if (isset($_POST['id']) && isset($_POST['field']) && isset($_POST['value'])) {
+        // Your existing dynamic update code...
     }
 } else {
     echo json_encode(array("statusCode" => 400, "error" => "No data provided"));

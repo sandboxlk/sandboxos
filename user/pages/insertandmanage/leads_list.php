@@ -734,7 +734,7 @@ table .download-btn {
 }
 
 table .download-btn:hover {
-    background-color: #000000;
+    background-color: #000000;
 }
 
 .tick-action-point i.material-icons {
@@ -751,12 +751,49 @@ table .download-btn:hover {
     padding: 0; /* Remove padding if any */
 }
 
+.d-flex {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.ml-2 {
+    margin-left: 8px; /* Space between buttons */
+}
+
+.mb-3 {
+    margin-bottom: 1rem; /* Adjust as needed */
+}
+
+.card-title {
+    margin-bottom: 0; /* Remove margin below the title */
+}
+
+.card-body {
+    height: 100px; /* Ensure enough height to align items vertically */
+}
+
+
+
+
 </style>
 
-<div class="col-12 grid-margin">
+<div class="col-12">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title mb-4 mt-4 mb-xl-4"> Active Leads</h4>
+            <div class="d-flex justify-content-between align-items-center mb-3" style="height: 100px;">
+                <h4 class="card-title mb-0">Active Leads</h4>
+                <div>
+                    <button id="refreshButton" class="btn btn-primary btn-sm ml-2">Refresh</button>
+                    <a href="#addEmployeeModal" class="btn btn-info btn-sm ml-2" data-toggle="modal"><span>Add New</span></a>
+                </div>
+            </div>
             <div class="row mb-3">
                 <div class="col-md-12">
                     <!-- <form method="get" action="../user/pages/insertandmanage/leads_list_search.php">
@@ -778,9 +815,78 @@ table .download-btn:hover {
                             <!-- <input type="text" class="form-control" id="exampleInputName1" placeholder="Search Client No or Name" name="name"> -->
                         </div>
                         <div class="col-md-6">
-                            <div class="justify-content-between">
-                                <!-- <a href="JavaScript:void(0);" class="btn btn-danger btn-sm float-right" id="delete_multiple"><span>Delete</span></a>			 -->
-                                <a href="#addEmployeeModal" class="btn btn-info btn-sm float-right" data-toggle="modal"><span>Add New</span></a>
+    <div class="d-flex justify-content-end">
+       <!-- <button id="refreshButton" class="btn btn-primary btn-sm ml-2">Refresh</button>
+        <a href="#addEmployeeModal" class="btn btn-info btn-sm ml-2" data-toggle="modal"><span>Add New</span></a>-->
+    </div>
+</div>
+
+
+<script>
+document.getElementById('refreshButton').addEventListener('click', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'pages/insertandmanage/backend/leads_list_backend.php', true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log(xhr.responseText);  // Log the response to see what's coming from the server
+            try {
+                var responseData = JSON.parse(xhr.responseText);
+                if (Array.isArray(responseData)) {
+                    updateTable(responseData);
+                    alert('Refreshed successfully');
+                } else {
+                    console.error('Error: Expected an array but got:', responseData);
+                }
+            } catch (e) {
+                console.error('Error parsing JSON:', e, xhr.responseText);
+            }
+        } else {
+            console.error('Error fetching data.');
+        }
+    };
+    xhr.onerror = function() {
+        console.error('Network error');
+    };
+    xhr.send();
+});
+
+
+
+function updateTable(data) {
+    data.forEach(function(rowData) {
+        var row = document.querySelector(`tr[data-id="${rowData.clientID}"]`);
+        if (row) {
+            row.querySelector('[data-field="name"]').textContent = rowData.name;
+            row.querySelector('[data-field="strategicPriority"]').textContent = rowData.strategicPriority;
+            row.querySelector('[data-field="confindeceLevelRating"]').textContent = rowData.confindeceLevelRating;
+            row.querySelector('[data-field="preliminaryBrochures"]').textContent = rowData.preliminaryBrochures;
+            row.querySelector('[data-field="emailClient"]').textContent = rowData.emailClient;
+            row.querySelector('[data-field="sheduleCM"]').textContent = rowData.sheduleCM;
+            row.querySelector('[data-field="chemMeeting"]').textContent = rowData.chemMeeting;
+            row.querySelector('[data-field="proposal"]').textContent = rowData.proposal;
+            row.querySelector('[data-field="estimate"]').textContent = rowData.estimate;
+            row.querySelector('[data-field="confirmation"]').textContent = rowData.confirmation;
+            row.querySelector('[data-field="cof"]').textContent = rowData.cof;
+            row.querySelector('[data-field="po"]').textContent = rowData.po;
+            row.querySelector('[data-field="invoice"]').textContent = rowData.invoice;
+            row.querySelector('[data-field="invoiceDT"]').textContent = rowData.invoiceDT;
+            row.querySelector('[data-field="payment"]').textContent = rowData.payment;
+            row.querySelector('[data-field="program"]').textContent = rowData.program;
+            row.querySelector('[data-field="SurveyData"]').textContent = rowData.SurveyData;
+            row.querySelector('[data-field="courseFacillitation"]').textContent = rowData.courseFacillitation;
+            row.querySelector('[data-field="projectsAssessments"]').textContent = rowData.projectsAssessments;
+            row.querySelector('[data-field="projects"]').textContent = rowData.projects;
+            row.querySelector('[data-field="dataCertification"]').textContent = rowData.dataCertification;
+            row.querySelector('[data-field="graduation"]').textContent = rowData.graduation;
+            row.querySelector('[data-field="programCompleted"]').textContent = rowData.programCompleted;
+            row.querySelector('[data-field="postSalesFollowUp"]').textContent = rowData.postSalesFollowUp;
+            row.querySelector('[data-field="protofolioEmail"]').textContent = rowData.protofolioEmail;
+            row.querySelector('[data-field="newBusinessMeeting"]').textContent = rowData.newBusinessMeeting;
+        }
+    });
+}
+</script>
+
                             </div>
                         </div>
                     </div>
@@ -2557,41 +2663,29 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <textarea id="action_u" name="action" class="form-control" autocomplete="off" required></textarea>
                                 </div>
 
-                                <!--<div class="form-group">
-    <label for="ltype">Lead Type</label>
-    <select id="ltype_u" name="ltype" class="form-control" autocomplete="off" required>
-        <option value="Consulting" <?php if ($selectedLType == 'Consulting')
-            echo 'selected'; ?>>Consulting</option>
-        <option value="Training" <?php if ($selectedLType == 'Training')
-            echo 'selected'; ?>>Training</option>
-        <option value="People Analytics" <?php if ($selectedLType == 'People Analytics')
-            echo 'selected'; ?>>People Analytics</option>
-    </select>
-</div>
+                                <div class="form-group">
+                                        <label for="ltype">Lead Type</label>
+                                        <select id="ltype" name="ltype" class="form-control" autocomplete="off" required>
+                                            <option value="Consulting">Consulting</option>
+                                            <option value="Training">Training</option>
+                                            <option value="People analytics">People Analytics</option>
+                                        </select>
+                                    </div>
 
-<div class="form-group">
-    <label for="Category">Category Type</label>
-    <select id="Categorytype_u" name="Categorytype" class="form-control" autocomplete="off" required>
-        <option value="PLDP" <?php if ($selectedCategoryType == 'PLDP')
-            echo 'selected'; ?>>PLDP</option>
-        <option value="Capacity Building" <?php if ($selectedCategoryType == 'Capacity Building')
-            echo 'selected'; ?>>Capacity Building</option>
-        <option value="EDP" <?php if ($selectedCategoryType == 'EDP')
-            echo 'selected'; ?>>EDP</option>
-        <option value="CSP" <?php if ($selectedCategoryType == 'CSP')
-            echo 'selected'; ?>>CSP</option>
-        <option value="OAR" <?php if ($selectedCategoryType == 'OAR')
-            echo 'selected'; ?>>OAR</option>
-        <option value="Team Experiences" <?php if ($selectedCategoryType == 'Team Experiences')
-            echo 'selected'; ?>>Team Experiences</option>
-        <option value="Strategy" <?php if ($selectedCategoryType == 'Strategy')
-            echo 'selected'; ?>>Strategy</option>
-        <option value="HR" <?php if ($selectedCategoryType == 'HR')
-            echo 'selected'; ?>>HR</option>
-        <option value="Other" <?php if ($selectedCategoryType == 'Other')
-            echo 'selected'; ?>>Other</option>
-    </select>
-</div>-->
+                                    <div class="form-group">
+                                        <label for="leadtype">Category Type</label>
+                                        <select id="leadtype" name="leadtype" class="form-control" autocomplete="off" required>
+                                            <option value="PLDP">PLDP</option>
+                                            <option value="Capacity Building">Capacity Building</option>
+                                            <option value="EDP">EDP</option>
+                                            <option value="CSP">CSP</option>
+                                            <option value="OAR">OAR</option>
+                                            <option value="Team Experiences">Team Experiences</option>
+                                            <option value="Strategy">Strategy</option>
+                                            <option value="HR">HR</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
 
                                 <div class="form-group">
                                     <label>Requirement</label>
@@ -3210,8 +3304,3 @@ document.addEventListener('click', event => {
 
 
 </script>
-
-
-
-            
-            
