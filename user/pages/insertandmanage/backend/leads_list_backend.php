@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include '../../../../connection.php';
 include '../../../../check.php';
 
@@ -16,7 +20,7 @@ if (count($_POST) > 0) {
         $estimatesv_ = $_POST['estimatesv'];
         $followup_ = $_POST['followup'];
 
-        
+
 
         // Determine sales stage
         if (!empty($lost_)) {
@@ -72,7 +76,7 @@ if (count($_POST) > 0) {
         } elseif (isset($_POST['email']) && $_POST['email'] == 'Completed') {
             $Status_ = 'Active Lead';
         }
-        
+
         // Determine sales stage
         if (!empty($lost_)) {
             $SalesStage_ = 'Lost Lead';
@@ -88,10 +92,10 @@ if (count($_POST) > 0) {
             $Status_ = 'Active Lead';
         }
 
-        
+
         // Determine Confidence Level
         $confidencelevel_ = 'confindeceLevelRating'; // Default confidence level
-        
+
 
         $sql = "UPDATE `leads` SET `lead`='$Lead_', `salesStage`='$SalesStage_', `status`='$Status_', `requirement`='$requirement_',`leadType`=' $categoryType_', `categoryType`='$leadtype_',
                 `estimateSalesValue`='$sales_', `lostLeadDate`='$lost_', `followUp`='$action_', `confindeceLevelRating`='$confidencelevel_' 
@@ -137,11 +141,11 @@ if (count($_POST) > 0) {
             'newBusinessMeeting' => 'newBusinessMeeting',
             'followUp' => 'followUp',
             'lostLeadDate' => 'lostLeadDate',
-            'programC' => 'programC', 
-            'strategicPriority' => 'strategicPriority', 
-        'confidenceLevelRating' => 'confindeceLevelRating',
-        'name' => 'name'// Ensure all fields are present
-            
+            'programC' => 'programC',
+            'strategicPriority' => 'strategicPriority',
+            'confidenceLevelRating' => 'confindeceLevelRating',
+            'name' => 'name'// Ensure all fields are present
+
         ];
 
         // Check if the field is allowed to be updated
