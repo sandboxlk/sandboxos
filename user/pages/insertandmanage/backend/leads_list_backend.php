@@ -94,7 +94,7 @@ if (count($_POST) > 0) {
 
 
         // Determine Confidence Level
-        $confidencelevel_ = 'confindeceLevelRating'; // Default confidence level
+        $confidencelevel_ = 1; // Default confidence level
 
 
         $sql = "UPDATE `leads` SET `lead`='$Lead_', `salesStage`='$SalesStage_', `status`='$Status_', `requirement`='$requirement_',`leadType`=' $categoryType_', `categoryType`='$leadtype_',
