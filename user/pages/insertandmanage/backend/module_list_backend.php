@@ -2,137 +2,126 @@
 include '../../../../connection.php';
 include '../../../../check.php';
 
-//Module insert
-if(count($_POST)>0){
-	if($_POST['type']==1){
-		$ModuleName_=$_POST['Module_Name'];
-		$ModuleType_ = isset($_POST['Module_Type']) && $_POST['Module_Type'] == 'on' ? 'Training' : 'Consulting'; 
-		//$ModuleType_=$_POST['Module_Type'];
-		$duration_=$_POST['duration'];
-		$primaryFaculty_=$_POST['faculty'];
-		$description_=$_POST['description'];
-		//$description_=$_POST['assessmentcb'];
-		$Assessment_ = isset($_POST['assessmentSelect']) && $_POST['assessmentSelect'] == 'on' ? 'Yes' : 'No';  // Check if checkbox is checked
-	
-		// Validate if Client already exists
-		//$sql_check_module_list = "SELECT COUNT(*) AS count FROM `module` WHERE `ModuleName` = '$ModuleName_'";
-		//$result_check_module_list = mysqli_query($conn, $sql_check_module_list);
-		//$row_check_module_list = mysqli_fetch_assoc($result_check_module_list);
-		//if ($row_check_module_list['count'] > 0) {
-			//echo json_encode(array("statusCode" => 400, "message" => "Module already exists."));
-			//return;
-		//}
-		//if (strlen($ModuleName_)>0){ 
-	
-				$sql = "INSERT INTO `module`( `ModuleName`, `moduleType`, `duration`,`primaryFaculty`,`description`,`Assessment`) 
-				VALUES ('$ModuleName_','$ModuleType_','$duration_','$primaryFaculty_','$description_','$Assessment_')";
-				if (mysqli_query($conn, $sql)) {
-					echo json_encode(array("statusCode"=>200, "message" => "Module name is required"));
-				} 
-				else {
-					echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-				}
-			
-			mysqli_close($conn);
-		}else{
-			echo json_encode(array("statusCode" => 400, "message" => "Module name is required"));
-			return;
-		}
-	} 
+if (count($_POST) > 0) {
+	$type = $_POST['type'];
 
+	// Add New Module
+	if ($type == 1) {
+		$moduleName = $_POST['Module_Name'];
+		$moduleType = $_POST['Module_Type'];
+		$duration = $_POST['duration'];
+		$description = $_POST['description'];
+		$primaryFaculty = $_POST['faculty'];
+		$assessment = $_POST['assessmentSelect'];
 
-if(count($_POST)>0){
-	if($_POST['type']==2){
-		$ModuleID_=$_POST['module_id_u'];
-		$ModuleName_=$_POST['modulename_u'];
-		$duration_=$_POST['moduleduration_u'];
-		$description_=$_POST['moduledesc_u'];
-		$primaryFaculty_=$_POST['primaryFaculty_u'];
-		$secondaryFaculty_=$_POST['secondaryFaculty_u'];
-		$tertiaryFaculty_=$_POST['tertiaryFaculty_u'];
-		$assessment_=$_POST['assessmentcb_u'];
-	
-		// Validate if Client already exist
-		$sql_check_client = "SELECT COUNT(*) AS count FROM `module` WHERE `modulename_u` = '$ModuleName_' AND `module_id_u` NOT IN($ModuleID_)";
-		$result_check_client = mysqli_query($conn, $sql_check_module);
-		$row_check_client = mysqli_fetch_assoc($result_check_module);
-		if ($row_check_client['count'] > 0) {
-			echo json_encode(array("statusCode" => 400, "message" => "Module already exists."));
-			return;
-		}else{
-			if (strlen($name)>0){ 
-				
-					$sql = "UPDATE `module` SET `modulename_u`='$ModuleName_',`moduleduration_u`='$duration_',`lecturername_u`='$lecturer_',`moduledesc_u`='$description_',`assessmentcb_u`='$description_' WHERE module_id_u=$ModuleID_";
-					if (mysqli_query($conn, $sql)) {
-						echo json_encode(array("statusCode" =>200));
-					} 
-					else {
-						echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-					}
-					mysqli_close($conn);
-				
-			}else{
-				echo json_encode(array("statusCode" => 400, "message" => "Module name is required"));
-				return;
+		if (!empty($moduleName)) {
+			$sql = "INSERT INTO module (ModuleName, moduleType, duration, description, primaryFaculty, Assessment) 
+                    VALUES (?, ?, ?, ?, ?, ?)";
+			$stmt = $conn->prepare($sql);
+			$stmt->bind_param("ssssss", $moduleName, $moduleType, $duration, $description, $primaryFaculty, $assessment);
+
+			if ($stmt->execute()) {
+				// Update the utilized capacity for the faculty
+				updateFacultyCapacity($conn, $primaryFaculty, $duration);
+
+				echo json_encode(array("statusCode" => 200));
+			} else {
+				echo json_encode(array("statusCode" => 400, "message" => "Error: " . $stmt->error));
 			}
+			$stmt->close();
+		} else {
+			echo json_encode(array("statusCode" => 400, "message" => "Module name is required."));
 		}
+
+		$conn->close();
+	}
+
+	// Update Module
+	elseif ($type == 2) {
+		$moduleID = $_POST['moduleid'];
+		$moduleName = $_POST['modulename'];
+		$moduleType = $_POST['moduletype'];
+		$duration = $_POST['moduleduration'];
+		$description = $_POST['moduledesc'];
+		$primaryFaculty = $_POST['primaryFaculty'];
+		$assessment = $_POST['assessmentSelect'];
+
+		$sql = "UPDATE module SET ModuleName=?, moduleType=?, duration=?, description=?, primaryFaculty=?, Assessment=? WHERE ModuleID=?";
+		$stmt = $conn->prepare($sql);
+		$stmt->bind_param("ssssssi", $moduleName, $moduleType, $duration, $description, $primaryFaculty, $assessment, $moduleID);
+
+		if ($stmt->execute()) {
+			echo json_encode(array("statusCode" => 200));
+		} else {
+			echo json_encode(array("statusCode" => 400, "message" => "Error: " . $stmt->error));
+		}
+		$stmt->close();
+		$conn->close();
+	}
+
+	// Delete Module
+	elseif ($type == 3) {
+		$moduleID = $_POST['id'];
+		$sql = "DELETE FROM module WHERE ModuleID = ?";
+		$stmt = $conn->prepare($sql);
+		$stmt->bind_param("i", $moduleID);
+
+		if ($stmt->execute()) {
+			echo json_encode(array("statusCode" => 200, "message" => "Deleted successfully"));
+		} else {
+			echo json_encode(array("statusCode" => 400, "message" => "Error: " . $stmt->error));
+		}
+		$stmt->close();
+		$conn->close();
 	}
 }
-if(count($_POST)>0){
-	if($_POST['type']==3){
-		$id=$_POST['id'];
-		$sql = "DELETE FROM `module` WHERE `ModuleID`=$id";
-		if (mysqli_query($conn, $sql)) {
-			echo $id;
-		} 
-		else {
-			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+
+// Function to update the utilized capacity in the faculty table
+function updateFacultyCapacity($conn, $facultyName, $duration)
+{
+	// Convert duration to days or any required unit
+	$durationInDays = convertDurationToDays($duration);
+
+	// Check if the faculty is already in the faculty table
+	$checkQuery = "SELECT capacity FROM faculty_capacity WHERE callingName = ?";
+	$stmt = $conn->prepare($checkQuery);
+	$stmt->bind_param("s", $facultyName);
+	$stmt->execute();
+	$stmt->store_result();
+
+	if ($stmt->num_rows > 0) {
+		// Faculty exists, update the utilized capacity
+		$updateQuery = "UPDATE faculty_capacity SET capacity = capacity + ? WHERE callingName = ?";
+		$updateStmt = $conn->prepare($updateQuery);
+		$updateStmt->bind_param("is", $durationInDays, $facultyName);
+
+		if (!$updateStmt->execute()) {
+			error_log("Error updating faculty capacity: " . $updateStmt->error);
 		}
-		mysqli_close($conn);
+		$updateStmt->close();
+	} else {
+		// Handle the case where the faculty does not exist, if needed
+		// This can be logging an error or adding the faculty, depending on your use case
+		error_log("Faculty not found: " . $facultyName);
+	}
+	$stmt->close();
+}
+
+// Function to convert the module duration to days
+function convertDurationToDays($duration)
+{
+	// Here you should convert the duration string to the number of days
+	// Assuming duration is something like '1h', '2h', '4h', '8h', '1 week'
+	switch ($duration) {
+		case '1h':
+		case '2h':
+		case '4h':
+		case '8h':
+			return 1;  // All hours count as 1 day in this example
+		case '1 week':
+			return 7;
+		default:
+			return 1;  // Default to 1 day if format is unrecognized
 	}
 }
-
-// Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if the form fields are set
-    if (isset($_POST["moduleId"]) && isset($_FILES["session_plans"])) {
-        // Get the ModuleID from the form
-        $moduleID = $_POST["moduleId"];
-
-        // Handle file upload
-        $uploadDirectory = "uploads/"; // Replace with your desired upload directory
-
-        // Check if files are selected
-        if (isset($_FILES["session_plans"]["name"][0])) {
-            // Process file uploads
-            $uploadedFiles = [];
-            foreach ($_FILES["session_plans"]["name"] as $index => $fileName) {
-                $targetFilePath = $uploadDirectory . basename($fileName);
-                if (move_uploaded_file($_FILES["session_plans"]["tmp_name"][$index], $targetFilePath)) {
-                    $uploadedFiles[] = $targetFilePath;
-                    
-                    // Insert file path into the database
-                    $sql = "INSERT INTO `module_files` (`ModuleID`, `FilePath`) VALUES (?, ?)";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("is", $moduleID, $targetFilePath);
-                    if ($stmt->execute()) {
-                        echo "File path inserted successfully";
-						echo '<script>window.location.href = window.location.href;</script>';
-                    } else {
-                        echo "Error inserting file path: " . $stmt->error;
-                    }
-                    $stmt->close();
-                } else {
-                    echo "Error uploading file: " . $_FILES["session_plans"]["error"][$index];
-                }
-            }
-        } else {
-            echo "No files selected for upload";
-        }
-    } else {
-        echo "Missing required form fields";
-    }
-}
-
-
 ?>
