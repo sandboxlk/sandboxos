@@ -904,9 +904,6 @@ function updateTable(data) {
                                 <th class="fixed-column">Client
                                     <span class="filter-icon" onclick="showDropdown(this, 3)"></span>
                                     <div class="dropdown-content">
-                                    <a href="#" onclick="sortTable('asc')">Sort A-Z</a>
-                                    <br>
-                                    <a href="#" onclick="sortTable('desc')">Sort Z-A</a>
                                     </div>
                                 </th>
                                 <th>Lead
@@ -1209,1192 +1206,1192 @@ function updateTable(data) {
                                 }
 
                                 ?>
-                                    <tr class="border-bottom" id="<?php echo $row["clientID"]; ?>">
-                                    <tr class="<?php echo (!empty($row["lostLeadDate"])) ? 'red-row' : ''; ?>">
-                                        <td>
-                                            <a href="#editEmployeeModal" class="edit" data-toggle="modal">
-                                                <i class="material-icons update" data-toggle="tooltip" 
-                                                data-id="<?php echo $row["clientID"]; ?>" 
-                                                data-salesStage="<?php echo $row["salesStage"]; ?>" 
-                                                data-client="<?php echo $row["company"]; ?>" 
-                                                data-lead="<?php echo $row["lead"]; ?>" 
-                                                data-name="<?php echo $row["name"]; ?>" 
-                                                data-strategicPriority="<?php echo $row["strategicPriority"]; ?>" 
-                                                data-date="<?php echo $row["date"]; ?>" 
-                                                data-requirement="<?php echo $row["requirement"]; ?>"
-                                                data-estimatesv="<?php echo $row["estimateSalesValue"]; ?>" 
-                                                data-status="<?php echo $row["status"]; ?>"
-                                                data-completion="<?php echo $row["completionStatus"]; ?>"
-                                                data-marketingstatus="<?php echo $row["marketingStatus"]; ?>"
-                                                data-followup="<?php echo $row["followUp"]; ?>"  
-                                                data-confidenseLevelRating="<?php echo $row["confindeceLevelRating"]; ?>"
-                                                data-leadtype="<?php echo $row["leadType"]; ?>" 
-                                                data-categoryType="<?php echo $row["categoryType"]; ?>" 
-                                                data-lostlead="<?php echo $row["lostLeadDate"]; ?>" 
-                                                data-perliminary="<?php echo $row["preliminaryBrochures"]; ?>" 
-                                                data-email="<?php echo $row["emailClient"]; ?>" 
-                                                data-shedule="<?php echo $row["sheduleCM"]; ?>" 
-                                                data-chemistry="<?php echo $row["chemMeeting"]; ?>" 
-                                                data-proposal="<?php echo $row["proposal"]; ?>" 
-                                                data-estimate="<?php echo $row["estimate"]; ?>" 
-                                                data-confirmation="<?php echo $row["confirmation"]; ?>" 
-                                                data-cof="<?php echo $row["cof"]; ?>" 
-                                                data-po="<?php echo $row["po"]; ?>" 
-                                                data-invoice="<?php echo $row["invoice"]; ?>" 
-                                                data-invoiceDT="<?php echo $row["invoiceDT"]; ?>"
-                                                data-payment="<?php echo $row["payment"]; ?>" 
-                                                data-programs="<?php echo $row["program"]; ?>"
-                                                data-SurveyData="<?php echo $row["SurveyData"]; ?>"
-                                                data-courseFacillitation="<?php echo $row["courseFacillitation"]; ?>"
-                                                data-projectsAssessments="<?php echo $row["projectsAssessments"]; ?>"
-                                                data-projects="<?php echo $row["projects"]; ?>"
-                                                data-dataCertification="<?php echo $row["dataCertification"]; ?>"
-                                                data-graduation="<?php echo $row["graduation"]; ?>" 
-                                                data-programCompleted="<?php echo $row["programCompleted"]; ?>" 
-                                                data-post="<?php echo $row["postSalesFollowUp"]; ?>" 
-                                                data-protofolio="<?php echo $row["protofolioEmail"]; ?>" 
-                                                data-meeting="<?php echo $row["newBusinessMeeting"]; ?>" 
-                                                 title="Edit Active Leads"></i>
+                                        <tr class="border-bottom" id="<?php echo $row["clientID"]; ?>">
+                                        <tr class="<?php echo (!empty($row["lostLeadDate"])) ? 'red-row' : ''; ?>">
+                                            <td>
+                                                <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                                                    <i class="material-icons update" data-toggle="tooltip" 
+                                                    data-id="<?php echo $row["clientID"]; ?>" 
+                                                    data-salesStage="<?php echo $row["salesStage"]; ?>" 
+                                                    data-client="<?php echo $row["company"]; ?>" 
+                                                    data-lead="<?php echo $row["lead"]; ?>" 
+                                                    data-name="<?php echo $row["name"]; ?>" 
+                                                    data-strategicPriority="<?php echo $row["strategicPriority"]; ?>" 
+                                                    data-date="<?php echo $row["date"]; ?>" 
+                                                    data-requirement="<?php echo $row["requirement"]; ?>"
+                                                    data-estimatesv="<?php echo $row["estimateSalesValue"]; ?>" 
+                                                    data-status="<?php echo $row["status"]; ?>"
+                                                    data-completion="<?php echo $row["completionStatus"]; ?>"
+                                                    data-marketingstatus="<?php echo $row["marketingStatus"]; ?>"
+                                                    data-followup="<?php echo $row["followUp"]; ?>"  
+                                                    data-confidenseLevelRating="<?php echo $row["confindeceLevelRating"]; ?>"
+                                                    data-leadtype="<?php echo $row["leadType"]; ?>" 
+                                                    data-categoryType="<?php echo $row["categoryType"]; ?>" 
+                                                    data-lostlead="<?php echo $row["lostLeadDate"]; ?>" 
+                                                    data-perliminary="<?php echo $row["preliminaryBrochures"]; ?>" 
+                                                    data-email="<?php echo $row["emailClient"]; ?>" 
+                                                    data-shedule="<?php echo $row["sheduleCM"]; ?>" 
+                                                    data-chemistry="<?php echo $row["chemMeeting"]; ?>" 
+                                                    data-proposal="<?php echo $row["proposal"]; ?>" 
+                                                    data-estimate="<?php echo $row["estimate"]; ?>" 
+                                                    data-confirmation="<?php echo $row["confirmation"]; ?>" 
+                                                    data-cof="<?php echo $row["cof"]; ?>" 
+                                                    data-po="<?php echo $row["po"]; ?>" 
+                                                    data-invoice="<?php echo $row["invoice"]; ?>" 
+                                                    data-invoiceDT="<?php echo $row["invoiceDT"]; ?>"
+                                                    data-payment="<?php echo $row["payment"]; ?>" 
+                                                    data-programs="<?php echo $row["program"]; ?>"
+                                                    data-SurveyData="<?php echo $row["SurveyData"]; ?>"
+                                                    data-courseFacillitation="<?php echo $row["courseFacillitation"]; ?>"
+                                                    data-projectsAssessments="<?php echo $row["projectsAssessments"]; ?>"
+                                                    data-projects="<?php echo $row["projects"]; ?>"
+                                                    data-dataCertification="<?php echo $row["dataCertification"]; ?>"
+                                                    data-graduation="<?php echo $row["graduation"]; ?>" 
+                                                    data-programCompleted="<?php echo $row["programCompleted"]; ?>" 
+                                                    data-post="<?php echo $row["postSalesFollowUp"]; ?>" 
+                                                    data-protofolio="<?php echo $row["protofolioEmail"]; ?>" 
+                                                    data-meeting="<?php echo $row["newBusinessMeeting"]; ?>" 
+                                                     title="Edit Active Leads"></i>
 
 
-                                            </a>
-                                            <!-- Tick Action Point Button -->
-    <a href="#editActionPointModal" class="tick-action-point" data-id="<?php echo $row['clientID']; ?>" data-toggle="modal">
-        <i class="material-icons" data-toggle="tooltip" title="Add Action Point">check</i>
-    </a>
-    <!-- View Action Point Button -->
-    <a href="#viewActionPointModal" class="view-action-point" data-id="<?php echo $row["clientID"]; ?>" data-toggle="modal">
-        <i class="material-icons" data-toggle="tooltip" title="View Activity Log">visibility</i>
-    </a>
-                                            <span class="hidden-id" data-id="<?php echo $row["clientID"]; ?>" style="display:none;"></span>
-                                        </td>
-                                        <?php
+                                                </a>
+                                                <!-- Tick Action Point Button -->
+        <a href="#editActionPointModal" class="tick-action-point" data-id="<?php echo $row['clientID']; ?>" data-toggle="modal">
+            <i class="material-icons" data-toggle="tooltip" title="Add Action Point">check</i>
+        </a>
+        <!-- View Action Point Button -->
+        <a href="#viewActionPointModal" class="view-action-point" data-id="<?php echo $row["clientID"]; ?>" data-toggle="modal">
+            <i class="material-icons" data-toggle="tooltip" title="View Activity Log">visibility</i>
+        </a>
+                                                <span class="hidden-id" data-id="<?php echo $row["clientID"]; ?>" style="display:none;"></span>
+                                            </td>
+                                            <?php
 
 
-                                        ?>
-                                        <td style="display: none;"><?php echo "C" . str_pad($row["clientID"], 5, '0', STR_PAD_LEFT); ?></td>
+                                            ?>
+                                            <td style="display: none;"><?php echo "C" . str_pad($row["clientID"], 5, '0', STR_PAD_LEFT); ?></td>
                                     
-                                        <td class="<?php echo $cellColor; ?>"><?php echo $salesStage; ?></td>
-                                        <td  class="fixed-column company-column"><?php echo $row["company"]; ?>
-                                        <td class="td-lead"><?php echo $row["lead"]; ?></td>
-                                        <td class="td-name" contenteditable="true" data-id="<?php echo $row["clientID"]; ?>"><?php echo htmlspecialchars($row["name"]); ?></td>
-                                        <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Load saved names from localStorage
-        loadSavedNames();
+                                            <td class="<?php echo $cellColor; ?>"><?php echo $salesStage; ?></td>
+                                            <td  class="fixed-column company-column"><?php echo $row["company"]; ?>
+                                            <td class="td-lead"><?php echo $row["lead"]; ?></td>
+                                            <td class="td-name" contenteditable="true" data-id="<?php echo $row["clientID"]; ?>"><?php echo htmlspecialchars($row["name"]); ?></td>
+                                            <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved names from localStorage
+            loadSavedNames();
 
-        document.querySelectorAll('.td-name').forEach(function(cell) {
-            cell.addEventListener('blur', function() {
-                var clientId = this.getAttribute('data-id');
-                var name = this.textContent.trim();
+            document.querySelectorAll('.td-name').forEach(function(cell) {
+                cell.addEventListener('blur', function() {
+                    var clientId = this.getAttribute('data-id');
+                    var name = this.textContent.trim();
 
-                // Save to localStorage
-                saveNameToLocalStorage(clientId, name);
+                    // Save to localStorage
+                    saveNameToLocalStorage(clientId, name);
 
-                // Send AJAX request to update name in the backend
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'pages/insertandmanage/backend/leads_list_backend.php', true); // Ensure the correct path
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4 && xhr.status !== 200) {
-                        console.error('Error updating name:', xhr.responseText);
-                    }
-                };
-                xhr.send('id=' + clientId + '&field=name&value=' + encodeURIComponent(name));
+                    // Send AJAX request to update name in the backend
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'pages/insertandmanage/backend/leads_list_backend.php', true); // Ensure the correct path
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status !== 200) {
+                            console.error('Error updating name:', xhr.responseText);
+                        }
+                    };
+                    xhr.send('id=' + clientId + '&field=name&value=' + encodeURIComponent(name));
+                });
             });
         });
-    });
 
-    function saveNameToLocalStorage(clientId, name) {
-        var data = localStorage.getItem('names') ? JSON.parse(localStorage.getItem('names')) : {};
-        data[clientId] = name;
-        localStorage.setItem('names', JSON.stringify(data));
-    }
-
-    function loadSavedNames() {
-        var data = localStorage.getItem('names') ? JSON.parse(localStorage.getItem('names')) : {};
-        Object.keys(data).forEach(function(clientId) {
-            var cell = document.querySelector('.td-name[data-id="' + clientId + '"]');
-            if (cell) {
-                cell.textContent = data[clientId];
-            }
-        });
-    }
-    </script>
-
-                                        <td class="td-strategicPriority">
-        <select class="strategicPriorityDropdown" data-id="<?php echo $row["clientID"]; ?>">
-            <option value="1" <?php if ($row["strategicPriority"] == 1)
-                echo 'selected'; ?>>1</option>
-            <option value="2" <?php if ($row["strategicPriority"] == 2)
-                echo 'selected'; ?>>2</option>
-            <option value="3" <?php if ($row["strategicPriority"] == 3)
-                echo 'selected'; ?>>3</option>
-            <option value="4" <?php if ($row["strategicPriority"] == 4)
-                echo 'selected'; ?>>4</option>
-            <option value="5" <?php if ($row["strategicPriority"] == 5)
-                echo 'selected'; ?>>5</option>
-        </select>
-    </td>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Load saved priorities from localStorage
-        loadSavedPriorities();
-
-        document.querySelectorAll('.strategicPriorityDropdown').forEach(function(dropdown) {
-            dropdown.addEventListener('change', function() {
-                var clientId = this.getAttribute('data-id');
-                var strategicPriority = this.value;
-
-                // Save to localStorage
-                saveToLocalStorage(clientId, strategicPriority);
-
-                // Send AJAX request to update strategicPriority in the backend
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'pages/insertandmanage/backend/leads_list_backend.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4 && xhr.status !== 200) {
-                        console.error('Error updating Strategic Priority:', xhr.responseText);
-                    }
-                };
-                xhr.send('id=' + clientId + '&field=strategicPriority&value=' + strategicPriority);
-            });
-        });
-    });
-
-    function saveToLocalStorage(clientId, strategicPriority) {
-        var data = localStorage.getItem('strategicPriorities') ? JSON.parse(localStorage.getItem('strategicPriorities')) : {};
-        data[clientId] = strategicPriority;
-        localStorage.setItem('strategicPriorities', JSON.stringify(data));
-    }
-
-    function loadSavedPriorities() {
-        var data = localStorage.getItem('strategicPriorities') ? JSON.parse(localStorage.getItem('strategicPriorities')) : {};
-        Object.keys(data).forEach(function(clientId) {
-            var dropdown = document.querySelector('.strategicPriorityDropdown[data-id="' + clientId + '"]');
-            if (dropdown) {
-                dropdown.value = data[clientId];
-            }
-        });
-    }
-    </script>
-                                        <td ><?php echo $row["date"]; ?></td>
-                                        <td class="td-requirement"><?php echo $row["requirement"]; ?></td>
-                                        <td ><?php echo $row["estimateSalesValue"]; ?></td>
-                                        <?php
-                                        echo '<td style="background-color:';
-                                        if ($row['lostLeadDate'] != '') {
-                                            echo '#ff9690; color: Black;">Inactive Lead';
-                                        } elseif ($row['postSalesFollowUp'] == 'Completed') {
-                                            echo '#73ad70; color: Black;">Close Lead';
-                                        } elseif ($row['emailClient'] == 'Completed') {
-                                            echo '#afd9b5; color: Black;">Active Lead';
-                                        } else {
-                                            echo '#ff9690; color: Black;">Inactive Lead';
-                                        }
-                                        echo '</td>';
-                                        ?>
-
-    
-    
-    <td>
-        <select class="confidenceLevelDropdown" data-id="<?php echo $row["clientID"]; ?>">
-            <option value="1" <?php if ($row["confindeceLevelRating"] == 1)
-                echo 'selected'; ?>>1</option>
-            <option value="2" <?php if ($row["confindeceLevelRating"] == 2)
-                echo 'selected'; ?>>2</option>
-            <option value="3" <?php if ($row["confindeceLevelRating"] == 3)
-                echo 'selected'; ?>>3</option>
-            <option value="4" <?php if ($row["confindeceLevelRating"] == 4)
-                echo 'selected'; ?>>4</option>
-            <option value="5" <?php if ($row["confindeceLevelRating"] == 5)
-                echo 'selected'; ?>>5</option>
-        </select>
-    </td>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Load saved confidence levels from localStorage
-        loadSavedConfidenceLevels();
-
-        document.querySelectorAll('.confidenceLevelDropdown').forEach(function(dropdown) {
-            dropdown.addEventListener('change', function() {
-                var clientId = this.getAttribute('data-id');
-                var confidenceLevelRating = this.value;
-
-                // Save to localStorage
-                saveConfidenceLevelToLocalStorage(clientId, confidenceLevelRating);
-
-                // Send AJAX request to update confidenceLevelRating in the backend
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'pages/insertandmanage/backend/leads_list_backend.php', true); // Ensure the correct path
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4 && xhr.status !== 200) {
-                        console.error('Error updating Confidence Level Rating:', xhr.responseText);
-                    }
-                };
-                xhr.send('id=' + clientId + '&field=confidenceLevelRating&value=' + confidenceLevelRating);
-            });
-        });
-    });
-
-    function saveConfidenceLevelToLocalStorage(clientId, confidenceLevelRating) {
-        var data = localStorage.getItem('confidenceLevels') ? JSON.parse(localStorage.getItem('confidenceLevels')) : {};
-        data[clientId] = confidenceLevelRating;
-        localStorage.setItem('confidenceLevels', JSON.stringify(data));
-    }
-
-    function loadSavedConfidenceLevels() {
-        var data = localStorage.getItem('confidenceLevels') ? JSON.parse(localStorage.getItem('confidenceLevels')) : {};
-        Object.keys(data).forEach(function(clientId) {
-            var dropdown = document.querySelector('.confidenceLevelDropdown[data-id="' + clientId + '"]');
-            if (dropdown) {
-                dropdown.value = data[clientId];
-            }
-        });
-    }
-    </script>
-                                            <td class="td-followUp"><?php echo $row["followUp"]; ?></td>
-                                        
-                                            <td><?php echo calculatecompletionStatus($row); ?>%</td>
-    <td><?php echo calculatemarketingStatus([$row["postSalesFollowUp"], $row["protofolioEmail"], $row["newBusinessMeeting"]]); ?>%</td>
-
-
-                                    
-    <?php
-    // Example PHP script to set selected values
-    $selectedLType = '';
-    $selectedCategoryType = '';
-
-    // Assuming $row contains data retrieved from the database
-    $selectedLType = isset($row["leadType"]) ? $row["leadType"] : '';
-    $selectedCategoryType = isset($row["categoryType"]) ? $row["categoryType"] : '';
-    ?>
-                                        <td><?php echo $row["categoryType"]; ?></td>
-                                        <td><?php echo $row["leadType"]; ?></td>
-                                        <td class="<?php echo (!empty($row["lostLeadDate"])) ? 'red-cell' : ''; ?>">
-                                            <?php echo $row["lostLeadDate"]; ?>
-                                        </td>
-
-                                    
-
-
-      <!-- Preliminary Brochures -->
-      <td class="<?php
-      switch ($row["preliminaryBrochures"]) {
-          case 'Not Initiated':
-              echo 'yellow-cell preliminary';
-              break;
-          case 'Not Applicable':
-              echo 'grey-cell preliminary';
-              break;
-          case 'In Progress':
-              echo 'orange-cell preliminary';
-              break;
-          case 'Completed':
-              echo 'green-cell preliminary';
-              break;
-          default:
-              echo 'yellow-cell preliminary'; // Default to yellow for 'Not Initiated'
-      }
-      ?>" data-field="preliminaryBrochures" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="preliminaryBrochures" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["preliminaryBrochures"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["preliminaryBrochures"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["preliminaryBrochures"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["preliminaryBrochures"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-    <script>
-    function updateStage(cell, select) {
-        const stage = select.value;
-        const id = cell.getAttribute('data-id');
-        const field = select.getAttribute('data-field');
-
-        let className = '';
-        switch(stage) {
-            case 'Not Initiated':
-                className = 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                className = 'grey-cell';
-                break;
-            case 'In Progress':
-                className = 'orange-cell';
-                break;
-            case 'Completed':
-                className = 'green-cell';
-                break;
-            default:
-                className = 'yellow-cell'; // Default to yellow for 'Not Initiated'
+        function saveNameToLocalStorage(clientId, name) {
+            var data = localStorage.getItem('names') ? JSON.parse(localStorage.getItem('names')) : {};
+            data[clientId] = name;
+            localStorage.setItem('names', JSON.stringify(data));
         }
 
-        cell.className = className;
-
-        // Save to localStorage
-        saveStageToLocalStorage(id, field, stage);
-    }
-
-    function saveStageToLocalStorage(id, field, value) {
-        let data = localStorage.getItem('tableData') ? JSON.parse(localStorage.getItem('tableData')) : {};
-        if (!data[id]) data[id] = {};
-        data[id][field] = value;
-        localStorage.setItem('tableData', JSON.stringify(data));
-    }
-
-    function loadStagesFromLocalStorage() {
-        let data = localStorage.getItem('tableData') ? JSON.parse(localStorage.getItem('tableData')) : {};
-        Object.keys(data).forEach(id => {
-            Object.keys(data[id]).forEach(field => {
-                const cell = document.querySelector(`td[data-id='${id}'][data-field='${field}']`);
+        function loadSavedNames() {
+            var data = localStorage.getItem('names') ? JSON.parse(localStorage.getItem('names')) : {};
+            Object.keys(data).forEach(function(clientId) {
+                var cell = document.querySelector('.td-name[data-id="' + clientId + '"]');
                 if (cell) {
-                    const select = cell.querySelector('select');
-                    if (select) {
-                        select.value = data[id][field];
-                        updateStage(cell, select); // Update the cell color
-                    }
+                    cell.textContent = data[clientId];
                 }
             });
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        const dropdowns = document.querySelectorAll('.dropdown select');
-        dropdowns.forEach(function (dropdown) {
-            dropdown.addEventListener('change', function () {
-                const cell = this.closest('td');
-                updateStage(cell, this);
-            });
-        });
-
-        loadStagesFromLocalStorage(); // Load saved stages from localStorage on page load
-    });
-
-    </script>
-
-
-        <!-- Email Client -->
-        <td class="<?php
-        switch ($row["emailClient"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell email';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell email';
-                break;
-            case 'In Progress':
-                echo 'orange-cell email';
-                break;
-            case 'Completed':
-                echo 'green-cell email';
-                break;
-            default:
-                echo 'yellow-cell email'; // Default to yellow for 'Not Initiated'
         }
-        ?>" data-field="emailClient" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="emailClient" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["emailClient"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["emailClient"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["emailClient"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["emailClient"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-    
-        <!-- Schedule CM -->
-        <td class="<?php
-        switch ($row["sheduleCM"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell shedulecm';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell shedulecm';
-                break;
-            case 'In Progress':
-                echo 'orange-cell shedulecm';
-                break;
-            case 'Completed':
-                echo 'green-cell shedulecm';
-                break;
-            default:
-                echo 'yellow-cell shedulecm'; // Default to yellow for 'Not Initiated'
-        }
-        ?>" data-field="sheduleCM" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="sheduleCM" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["sheduleCM"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["sheduleCM"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["sheduleCM"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["sheduleCM"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
+        </script>
 
-        <!-- Chem Meeting -->
-        <td class="<?php
-        switch ($row["chemMeeting"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell chemmeeting';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell chemmeeting';
-                break;
-            case 'In Progress':
-                echo 'orange-cell chemmeeting';
-                break;
-            case 'Completed':
-                echo 'green-cell chemmeeting';
-                break;
-            default:
-                echo 'yellow-cell chemmeeting'; // Default to yellow for 'Not Initiated'
-        }
-        ?>" data-field="chemMeeting" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="chemMeeting" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["chemMeeting"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["chemMeeting"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["chemMeeting"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["chemMeeting"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- Proposal -->
-        <td class="<?php
-        switch ($row["proposal"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell proposal';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell proposal';
-                break;
-            case 'In Progress':
-                echo 'orange-cell proposal';
-                break;
-            case 'Completed':
-                echo 'green-cell proposal';
-                break;
-            default:
-                echo 'yellow-cell proposal'; // Default to yellow for 'Not Initiated'
-        }
-        ?>" data-field="proposal" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="proposal" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["proposal"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["proposal"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["proposal"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["proposal"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- Estimate -->
-        <td class="<?php
-        switch ($row["estimate"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell estimate';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell estimate';
-                break;
-            case 'In Progress':
-                echo 'orange-cell estimate';
-                break;
-            case 'Completed':
-                echo 'green-cell estimate';
-                break;
-            default:
-                echo 'yellow-cell estimate'; // Default to yellow for 'Not Initiated'
-        }
-        ?>" data-field="estimate" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="estimate" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["estimate"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["estimate"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["estimate"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["estimate"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- Confirmation -->
-        <td class="<?php
-        switch ($row["confirmation"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell confirmation';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell confirmation';
-                break;
-            case 'In Progress':
-                echo 'orange-cell confirmation';
-                break;
-            case 'Completed':
-                echo 'green-cell confirmation';
-                break;
-            default:
-                echo 'yellow-cell confirmation'; // Default to yellow for 'Not Initiated'
-        }
-        ?>" data-field="confirmation" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="confirmation" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["confirmation"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["confirmation"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["confirmation"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["confirmation"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- COF -->
-        <td class="<?php
-        switch ($row["cof"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell cof';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell cof';
-                break;
-            case 'In Progress':
-                echo 'orange-cell cof';
-                break;
-            case 'Completed':
-                echo 'green-cell cof';
-                break;
-            default:
-                echo 'yellow-cell cof'; // Default to yellow for 'Not Initiated'
-        }
-        ?>" data-field="cof" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="cof" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["cof"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["cof"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["cof"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["cof"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- PO -->
-        <td class="<?php
-        switch ($row["po"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell po';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell po';
-                break;
-            case 'In Progress':
-                echo 'orange-cell po';
-                break;
-            case 'Completed':
-                echo 'green-cell po';
-                break;
-            default:
-                echo 'yellow-cell po'; // Default to yellow for 'Not Initiated'
-        }
-        ?>" data-field="po" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="po" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["po"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["po"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["po"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["po"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- Invoice -->
-        <td class="<?php
-        switch ($row["invoice"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell invoice';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell invoice';
-                break;
-            case 'In Progress':
-                echo 'orange-cell invoice';
-                break;
-            case 'Completed':
-                echo 'green-cell invoice';
-                break;
-            default:
-                echo 'yellow-cell invoice'; // Default to yellow for 'Not Initiated'
-        }
-        ?>" data-field="invoice" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="invoice" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["invoice"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["invoice"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["invoice"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["invoice"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- Invoice Date -->
-    <td class="<?php echo (!empty($row["invoiceDT"])) ? 'yellow-cell' : 'green-cell'; ?>" data-field="invoiceDT" data-id="<?php echo $row["clientID"]; ?>">
-        <input type="date" value="<?php echo htmlspecialchars($row["invoiceDT"]); ?>" onchange="updateDateField(this)" />
-        </td>
-
-        <!-- Payment -->
-    <td class="<?php
-    switch ($row["payment"]) {
-        case 'Fully Paid':
-            echo 'green-cell payment';
-            break;
-        case 'Not Paid':
-            echo 'yellow-cell payment';
-            break;
-        case 'Part Paid':
-            echo 'orange-cell payment';
-            break;
-        default:
-            echo 'yellow-cell payment'; // Default to yellow for 'Not Paid'
-    }
-    ?>" data-field="payment" data-id="<?php echo $row["clientID"]; ?>">
-        <div class="dropdown">
-            <select data-field="payment" onchange="updateStage(this.parentElement.parentElement, this)">
-                <option value="Not Paid" <?php echo $row["payment"] == 'Not Paid' ? 'selected' : ''; ?>>Not Paid</option>
-                <option value="Part Paid" <?php echo $row["payment"] == 'Part Paid' ? 'selected' : ''; ?>>Part Paid</option>
-                <option value="Fully Paid" <?php echo $row["payment"] == 'Fully Paid' ? 'selected' : ''; ?>>Fully Paid</option>
+                                            <td class="td-strategicPriority">
+            <select class="strategicPriorityDropdown" data-id="<?php echo $row["clientID"]; ?>">
+                <option value="1" <?php if ($row["strategicPriority"] == 1)
+                    echo 'selected'; ?>>1</option>
+                <option value="2" <?php if ($row["strategicPriority"] == 2)
+                    echo 'selected'; ?>>2</option>
+                <option value="3" <?php if ($row["strategicPriority"] == 3)
+                    echo 'selected'; ?>>3</option>
+                <option value="4" <?php if ($row["strategicPriority"] == 4)
+                    echo 'selected'; ?>>4</option>
+                <option value="5" <?php if ($row["strategicPriority"] == 5)
+                    echo 'selected'; ?>>5</option>
             </select>
-        </div>
-    </td>
-
-        <!-- Program -->
-        <td class="<?php
-        switch ($row["program"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell';
-                break;
-            case 'In Progress':
-                echo 'orange-cell';
-                break;
-            case 'Completed':
-                echo 'green-cell';
-                break;
-            default:
-                echo 'yellow-cell';
-        }
-        ?>" data-field="program" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="program" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["program"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["program"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["program"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["program"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
         </td>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved priorities from localStorage
+            loadSavedPriorities();
 
+            document.querySelectorAll('.strategicPriorityDropdown').forEach(function(dropdown) {
+                dropdown.addEventListener('change', function() {
+                    var clientId = this.getAttribute('data-id');
+                    var strategicPriority = this.value;
 
-        <!-- Survey and Data -->
-        <td class="<?php
-        switch ($row["SurveyData"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell';
-                break;
-            case 'In Progress':
-                echo 'orange-cell';
-                break;
-            case 'Completed':
-                echo 'green-cell';
-                break;
-            default:
-                echo 'yellow-cell';
-        }
-        ?>" data-field="SurveyData" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="SurveyData" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["SurveyData"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["SurveyData"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["SurveyData"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["SurveyData"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
+                    // Save to localStorage
+                    saveToLocalStorage(clientId, strategicPriority);
 
-        <!-- Course and Facilitation -->
-        <td class="<?php
-        switch ($row["courseFacillitation"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell';
-                break;
-            case 'In Progress':
-                echo 'orange-cell';
-                break;
-            case 'Completed':
-                echo 'green-cell';
-                break;
-            default:
-                echo 'yellow-cell';
-        }
-        ?>" data-field="courseFacillitation" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="courseFacillitation" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["courseFacillitation"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["courseFacillitation"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["courseFacillitation"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["courseFacillitation"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
+                    // Send AJAX request to update strategicPriority in the backend
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'pages/insertandmanage/backend/leads_list_backend.php', true);
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status !== 200) {
+                            console.error('Error updating Strategic Priority:', xhr.responseText);
+                        }
+                    };
+                    xhr.send('id=' + clientId + '&field=strategicPriority&value=' + strategicPriority);
+                });
+            });
+        });
 
-        <!--  Assessments -->
-        <td class="<?php
-        switch ($row["projectsAssessments"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell';
-                break;
-            case 'In Progress':
-                echo 'orange-cell';
-                break;
-            case 'Completed':
-                echo 'green-cell';
-                break;
-            default:
-                echo 'yellow-cell';
-        }
-        ?>" data-field="projectsAssessments" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="projectsAssessments" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["projectsAssessments"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["projectsAssessments"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["projectsAssessments"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["projectsAssessments"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- Projects  -->
-        <td class="<?php
-        switch ($row["projects"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell';
-                break;
-            case 'In Progress':
-                echo 'orange-cell';
-                break;
-            case 'Completed':
-                echo 'green-cell';
-                break;
-            default:
-                echo 'yellow-cell';
-        }
-        ?>" data-field="projects" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="projects" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["projects"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["projects"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["projects"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["projects"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- Data and Certification -->
-        <td class="<?php
-        switch ($row["dataCertification"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell';
-                break;
-            case 'In Progress':
-                echo 'orange-cell';
-                break;
-            case 'Completed':
-                echo 'green-cell';
-                break;
-            default:
-                echo 'yellow-cell';
-        }
-        ?>" data-field="dataCertification" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="dataCertification" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["dataCertification"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["dataCertification"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["dataCertification"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["dataCertification"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- Graduation -->
-        <td class="<?php
-        switch ($row["graduation"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell';
-                break;
-            case 'In Progress':
-                echo 'orange-cell';
-                break;
-            case 'Completed':
-                echo 'green-cell';
-                break;
-            default:
-                echo 'yellow-cell';
-        }
-        ?>" data-field="graduation" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="graduation" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["graduation"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["graduation"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["graduation"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["graduation"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- Program Completed -->
-        <td class="<?php
-        switch ($row["programCompleted"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell';
-                break;
-            case 'In Progress':
-                echo 'orange-cell';
-                break;
-            case 'Completed':
-                echo 'green-cell';
-                break;
-            default:
-                echo 'yellow-cell';
-        }
-        ?>" data-field="programCompleted" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="programCompleted" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["programCompleted"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["programCompleted"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["programCompleted"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["programCompleted"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- Post Sales Follow-Up -->
-        <td class="<?php
-        switch ($row["postSalesFollowUp"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell';
-                break;
-            case 'In Progress':
-                echo 'orange-cell';
-                break;
-            case 'Completed':
-                echo 'green-cell';
-                break;
-            default:
-                echo 'yellow-cell';
-        }
-        ?>" data-field="postSalesFollowUp" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="postSalesFollowUp" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["postSalesFollowUp"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["postSalesFollowUp"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["postSalesFollowUp"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["postSalesFollowUp"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- Portfolio Email -->
-        <td class="<?php
-        switch ($row["protofolioEmail"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell';
-                break;
-            case 'In Progress':
-                echo 'orange-cell';
-                break;
-            case 'Completed':
-                echo 'green-cell';
-                break;
-            default:
-                echo 'yellow-cell';
-        }
-        ?>" data-field="protofolioEmail" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="protofolioEmail" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["protofolioEmail"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["protofolioEmail"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["protofolioEmail"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["protofolioEmail"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-        <!-- New Business Meeting -->
-        <td class="<?php
-        switch ($row["newBusinessMeeting"]) {
-            case 'Not Initiated':
-                echo 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                echo 'grey-cell';
-                break;
-            case 'In Progress':
-                echo 'orange-cell';
-                break;
-            case 'Completed':
-                echo 'green-cell';
-                break;
-            default:
-                echo 'yellow-cell';
-        }
-        ?>" data-field="newBusinessMeeting" data-id="<?php echo $row["clientID"]; ?>">
-            <div class="dropdown">
-                <select data-field="newBusinessMeeting" onchange="updateStage(this.parentElement.parentElement, this)">
-                    <option value="Not Initiated" <?php echo $row["newBusinessMeeting"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
-                    <option value="Not Applicable" <?php echo $row["newBusinessMeeting"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
-                    <option value="In Progress" <?php echo $row["newBusinessMeeting"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
-                    <option value="Completed" <?php echo $row["newBusinessMeeting"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
-                </select>
-            </div>
-        </td>
-
-    </tr>
-    <script>
-    function updateStage(cell, select) {
-        const stage = select.value;
-        const id = cell.getAttribute('data-id');
-        const field = select.getAttribute('data-field');
-
-        let className = '';
-        switch(stage) {
-            case 'Not Initiated':
-            case 'Not Paid':
-                className = 'yellow-cell';
-                break;
-            case 'Not Applicable':
-                className = 'grey-cell';
-                break;
-            case 'In Progress':
-            case 'Part Paid':
-                className = 'orange-cell';
-                break;
-            case 'Completed':
-            case 'Fully Paid':
-                className = 'green-cell';
-                break;
-            default:
-                className = 'yellow-cell'; // Default to yellow for 'Not Initiated' or 'Not Paid'
+        function saveToLocalStorage(clientId, strategicPriority) {
+            var data = localStorage.getItem('strategicPriorities') ? JSON.parse(localStorage.getItem('strategicPriorities')) : {};
+            data[clientId] = strategicPriority;
+            localStorage.setItem('strategicPriorities', JSON.stringify(data));
         }
 
-        cell.className = className + ' ' + field; // Ensure field class is appended for custom styles
-
-        // Save to localStorage
-        saveToLocalStorage(id, field, stage);
-
-        // Send AJAX request to update the database
-        fetch('pages/insertandmanage/backend/leads_list_backend.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: new URLSearchParams({
-                id: id,
-                field: field,
-                value: stage
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.statusCode == 200){
-                console.log("Data updated successfully");
-            } else {
-                console.error("Failed to update data");
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-
-    function updateDateField(input) {
-        const date = input.value;
-        const id = input.closest('tr').getAttribute('data-id');
-        const field = input.getAttribute('data-field');
-
-        const cell = input.parentElement;
-        if (date) {
-            cell.className = 'green-cell';
-            // Save to localStorage only if the date is filled
-            saveToLocalStorage(id, field, date);
-
-            // Send AJAX request to update the database
-            fetch('pages/insertandmanage/backend/leads_list_backend.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    id: id,
-                    field: field,
-                    value: date
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.statusCode == 200){
-                    console.log("Data updated successfully");
-                } else {
-                    console.error("Failed to update data");
+        function loadSavedPriorities() {
+            var data = localStorage.getItem('strategicPriorities') ? JSON.parse(localStorage.getItem('strategicPriorities')) : {};
+            Object.keys(data).forEach(function(clientId) {
+                var dropdown = document.querySelector('.strategicPriorityDropdown[data-id="' + clientId + '"]');
+                if (dropdown) {
+                    dropdown.value = data[clientId];
                 }
-            })
-            .catch(error => console.error('Error:', error));
-        } else {
-            cell.className = 'yellow-cell';
-            // Remove from localStorage if the date is cleared
-            removeFromLocalStorage(id, field);
+            });
+        }
+        </script>
+                                            <td ><?php echo $row["date"]; ?></td>
+                                            <td class="td-requirement"><?php echo $row["requirement"]; ?></td>
+                                            <td ><?php echo $row["estimateSalesValue"]; ?></td>
+                                            <?php
+                                            echo '<td style="background-color:';
+                                            if ($row['lostLeadDate'] != '') {
+                                                echo '#ff9690; color: Black;">Inactive Lead';
+                                            } elseif ($row['postSalesFollowUp'] == 'Completed') {
+                                                echo '#73ad70; color: Black;">Close Lead';
+                                            } elseif ($row['emailClient'] == 'Completed') {
+                                                echo '#afd9b5; color: Black;">Active Lead';
+                                            } else {
+                                                echo '#ff9690; color: Black;">Inactive Lead';
+                                            }
+                                            echo '</td>';
+                                            ?>
 
-            // Send AJAX request to update the database
-            fetch('pages/insertandmanage/backend/leads_list_backend.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    id: id,
-                    field: field,
-                    value: ''
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.statusCode == 200){
-                    console.log("Data updated successfully");
-                } else {
-                    console.error("Failed to update data");
+    
+    
+        <td>
+            <select class="confidenceLevelDropdown" data-id="<?php echo $row["clientID"]; ?>">
+                <option value="1" <?php if ($row["confindeceLevelRating"] == 1)
+                    echo 'selected'; ?>>1</option>
+                <option value="2" <?php if ($row["confindeceLevelRating"] == 2)
+                    echo 'selected'; ?>>2</option>
+                <option value="3" <?php if ($row["confindeceLevelRating"] == 3)
+                    echo 'selected'; ?>>3</option>
+                <option value="4" <?php if ($row["confindeceLevelRating"] == 4)
+                    echo 'selected'; ?>>4</option>
+                <option value="5" <?php if ($row["confindeceLevelRating"] == 5)
+                    echo 'selected'; ?>>5</option>
+            </select>
+        </td>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved confidence levels from localStorage
+            loadSavedConfidenceLevels();
+
+            document.querySelectorAll('.confidenceLevelDropdown').forEach(function(dropdown) {
+                dropdown.addEventListener('change', function() {
+                    var clientId = this.getAttribute('data-id');
+                    var confidenceLevelRating = this.value;
+
+                    // Save to localStorage
+                    saveConfidenceLevelToLocalStorage(clientId, confidenceLevelRating);
+
+                    // Send AJAX request to update confidenceLevelRating in the backend
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'pages/insertandmanage/backend/leads_list_backend.php', true); // Ensure the correct path
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status !== 200) {
+                            console.error('Error updating Confidence Level Rating:', xhr.responseText);
+                        }
+                    };
+                    xhr.send('id=' + clientId + '&field=confidenceLevelRating&value=' + confidenceLevelRating);
+                });
+            });
+        });
+
+        function saveConfidenceLevelToLocalStorage(clientId, confidenceLevelRating) {
+            var data = localStorage.getItem('confidenceLevels') ? JSON.parse(localStorage.getItem('confidenceLevels')) : {};
+            data[clientId] = confidenceLevelRating;
+            localStorage.setItem('confidenceLevels', JSON.stringify(data));
+        }
+
+        function loadSavedConfidenceLevels() {
+            var data = localStorage.getItem('confidenceLevels') ? JSON.parse(localStorage.getItem('confidenceLevels')) : {};
+            Object.keys(data).forEach(function(clientId) {
+                var dropdown = document.querySelector('.confidenceLevelDropdown[data-id="' + clientId + '"]');
+                if (dropdown) {
+                    dropdown.value = data[clientId];
                 }
-            })
-            .catch(error => console.error('Error:', error));
+            });
         }
-    }
+        </script>
+                                                <td class="td-followUp"><?php echo $row["followUp"]; ?></td>
+                                        
+                                                <td><?php echo calculatecompletionStatus($row); ?>%</td>
+        <td><?php echo calculatemarketingStatus([$row["postSalesFollowUp"], $row["protofolioEmail"], $row["newBusinessMeeting"]]); ?>%</td>
 
-    function saveToLocalStorage(id, field, value) {
-        const data = JSON.parse(localStorage.getItem('tableData')) || {};
-        if (!data[id]) {
-            data[id] = {};
-        }
-        data[id][field] = value;
-        localStorage.setItem('tableData', JSON.stringify(data));
-    }
 
-    function removeFromLocalStorage(id, field) {
-        const data = JSON.parse(localStorage.getItem('tableData')) || {};
-        if (data[id]) {
-            delete data[id][field];
-            if (Object.keys(data[id]).length === 0) {
-                delete data[id];
+                                    
+        <?php
+        // Example PHP script to set selected values
+        $selectedLType = '';
+        $selectedCategoryType = '';
+
+        // Assuming $row contains data retrieved from the database
+        $selectedLType = isset($row["leadType"]) ? $row["leadType"] : '';
+        $selectedCategoryType = isset($row["categoryType"]) ? $row["categoryType"] : '';
+        ?>
+                                            <td><?php echo $row["categoryType"]; ?></td>
+                                            <td><?php echo $row["leadType"]; ?></td>
+                                            <td class="<?php echo (!empty($row["lostLeadDate"])) ? 'red-cell' : ''; ?>">
+                                                <?php echo $row["lostLeadDate"]; ?>
+                                            </td>
+
+                                    
+
+
+          <!-- Preliminary Brochures -->
+          <td class="<?php
+          switch ($row["preliminaryBrochures"]) {
+              case 'Not Initiated':
+                  echo 'yellow-cell preliminary';
+                  break;
+              case 'Not Applicable':
+                  echo 'grey-cell preliminary';
+                  break;
+              case 'In Progress':
+                  echo 'orange-cell preliminary';
+                  break;
+              case 'Completed':
+                  echo 'green-cell preliminary';
+                  break;
+              default:
+                  echo 'yellow-cell preliminary'; // Default to yellow for 'Not Initiated'
+          }
+          ?>" data-field="preliminaryBrochures" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="preliminaryBrochures" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["preliminaryBrochures"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["preliminaryBrochures"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["preliminaryBrochures"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["preliminaryBrochures"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+        <script>
+        function updateStage(cell, select) {
+            const stage = select.value;
+            const id = cell.getAttribute('data-id');
+            const field = select.getAttribute('data-field');
+
+            let className = '';
+            switch(stage) {
+                case 'Not Initiated':
+                    className = 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    className = 'grey-cell';
+                    break;
+                case 'In Progress':
+                    className = 'orange-cell';
+                    break;
+                case 'Completed':
+                    className = 'green-cell';
+                    break;
+                default:
+                    className = 'yellow-cell'; // Default to yellow for 'Not Initiated'
             }
+
+            cell.className = className;
+
+            // Save to localStorage
+            saveStageToLocalStorage(id, field, stage);
+        }
+
+        function saveStageToLocalStorage(id, field, value) {
+            let data = localStorage.getItem('tableData') ? JSON.parse(localStorage.getItem('tableData')) : {};
+            if (!data[id]) data[id] = {};
+            data[id][field] = value;
             localStorage.setItem('tableData', JSON.stringify(data));
         }
-    }
 
-    function loadFromLocalStorage() {
-        const data = JSON.parse(localStorage.getItem('tableData')) || {};
-        Object.keys(data).forEach(id => {
-            const row = document.querySelector(`tr[data-id="${id}"]`);
-            if (row) {
+        function loadStagesFromLocalStorage() {
+            let data = localStorage.getItem('tableData') ? JSON.parse(localStorage.getItem('tableData')) : {};
+            Object.keys(data).forEach(id => {
                 Object.keys(data[id]).forEach(field => {
-                    const cell = row.querySelector(`td[data-field="${field}"]`);
+                    const cell = document.querySelector(`td[data-id='${id}'][data-field='${field}']`);
                     if (cell) {
-                        const value = data[id][field];
-                        if (field === 'invoiceDT') {
-                            const input = cell.querySelector('input[type="date"]');
-                            if (input) {
-                                input.value = value;
-                                cell.className = value ? 'green-cell' : 'yellow-cell';
-                            }
-                        } else {
-                            const select = cell.querySelector('select');
-                            if (select) {
-                                select.value = value;
-                                switch(value) {
-                                    case 'Not Initiated':
-                                    case 'Not Paid':
-                                        cell.className = 'yellow-cell';
-                                        break;
-                                    case 'Not Applicable':
-                                        cell.className = 'grey-cell';
-                                        break;
-                                    case 'In Progress':
-                                    case 'Part Paid':
-                                        cell.className = 'orange-cell';
-                                        break;
-                                    case 'Completed':
-                                    case 'Fully Paid':
-                                        cell.className = 'green-cell';
-                                        break;
-                                    default:
-                                        cell.className = 'yellow-cell'; // Default to yellow for 'Not Initiated' or 'Not Paid'
-                                }
-                                cell.className += ` ${field}`; // Ensure field class is appended for custom styles
-                            }
+                        const select = cell.querySelector('select');
+                        if (select) {
+                            select.value = data[id][field];
+                            updateStage(cell, select); // Update the cell color
                         }
                     }
                 });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdowns = document.querySelectorAll('.dropdown select');
+            dropdowns.forEach(function (dropdown) {
+                dropdown.addEventListener('change', function () {
+                    const cell = this.closest('td');
+                    updateStage(cell, this);
+                });
+            });
+
+            loadStagesFromLocalStorage(); // Load saved stages from localStorage on page load
+        });
+
+        </script>
+
+
+            <!-- Email Client -->
+            <td class="<?php
+            switch ($row["emailClient"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell email';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell email';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell email';
+                    break;
+                case 'Completed':
+                    echo 'green-cell email';
+                    break;
+                default:
+                    echo 'yellow-cell email'; // Default to yellow for 'Not Initiated'
             }
-        });
-    }
+            ?>" data-field="emailClient" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="emailClient" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["emailClient"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["emailClient"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["emailClient"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["emailClient"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+    
+            <!-- Schedule CM -->
+            <td class="<?php
+            switch ($row["sheduleCM"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell shedulecm';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell shedulecm';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell shedulecm';
+                    break;
+                case 'Completed':
+                    echo 'green-cell shedulecm';
+                    break;
+                default:
+                    echo 'yellow-cell shedulecm'; // Default to yellow for 'Not Initiated'
+            }
+            ?>" data-field="sheduleCM" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="sheduleCM" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["sheduleCM"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["sheduleCM"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["sheduleCM"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["sheduleCM"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
 
-    document.addEventListener('DOMContentLoaded', function () {
-        loadFromLocalStorage();
+            <!-- Chem Meeting -->
+            <td class="<?php
+            switch ($row["chemMeeting"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell chemmeeting';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell chemmeeting';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell chemmeeting';
+                    break;
+                case 'Completed':
+                    echo 'green-cell chemmeeting';
+                    break;
+                default:
+                    echo 'yellow-cell chemmeeting'; // Default to yellow for 'Not Initiated'
+            }
+            ?>" data-field="chemMeeting" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="chemMeeting" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["chemMeeting"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["chemMeeting"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["chemMeeting"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["chemMeeting"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
 
-        const dropdowns = document.querySelectorAll('.dropdown select');
-        dropdowns.forEach(function (dropdown) {
-            dropdown.addEventListener('change', function () {
-                const cell = this.closest('td');
-                updateStage(cell, this);
+            <!-- Proposal -->
+            <td class="<?php
+            switch ($row["proposal"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell proposal';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell proposal';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell proposal';
+                    break;
+                case 'Completed':
+                    echo 'green-cell proposal';
+                    break;
+                default:
+                    echo 'yellow-cell proposal'; // Default to yellow for 'Not Initiated'
+            }
+            ?>" data-field="proposal" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="proposal" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["proposal"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["proposal"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["proposal"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["proposal"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- Estimate -->
+            <td class="<?php
+            switch ($row["estimate"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell estimate';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell estimate';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell estimate';
+                    break;
+                case 'Completed':
+                    echo 'green-cell estimate';
+                    break;
+                default:
+                    echo 'yellow-cell estimate'; // Default to yellow for 'Not Initiated'
+            }
+            ?>" data-field="estimate" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="estimate" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["estimate"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["estimate"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["estimate"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["estimate"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- Confirmation -->
+            <td class="<?php
+            switch ($row["confirmation"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell confirmation';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell confirmation';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell confirmation';
+                    break;
+                case 'Completed':
+                    echo 'green-cell confirmation';
+                    break;
+                default:
+                    echo 'yellow-cell confirmation'; // Default to yellow for 'Not Initiated'
+            }
+            ?>" data-field="confirmation" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="confirmation" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["confirmation"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["confirmation"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["confirmation"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["confirmation"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- COF -->
+            <td class="<?php
+            switch ($row["cof"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell cof';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell cof';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell cof';
+                    break;
+                case 'Completed':
+                    echo 'green-cell cof';
+                    break;
+                default:
+                    echo 'yellow-cell cof'; // Default to yellow for 'Not Initiated'
+            }
+            ?>" data-field="cof" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="cof" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["cof"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["cof"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["cof"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["cof"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- PO -->
+            <td class="<?php
+            switch ($row["po"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell po';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell po';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell po';
+                    break;
+                case 'Completed':
+                    echo 'green-cell po';
+                    break;
+                default:
+                    echo 'yellow-cell po'; // Default to yellow for 'Not Initiated'
+            }
+            ?>" data-field="po" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="po" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["po"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["po"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["po"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["po"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- Invoice -->
+            <td class="<?php
+            switch ($row["invoice"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell invoice';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell invoice';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell invoice';
+                    break;
+                case 'Completed':
+                    echo 'green-cell invoice';
+                    break;
+                default:
+                    echo 'yellow-cell invoice'; // Default to yellow for 'Not Initiated'
+            }
+            ?>" data-field="invoice" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="invoice" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["invoice"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["invoice"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["invoice"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["invoice"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- Invoice Date -->
+        <td class="<?php echo (!empty($row["invoiceDT"])) ? 'yellow-cell' : 'green-cell'; ?>" data-field="invoiceDT" data-id="<?php echo $row["clientID"]; ?>">
+            <input type="date" value="<?php echo htmlspecialchars($row["invoiceDT"]); ?>" onchange="updateDateField(this)" />
+            </td>
+
+            <!-- Payment -->
+        <td class="<?php
+        switch ($row["payment"]) {
+            case 'Fully Paid':
+                echo 'green-cell payment';
+                break;
+            case 'Not Paid':
+                echo 'yellow-cell payment';
+                break;
+            case 'Part Paid':
+                echo 'orange-cell payment';
+                break;
+            default:
+                echo 'yellow-cell payment'; // Default to yellow for 'Not Paid'
+        }
+        ?>" data-field="payment" data-id="<?php echo $row["clientID"]; ?>">
+            <div class="dropdown">
+                <select data-field="payment" onchange="updateStage(this.parentElement.parentElement, this)">
+                    <option value="Not Paid" <?php echo $row["payment"] == 'Not Paid' ? 'selected' : ''; ?>>Not Paid</option>
+                    <option value="Part Paid" <?php echo $row["payment"] == 'Part Paid' ? 'selected' : ''; ?>>Part Paid</option>
+                    <option value="Fully Paid" <?php echo $row["payment"] == 'Fully Paid' ? 'selected' : ''; ?>>Fully Paid</option>
+                </select>
+            </div>
+        </td>
+
+            <!-- Program -->
+            <td class="<?php
+            switch ($row["program"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell';
+                    break;
+                case 'Completed':
+                    echo 'green-cell';
+                    break;
+                default:
+                    echo 'yellow-cell';
+            }
+            ?>" data-field="program" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="program" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["program"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["program"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["program"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["program"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+
+            <!-- Survey and Data -->
+            <td class="<?php
+            switch ($row["SurveyData"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell';
+                    break;
+                case 'Completed':
+                    echo 'green-cell';
+                    break;
+                default:
+                    echo 'yellow-cell';
+            }
+            ?>" data-field="SurveyData" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="SurveyData" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["SurveyData"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["SurveyData"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["SurveyData"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["SurveyData"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- Course and Facilitation -->
+            <td class="<?php
+            switch ($row["courseFacillitation"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell';
+                    break;
+                case 'Completed':
+                    echo 'green-cell';
+                    break;
+                default:
+                    echo 'yellow-cell';
+            }
+            ?>" data-field="courseFacillitation" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="courseFacillitation" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["courseFacillitation"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["courseFacillitation"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["courseFacillitation"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["courseFacillitation"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!--  Assessments -->
+            <td class="<?php
+            switch ($row["projectsAssessments"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell';
+                    break;
+                case 'Completed':
+                    echo 'green-cell';
+                    break;
+                default:
+                    echo 'yellow-cell';
+            }
+            ?>" data-field="projectsAssessments" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="projectsAssessments" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["projectsAssessments"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["projectsAssessments"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["projectsAssessments"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["projectsAssessments"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- Projects  -->
+            <td class="<?php
+            switch ($row["projects"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell';
+                    break;
+                case 'Completed':
+                    echo 'green-cell';
+                    break;
+                default:
+                    echo 'yellow-cell';
+            }
+            ?>" data-field="projects" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="projects" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["projects"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["projects"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["projects"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["projects"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- Data and Certification -->
+            <td class="<?php
+            switch ($row["dataCertification"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell';
+                    break;
+                case 'Completed':
+                    echo 'green-cell';
+                    break;
+                default:
+                    echo 'yellow-cell';
+            }
+            ?>" data-field="dataCertification" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="dataCertification" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["dataCertification"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["dataCertification"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["dataCertification"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["dataCertification"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- Graduation -->
+            <td class="<?php
+            switch ($row["graduation"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell';
+                    break;
+                case 'Completed':
+                    echo 'green-cell';
+                    break;
+                default:
+                    echo 'yellow-cell';
+            }
+            ?>" data-field="graduation" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="graduation" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["graduation"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["graduation"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["graduation"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["graduation"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- Program Completed -->
+            <td class="<?php
+            switch ($row["programCompleted"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell';
+                    break;
+                case 'Completed':
+                    echo 'green-cell';
+                    break;
+                default:
+                    echo 'yellow-cell';
+            }
+            ?>" data-field="programCompleted" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="programCompleted" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["programCompleted"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["programCompleted"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["programCompleted"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["programCompleted"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- Post Sales Follow-Up -->
+            <td class="<?php
+            switch ($row["postSalesFollowUp"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell';
+                    break;
+                case 'Completed':
+                    echo 'green-cell';
+                    break;
+                default:
+                    echo 'yellow-cell';
+            }
+            ?>" data-field="postSalesFollowUp" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="postSalesFollowUp" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["postSalesFollowUp"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["postSalesFollowUp"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["postSalesFollowUp"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["postSalesFollowUp"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- Portfolio Email -->
+            <td class="<?php
+            switch ($row["protofolioEmail"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell';
+                    break;
+                case 'Completed':
+                    echo 'green-cell';
+                    break;
+                default:
+                    echo 'yellow-cell';
+            }
+            ?>" data-field="protofolioEmail" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="protofolioEmail" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["protofolioEmail"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["protofolioEmail"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["protofolioEmail"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["protofolioEmail"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+            <!-- New Business Meeting -->
+            <td class="<?php
+            switch ($row["newBusinessMeeting"]) {
+                case 'Not Initiated':
+                    echo 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    echo 'grey-cell';
+                    break;
+                case 'In Progress':
+                    echo 'orange-cell';
+                    break;
+                case 'Completed':
+                    echo 'green-cell';
+                    break;
+                default:
+                    echo 'yellow-cell';
+            }
+            ?>" data-field="newBusinessMeeting" data-id="<?php echo $row["clientID"]; ?>">
+                <div class="dropdown">
+                    <select data-field="newBusinessMeeting" onchange="updateStage(this.parentElement.parentElement, this)">
+                        <option value="Not Initiated" <?php echo $row["newBusinessMeeting"] == 'Not Initiated' ? 'selected' : ''; ?>>Not Initiated</option>
+                        <option value="Not Applicable" <?php echo $row["newBusinessMeeting"] == 'Not Applicable' ? 'selected' : ''; ?>>Not Applicable</option>
+                        <option value="In Progress" <?php echo $row["newBusinessMeeting"] == 'In Progress' ? 'selected' : ''; ?>>In Progress</option>
+                        <option value="Completed" <?php echo $row["newBusinessMeeting"] == 'Completed' ? 'selected' : ''; ?>>Completed</option>
+                    </select>
+                </div>
+            </td>
+
+        </tr>
+        <script>
+        function updateStage(cell, select) {
+            const stage = select.value;
+            const id = cell.getAttribute('data-id');
+            const field = select.getAttribute('data-field');
+
+            let className = '';
+            switch(stage) {
+                case 'Not Initiated':
+                case 'Not Paid':
+                    className = 'yellow-cell';
+                    break;
+                case 'Not Applicable':
+                    className = 'grey-cell';
+                    break;
+                case 'In Progress':
+                case 'Part Paid':
+                    className = 'orange-cell';
+                    break;
+                case 'Completed':
+                case 'Fully Paid':
+                    className = 'green-cell';
+                    break;
+                default:
+                    className = 'yellow-cell'; // Default to yellow for 'Not Initiated' or 'Not Paid'
+            }
+
+            cell.className = className + ' ' + field; // Ensure field class is appended for custom styles
+
+            // Save to localStorage
+            saveToLocalStorage(id, field, stage);
+
+            // Send AJAX request to update the database
+            fetch('pages/insertandmanage/backend/leads_list_backend.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    id: id,
+                    field: field,
+                    value: stage
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.statusCode == 200){
+                    console.log("Data updated successfully");
+                } else {
+                    console.error("Failed to update data");
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function updateDateField(input) {
+            const date = input.value;
+            const id = input.closest('tr').getAttribute('data-id');
+            const field = input.getAttribute('data-field');
+
+            const cell = input.parentElement;
+            if (date) {
+                cell.className = 'green-cell';
+                // Save to localStorage only if the date is filled
+                saveToLocalStorage(id, field, date);
+
+                // Send AJAX request to update the database
+                fetch('pages/insertandmanage/backend/leads_list_backend.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        id: id,
+                        field: field,
+                        value: date
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.statusCode == 200){
+                        console.log("Data updated successfully");
+                    } else {
+                        console.error("Failed to update data");
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            } else {
+                cell.className = 'yellow-cell';
+                // Remove from localStorage if the date is cleared
+                removeFromLocalStorage(id, field);
+
+                // Send AJAX request to update the database
+                fetch('pages/insertandmanage/backend/leads_list_backend.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        id: id,
+                        field: field,
+                        value: ''
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.statusCode == 200){
+                        console.log("Data updated successfully");
+                    } else {
+                        console.error("Failed to update data");
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+
+        function saveToLocalStorage(id, field, value) {
+            const data = JSON.parse(localStorage.getItem('tableData')) || {};
+            if (!data[id]) {
+                data[id] = {};
+            }
+            data[id][field] = value;
+            localStorage.setItem('tableData', JSON.stringify(data));
+        }
+
+        function removeFromLocalStorage(id, field) {
+            const data = JSON.parse(localStorage.getItem('tableData')) || {};
+            if (data[id]) {
+                delete data[id][field];
+                if (Object.keys(data[id]).length === 0) {
+                    delete data[id];
+                }
+                localStorage.setItem('tableData', JSON.stringify(data));
+            }
+        }
+
+        function loadFromLocalStorage() {
+            const data = JSON.parse(localStorage.getItem('tableData')) || {};
+            Object.keys(data).forEach(id => {
+                const row = document.querySelector(`tr[data-id="${id}"]`);
+                if (row) {
+                    Object.keys(data[id]).forEach(field => {
+                        const cell = row.querySelector(`td[data-field="${field}"]`);
+                        if (cell) {
+                            const value = data[id][field];
+                            if (field === 'invoiceDT') {
+                                const input = cell.querySelector('input[type="date"]');
+                                if (input) {
+                                    input.value = value;
+                                    cell.className = value ? 'green-cell' : 'yellow-cell';
+                                }
+                            } else {
+                                const select = cell.querySelector('select');
+                                if (select) {
+                                    select.value = value;
+                                    switch(value) {
+                                        case 'Not Initiated':
+                                        case 'Not Paid':
+                                            cell.className = 'yellow-cell';
+                                            break;
+                                        case 'Not Applicable':
+                                            cell.className = 'grey-cell';
+                                            break;
+                                        case 'In Progress':
+                                        case 'Part Paid':
+                                            cell.className = 'orange-cell';
+                                            break;
+                                        case 'Completed':
+                                        case 'Fully Paid':
+                                            cell.className = 'green-cell';
+                                            break;
+                                        default:
+                                            cell.className = 'yellow-cell'; // Default to yellow for 'Not Initiated' or 'Not Paid'
+                                    }
+                                    cell.className += ` ${field}`; // Ensure field class is appended for custom styles
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            loadFromLocalStorage();
+
+            const dropdowns = document.querySelectorAll('.dropdown select');
+            dropdowns.forEach(function (dropdown) {
+                dropdown.addEventListener('change', function () {
+                    const cell = this.closest('td');
+                    updateStage(cell, this);
+                });
+            });
+
+            const dateInputs = document.querySelectorAll('input[type="date"]');
+            dateInputs.forEach(function (input) {
+                input.addEventListener('change', function () {
+                    updateDateField(this);
+                });
             });
         });
-
-        const dateInputs = document.querySelectorAll('input[type="date"]');
-        dateInputs.forEach(function (input) {
-            input.addEventListener('change', function () {
-                updateDateField(this);
-            });
-        });
-    });
-    </script>
+        </script>
 
 
 
 
-    <!--<script>
+        <!--<script>
 function updateStage(cell, select) {
     const stage = select.value;
     const id = cell.getAttribute('data-id');
@@ -2479,13 +2476,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>-->
-                                        <!--<a href="index.php?sub=createBatches&companycompany=<?php echo urlencode($row["company"]); ?>" class="btn btn-warning btn-sm">Create Batches</a>-->
-                                    </tr>
-                                    </td>
-                                    </td>
-                                    </td>
-                                    </tr>
-                                <?php
+                                            <!--<a href="index.php?sub=createBatches&companycompany=<?php echo urlencode($row["company"]); ?>" class="btn btn-warning btn-sm">Create Batches</a>-->
+                                        </tr>
+                                        </td>
+                                        </td>
+                                        </td>
+                                        </tr>
+                                    <?php
 
                             }
                             ?>
@@ -2909,16 +2906,50 @@ document.addEventListener('DOMContentLoaded', function () {
                                 </div>-->
 
                                 <div class="modal-footer">
-                                    <input type="hidden" value="2" name="type">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <button type="button" class="btn btn-info" id="update">Update</button>
-                                </div>
+                        <input type="hidden" value="2" name="type">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <button type="button" class="btn btn-info" id="update">Update</button>
+                        <button type="button" class="btn btn-danger" id="delete">Delete</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
-</div>
 
+<script>
+$('#delete').on('click', function() {
+    var id = $('#id_u').val(); // Get the ID from the hidden input field
+
+    if(confirm('Are you sure you want to delete this record?')) {
+        $.ajax({
+            url: "pages/insertandmanage/backend/leads_list_backend.php",
+            type: "POST",
+            data: { type: 3, clientID: id }, // Changed id to clientID
+            success: function(response) {
+                try {
+                    var responseData = JSON.parse(response);
+                    if(responseData.statusCode == 200) {
+                        alert('Data deleted successfully!');
+                        $('#editEmployeeModal').modal('hide'); // Close the modal
+                        $('#' + id).remove(); // Remove the row from the table
+                    } else {
+                        alert('Failed to delete data.');
+                    }
+                } catch (e) {
+                    console.error("Invalid JSON response:", response);
+                    alert('An error occurred: Invalid JSON response');
+                }
+            },
+            error: function(xhr, status, error) {
+                alert('An error occurred: ' + error);
+                console.log(xhr.responseText);
+            }
+        });
+    }
+});
+
+</script>
         <!-- Edit Action Point Modal -->
 <div id="editActionPointModal" class="modal fade">
     <div class="modal-dialog">

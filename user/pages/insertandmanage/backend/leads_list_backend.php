@@ -240,4 +240,33 @@ if (count($_POST) > 0) {
 } else {
     echo json_encode(array("statusCode" => 400, "error" => "No data provided"));
 }
+
+$response = array(); // Initialize an array for the JSON response
+
+// Handle Delete Operation
+if (count($_POST) > 0 && isset($_POST['type']) && $_POST['type'] == 3) {
+
+    if (isset($_POST['clientID'])) { // Ensure the key is 'clientID'
+        $lid_ = $_POST['clientID'];
+        $sql = "DELETE FROM leads WHERE clientID = ?";
+
+        if ($stmt = $conn->prepare($sql)) {
+            $stmt->bind_param("i", $lid_);
+            if ($stmt->execute()) {
+                echo json_encode(array("statusCode" => 200, "message" => "Deleted successfully"));
+            } else {
+                echo json_encode(array("statusCode" => 201, "error" => $stmt->error));
+            }
+            $stmt->close();
+        } else {
+            echo json_encode(array("statusCode" => 500, "error" => "Failed to prepare the SQL statement"));
+        }
+
+    } else {
+        // If clientID is not set in POST data, return an error response
+        echo json_encode(array("statusCode" => 400, "error" => "clientID is missing from the request"));
+    }
+
+    mysqli_close($conn);
+}
 ?>
